@@ -13,7 +13,7 @@ class List(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'user_id': self.user_id,
-            'list_name': self.list_name,
+            'userId': self.user_id,
+            'listName': self.list_name,
             'symbols': [symbol['symbol'] for symbol in self.list_symbols]
         }
