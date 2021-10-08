@@ -1,5 +1,6 @@
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
+from .stocks import seed_stocks, undo_stocks
 from .list_symbols import seed_list_symbols, undo_list_symbols
 from .lists import seed_lists, undo_lists
 from .assets import seed_assets, undo_assets
@@ -13,6 +14,7 @@ seed_commands = AppGroup('seed')
 @seed_commands.command('all')
 def seed():
     seed_users()
+    seed_stocks()
     seed_assets()
     seed_lists()
     seed_list_symbols()
@@ -26,4 +28,5 @@ def undo():
     undo_assets()
     undo_lists()
     undo_users()
+    undo_stocks()
     # Add other undo functions here
