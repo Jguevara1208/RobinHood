@@ -1,8 +1,8 @@
 /* ----------------------------------------------------------------------- */
-/* --------------------------------Actions-------------------------------- */
+/* -----------------------------Actions----------------------------------- */
 /* ----------------------------------------------------------------------- */
 
-const GET_USER_INFO = 'sessionUser/GET_USER_INFO';
+const SET_USER_INFO = 'sessionUser/SET_USER_INFO';
 const DELETE_USER_INFO = 'sessionUser/DELETE_USER_INFO';
 const EDIT_BUYING_POWER = 'sessionUser/EDIT_BUYING_POWER';
 
@@ -10,9 +10,9 @@ const EDIT_BUYING_POWER = 'sessionUser/EDIT_BUYING_POWER';
 /* ----------------------------Action Creators---------------------------- */
 /* ----------------------------------------------------------------------- */
 
-const getUserInfoAction = (userInfo) => {
+const setUserInfoAction = (userInfo) => {
     return {
-        type: GET_USER_INFO,
+        type: SET_USER_INFO,
         userInfo
     };
 };
@@ -37,7 +37,7 @@ const editBuyingPowerAction = (buyingPower) => {
 export const getUserInfo = (userId) => async (dispatch) => {
     const res = await fetch(`/api/users/${userId}`);
     const userInfo = await res.json();
-    dispatch(getUserInfoAction(userInfo));
+    dispatch(setUserInfoAction(userInfo));
 }
 
 export const deleteUserInfo = () => (dispatch) => {
@@ -71,7 +71,7 @@ const initialState = {
 const sessionUserReducer = (state=initialState, action) => {
     let newState;
     switch (action.type) {
-        case GET_USER_INFO:
+        case SET_USER_INFO:
             newState = {...state}
             newState.id = action.id;
             newState.firstName = action.firstName;
