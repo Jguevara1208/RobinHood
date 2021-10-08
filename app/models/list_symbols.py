@@ -12,6 +12,6 @@ class ListSymbol(db.Model):
     def to_dict(self):
         return {
             'id' : self.id,
-            'list_id' : self.list_id,
+            'listId' : self.list_id,
             'symbol' : self.symbol
         }
