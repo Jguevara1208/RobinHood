@@ -13,6 +13,9 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
+    lists = db.relationship('List', back_populates='user')
+    assets = db.relationship('Asset', back_populates='user')
+
     @property
     def password(self):
         return self.hashed_password
@@ -27,8 +30,8 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
-            'first_name': self.first_name,
-            'last_name': self.last_name,
-            'buying_power': self.buying_power,
+            'firstName': self.first_name,
+            'lastName': self.last_name,
+            'buyingPower': self.buying_power,
             'email': self.email,
         }
