@@ -16,5 +16,5 @@ class List(db.Model):
             'id': self.id,
             'userId': self.user_id,
             'listName': self.list_name,
-            'symbols': [symbol['symbol'] for symbol in self.list_symbols]
+            'symbols': [symbol.symbol for symbol in self.list_symbols]
         }
