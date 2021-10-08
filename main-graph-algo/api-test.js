@@ -27,7 +27,7 @@ const getFromDate = (timeFrame) => {
             newDate = currentDate
             break;
         case 'W':
-            newDate = new Date(currentDate.setDate(currentDate.getDate() - 8))
+            newDate = new Date(currentDate.setDate(currentDate.getDate() - 7))
             break;
         case 'M':
             newDate = new Date(currentDate.setMonth(currentDate.getMonth() -1))
