@@ -10,7 +10,7 @@ class Asset(db.Model):
     shares = db.Column(db.Float, nullable=False)
     average = db.Column(db.Float, nullable=False)
 
-    users = db.relationship('User', back_populates='assets')
+    user = db.relationship('User', back_populates='assets')
 
     def to_dict(self):
         return {

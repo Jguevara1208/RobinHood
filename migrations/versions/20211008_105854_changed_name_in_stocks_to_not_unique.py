@@ -1,8 +1,8 @@
-"""finished all models, updating migration folder
+"""changed name in stocks to not unique
 
-Revision ID: e9569b99ea79
+Revision ID: 653d96b60eff
 Revises: 
-Create Date: 2021-10-08 10:21:18.960464
+Create Date: 2021-10-08 10:58:54.055221
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'e9569b99ea79'
+revision = '653d96b60eff'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -23,7 +23,6 @@ def upgrade():
     sa.Column('name', sa.String(length=50), nullable=False),
     sa.Column('symbol', sa.String(length=10), nullable=False),
     sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('name'),
     sa.UniqueConstraint('symbol')
     )
     op.create_table('users',
