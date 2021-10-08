@@ -6,4 +6,12 @@ class ListSymbol(db.Model):
     list_id = db.Column(db.Integer, db.foreignKey('lists.id'), nullable=False)
     symbol = db.Column(db.String(50), nullable=False)
 
+    # relationship with List model
     list = db.relationship('List', back_populates='list_symbols')
+
+    def to_dict(self):
+        return {
+            'id' : self.id,
+            'list_id' : self.list_id,
+            'symbol' : self.symbol
+        }
