@@ -9,6 +9,7 @@ class List(db.Model):
     
     #relationship between the list_symbols and list databases
     list_symbols = db.relationship('ListSymbols', back_populates = 'list', cascade = 'all, delete')
+    user = db.relationship('User', back_populates = 'lists')
 
     def to_dict(self):
         return {
