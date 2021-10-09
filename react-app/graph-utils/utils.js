@@ -1,15 +1,15 @@
 import fetch from 'node-fetch'
 
-/**---------------------------------------------------------------------------------------------------------------- **/
-/**------------------------------------Landing Page Portfolio Graph Logic------------------------------------------ **/
-/**---------------------------------------------------------------------------------------------------------------- **/
-
 // This will be coming from redux
-const user_assets = {
-    "AAPL" : {id: 1, shares: 100, average: 60},
-    "AMC": { id: 1, shares: 100, average: 60 },
+const mockAssets = {
+    "AAPL": { id: 1, shares: 100, average: 60 },
     "TSLA": { id: 1, shares: 100, average: 60 },
+    "AMC": { id: 1, shares: 100, average: 60 },
 }
+
+/**---------------------------------------------------------------------------------------------------------------------- **/
+/**---------------------------------------------Unix/Date Formatting Functions------------------------------------------- **/
+/**---------------------------------------------------------------------------------------------------------------------- **/
 
 //This function will change the unix timestamps from the Stock Api into the timestamps we use on the graph tooltip
 function getGraphDate(unix, resolution) {
@@ -22,24 +22,23 @@ function getGraphDate(unix, resolution) {
         const hours = date.getHours();
         const minutes = '0' + date.getMinutes();
         newTime = hours + ':' + minutes.substr(-2)
-    
+        const ref = newTime.slice(0, 2)
+        let res;
         if (newTime.length === 5) {
-            const ref = newTime.slice(0, 2)
-            if (+ref < 12) {
-                return newTime + 'AM'
-            } else {
-                return (+ref - 12) + `${newTime.slice(2)}` + 'PM'
-            }
+            +ref < 12 
+                ? res = `${newTime}AM`
+                : res = `${(+ref - 12)}${newTime.slice(2)}PM`
         } else {
-            return newTime + 'AM'
+            res = `${newTime}AM`
         }
+        return res
     } else {
         // Other wise we know that it is either by week or month, and we will show the the proper dates
         const month = date.getMonth()
         const day = date.getDate()
         const year = date.getFullYear()
         // If the resolution is by month, we want to show the mm/yyyy if it is W, or D we will show mm/dd
-        resolution === 'M' ? newTime = `${month + 1}/${year}`: newTime = `${month + 1}/${day}`
+        resolution === 'M' ? newTime = `${month + 1}/${year}` : newTime = `${month + 1}/${day}`
         return newTime
     }
 }
@@ -63,7 +62,7 @@ const getFromDate = (timeFrame) => {
             newDate = new Date(currentDate.setDate(currentDate.getDate() - 7))
             break;
         case 'M':
-            newDate = new Date(currentDate.setMonth(currentDate.getMonth() -1))
+            newDate = new Date(currentDate.setMonth(currentDate.getMonth() - 1))
             break;
         case 'Y':
             newDate = new Date(currentDate.setFullYear(currentDate.getFullYear() - 1))
@@ -79,69 +78,24 @@ const getFromDate = (timeFrame) => {
     return Number(res.toString().slice(0, 10))
 }
 
+
+
+
+
+/**------------------------------------------------------------------------------------------------------------------- **/
+/**---------------------------------------------Graph Data Helper Functions------------------------------------------- **/
+/**------------------------------------------------------------------------------------------------------------------- **/
+
+
 // Return an object with all of the information needed to query the API, depending on how long in the past they want to see,
 // it decides the resolution for the query, it also calls the two helper functions to get the correct timestamps
 const getQueryParameters = (timeFrame) => {
-    let timeFrameTranslate = {'D': '30', 'W': 'D', 'M': 'D', 'Y': 'M'}
+    let timeFrameTranslate = { 'D': '30', 'W': 'D', 'M': 'D', 'Y': 'M' }
     return {
         resolution: timeFrameTranslate[timeFrame],
         fromDate: getFromDate(timeFrame),
         currentDate: getCurrentDate()
     }
-}
-
-// main fetch function for portfolio graph, loops through all symbols given, fetches info for each of them, adds api data into an object.
-// afterwards, it loops through the object and crosschecks the user's assets and calculates at each time frame what their total value is.
-const fetchStock = async (symbols, resolution, fromDate, currentDate) => {
-    const assetsCandleNums = {}
-    let times;
-
-    // grabs info from the api for each symbol
-    for (let i = 0; i < symbols.length; i++) {
-        const symbol = symbols[i]
-
-        let response = await fetch(
-            `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=${resolution}&from=${+fromDate}&to=${+currentDate}&token=c5f2bi2ad3ib660qt670`
-            // `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=${resolution}&from=1633588201&to=1633628581&token=c5f2bi2ad3ib660qt670`
-        );
-
-        let data = await response.json()
-        assetsCandleNums[symbol] = data.o
-        if (!times) times = data.t
-        if (times.length > data.t.length) times = data.t
-    }
-    
-    let res = { assetsCandleNums, times, resolution}
-    return res
-}
-
-const graph_points = (graphData) => {
-    const { assetsCandleNums, times, resolution } = graphData
-
-    // finds the shortest length array in the assetsCandleNums object to use as our stopping point later.
-    let len = Object.values(assetsCandleNums).reduce((val, next) => {
-        if (next.length < val.length) val = next;
-        return val
-    }).length
-
-    const stockData = []
-
-    // counts from 0 to the stopping point above, for each 'i' we loop through the assets from the data gathered from the query
-    // we find the amount of shares the user has for that specific asset, and multiply their shares by the value in the array
-    // add it to a total for all shares they own at that point in time, and push it into the stockData array as well as the timestamp for that specific 'i' in times
-    for (let i = 0; i < len; i++ ){
-        let total = 0
-        for (let asset in assetsCandleNums) {
-            let shares = user_assets[asset].shares
-            let worth = shares * assetsCandleNums[asset][i]
-            total += worth
-        }
-        let priceAndTime = {time: getGraphDate(times[i], resolution), price: total}
-        stockData.push(priceAndTime)
-        stockData[i]['%'] = percentageDifference(stockData)
-    }
-    
-    return stockData
 }
 
 // Calculates the percentage difference between the first data point price compared to every other data point.
@@ -156,11 +110,137 @@ const percentageDifference = (stockData) => {
 }
 
 
-let stockData;
-async function all(selectedResolution){
-    const { resolution, fromDate, currentDate } = getQueryParameters(selectedResolution)
-    const data = await fetchStock(Object.keys(user_assets), resolution, fromDate, currentDate)
-    stockData = graph_points(data)
+
+
+
+
+/**------------------------------------------------------------------------------------------------------------------- **/
+/**---------------------------------------------Single Asset Graph Data----------------------------------------------- **/
+/**------------------------------------------------------------------------------------------------------------------- **/
+
+const fetchSingleStockCandles = async (symbol, resolution, fromDate, currentDate) => {
+    let response = await fetch(
+        // `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=${resolution}&from=${+fromDate}&to=${+currentDate}&token=c5f2bi2ad3ib660qt670`
+        `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=${resolution}&from=1633588201&to=1633628581&token=c5f2bi2ad3ib660qt670`
+    )
+    let data = await response.json()
+    let res = { prices: data.o, times: data.t, resolution }
+    return res
 }
 
-all('Y')
+const single_asset_graph_points = (graphData) => {
+    const { prices, times, resolution } = graphData
+
+    const stockData = []
+    for (let i = 0; i < prices.length; i++) {
+        let price = Number(prices[i].toFixed(2))
+        let time = getGraphDate(times[i], resolution)
+        stockData.push({ time, price })
+        stockData[i]['%'] = percentageDifference(stockData)
+    }
+    return stockData
+}
+
+
+
+
+
+
+/**------------------------------------------------------------------------------------------------------------------- **/
+/**---------------------------------------------Multiple Assets Graph Data-------------------------------------------- **/
+/**------------------------------------------------------------------------------------------------------------------- **/
+
+// main fetch function for portfolio graph, loops through all symbols given, fetches info for each of them, adds api data into an object.
+// afterwards, it loops through the object and crosschecks the user's assets and calculates at each time frame what their total value is.
+const fetchMultipleStocksCandles = async (symbols, resolution, fromDate, currentDate) => {
+    const assetsCandleNums = {}
+    let times;
+
+    // grabs info from the api for each symbol
+    for (let i = 0; i < symbols.length; i++) {
+        const symbol = symbols[i]
+
+        let response = await fetch(
+            // `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=${resolution}&from=${+fromDate}&to=${+currentDate}&token=c5f2bi2ad3ib660qt670`
+            `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=${resolution}&from=1633588201&to=1633628581&token=c5f2bi2ad3ib660qt670`
+        );
+
+        let data = await response.json()
+        assetsCandleNums[symbol] = data.o
+        if (!times) times = data.t
+        if (times.length > data.t.length) times = data.t
+    }
+
+    let res = { assetsCandleNums, times, resolution }
+    return res
+}
+
+const user_assets_graph_points = (graphData, userAssets) => {
+    const { assetsCandleNums, times, resolution } = graphData
+
+    // finds the shortest length array in the assetsCandleNums object to use as our stopping point later.
+    let len = Object.values(assetsCandleNums).reduce((val, next) => {
+        if (next.length < val.length) val = next;
+        return val
+    }).length
+
+    const stockData = []
+
+    // counts from 0 to the stopping point above, for each 'i' we loop through the assets from the data gathered from the query
+    // we find the amount of shares the user has for that specific asset, and multiply their shares by the value in the array
+    // add it to a total for all shares they own at that point in time, and push it into the stockData array as well as the timestamp for that specific 'i' in times
+    for (let i = 0; i < len; i++) {
+        let total = 0.00
+        for (let asset in assetsCandleNums) {
+            let shares = userAssets[asset].shares
+            let worth = shares * assetsCandleNums[asset][i]
+            total += worth
+        }
+        let priceAndTime = { time: getGraphDate(times[i], resolution), price: Number(total.toFixed(2)) }
+        stockData.push(priceAndTime)
+        stockData[i]['%'] = percentageDifference(stockData)
+    }
+
+    return stockData
+}
+
+
+
+
+
+
+/**------------------------------------------------------------------------------------------------------------------- **/
+/**---------------------------------------------Multiple Assets Package----------------------------------------------- **/
+/**------------------------------------------------------------------------------------------------------------------- **/
+
+async function multiAssetGraphData(selectedResolution, symbols, userAssets){
+    const { resolution, fromDate, currentDate } = getQueryParameters(selectedResolution)
+    let data = await fetchMultipleStocksCandles(symbols, resolution, fromDate, currentDate)
+    let stockData = user_assets_graph_points(data, userAssets)
+    console.log('\n \n \n \n \n')
+    console.log('multiAssetGraphData \n')
+    console.log(stockData)
+    return stockData
+}
+
+multiAssetGraphData('D', Object.keys(mockAssets), mockAssets)
+
+
+
+
+
+/**------------------------------------------------------------------------------------------------------------------- **/
+/**---------------------------------------------Single Asset Package-------------------------------------------------- **/
+/**------------------------------------------------------------------------------------------------------------------- **/
+
+async function singleAssetGraphData(selectedResolution, symbol){
+    const { resolution, fromDate, currentDate } = getQueryParameters(selectedResolution)
+    let data = await fetchSingleStockCandles(symbol, resolution, fromDate, currentDate)
+    let stockData = single_asset_graph_points(data)
+    console.log('\n \n \n \n \n')
+    console.log('singleAssetGraphData \n')
+    console.log(stockData)
+    return stockData
+}
+
+singleAssetGraphData('D', 'AAPL')
