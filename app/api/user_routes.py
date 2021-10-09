@@ -36,35 +36,7 @@ def lists(id):
 
 @user_routes.route('/<int:id>/assets')
 def get_all_assets(id):
-    assets_from_db = Asset.query.filter(Asset.user_id == int(id)).all()
-    assets = { asset.to_dict()['symbol']: asset.to_dict() for asset in assets_from_db }
-    return assets
-
-@user_routes.route('/<int:id>/assets', methods=['POST'])
-def add_new_asset():
-    body = request.json
-    asset = Asset(
-        user_id=body['user_id'],
-        symbol=body['symbol'],
-        shares=body['shares'],
-        average=body['average']
-        )
-    db.session.add(asset)
-    db.session.commit()
-    return asset.to_dict() 
-
-@user_routes.route('assets/<int:asset_id>', methods=["PATCH"])
-def update_asset(asset_id):
-    body = request.json
-    asset = Asset.query.get(asset_id)
-    asset.shares = body['shares']
-    asset.average = body['average']
-    db.session.commit()
-    return 'ok'
-
-@user_routes.route('assets/<int:asset_id>', methods=['DELETE'])
-def delete_asset(asset_id):
-    asset = Asset.query.get(asset_id)
-    db.session.delete(asset)
-    db.session.commit()
-    return 'ok'
+    if request.method == 'GET':
+        assets_from_db = Asset.query.filter(Asset.user_id == int(id)).all()
+        assets = { asset.to_dict()['symbol']: asset.to_dict() for asset in assets_from_db }
+        return assets
