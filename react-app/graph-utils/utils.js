@@ -13,34 +13,13 @@ const mockAssets = {
 
 //This function will change the unix timestamps from the Stock Api into the timestamps we use on the graph tooltip
 function getGraphDate(unix, resolution) {
-    const date = new Date(unix * 1000);
-    let newTime;
-
-    //If the user is looking for information for the past day
-    if (resolution === '30') {
-        // We switch all of the timestamps to hh:mm
-        const hours = date.getHours();
-        const minutes = '0' + date.getMinutes();
-        newTime = hours + ':' + minutes.substr(-2)
-        const ref = newTime.slice(0, 2)
-        let res;
-        if (newTime.length === 5) {
-            +ref < 12 
-                ? res = `${newTime}AM`
-                : res = `${(+ref - 12)}${newTime.slice(2)}PM`
-        } else {
-            res = `${newTime}AM`
-        }
-        return res
-    } else {
-        // Other wise we know that it is either by week or month, and we will show the the proper dates
-        const month = date.getMonth()
-        const day = date.getDate()
-        const year = date.getFullYear()
-        // If the resolution is by month, we want to show the mm/yyyy if it is W, or D we will show mm/dd
-        resolution === 'M' ? newTime = `${month + 1}/${year}` : newTime = `${month + 1}/${day}`
-        return newTime
-    }
+    const dateArr = new Date(unix * 1000).toLocaleString().split(' ');
+    const amOrPm = dateArr[dateArr.length - 1]
+    const [ hours, minutes ] = dateArr[1].split(':') 
+    const [ month, day, year ] = dateArr[0].split('/')
+    if (resolution === '30') return `${hours}:${minutes}${amOrPm}`
+    if (resolution === 'M') return `${month}/${year}`
+    return `${month}/${day}`
 }
 
 //Helper function to return proper timestamp for the current date and time
@@ -120,8 +99,8 @@ const percentageDifference = (stockData) => {
 
 const fetchSingleStockCandles = async (symbol, resolution, fromDate, currentDate) => {
     let response = await fetch(
-        // `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=${resolution}&from=${+fromDate}&to=${+currentDate}&token=c5f2bi2ad3ib660qt670`
-        `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=${resolution}&from=1633588201&to=1633628581&token=c5f2bi2ad3ib660qt670`
+        `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=${resolution}&from=${+fromDate}&to=${+currentDate}&token=c5f2bi2ad3ib660qt670`
+        // `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=${resolution}&from=1633588200&to=1633618800&token=c5f2bi2ad3ib660qt670`
     )
     let data = await response.json()
     let res = { prices: data.o, times: data.t, resolution }
@@ -161,8 +140,8 @@ const fetchMultipleStocksCandles = async (symbols, resolution, fromDate, current
         const symbol = symbols[i]
 
         let response = await fetch(
-            // `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=${resolution}&from=${+fromDate}&to=${+currentDate}&token=c5f2bi2ad3ib660qt670`
-            `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=${resolution}&from=1633588201&to=1633628581&token=c5f2bi2ad3ib660qt670`
+            `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=${resolution}&from=${+fromDate}&to=${+currentDate}&token=c5f2bi2ad3ib660qt670`
+            // `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=${resolution}&from=1633613400&to=1633644000&token=c5f2bi2ad3ib660qt670`
         );
 
         let data = await response.json()
@@ -223,7 +202,7 @@ async function multiAssetGraphData(selectedResolution, symbols, userAssets){
     return stockData
 }
 
-multiAssetGraphData('D', Object.keys(mockAssets), mockAssets)
+multiAssetGraphData('W', Object.keys(mockAssets), mockAssets)
 
 
 
@@ -243,4 +222,4 @@ async function singleAssetGraphData(selectedResolution, symbol){
     return stockData
 }
 
-singleAssetGraphData('D', 'AAPL')
+singleAssetGraphData('W', 'AAPL')
