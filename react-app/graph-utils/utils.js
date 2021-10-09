@@ -11,6 +11,39 @@ const user_assets = {
     "TSLA": { id: 1, shares: 100, average: 60 },
 }
 
+//This function will change the unix timestamps from the Stock Api into the timestamps we use on the graph tooltip
+function getGraphDate(unix, resolution) {
+    const date = new Date(unix * 1000);
+    let newTime;
+
+    //If the user is looking for information for the past day
+    if (resolution === '30') {
+        // We switch all of the timestamps to hh:mm
+        const hours = date.getHours();
+        const minutes = '0' + date.getMinutes();
+        newTime = hours + ':' + minutes.substr(-2)
+    
+        if (newTime.length === 5) {
+            const ref = newTime.slice(0, 2)
+            if (+ref < 12) {
+                return newTime + 'AM'
+            } else {
+                return (+ref - 12) + `${newTime.slice(2)}` + 'PM'
+            }
+        } else {
+            return newTime + 'AM'
+        }
+    } else {
+        // Other wise we know that it is either by week or month, and we will show the the proper dates
+        const month = date.getMonth()
+        const day = date.getDate()
+        const year = date.getFullYear()
+        // If the resolution is by month, we want to show the mm/yyyy if it is W, or D we will show mm/dd
+        resolution === 'M' ? newTime = `${month + 1}/${year}`: newTime = `${month + 1}/${day}`
+        return newTime
+    }
+}
+
 //Helper function to return proper timestamp for the current date and time
 const getCurrentDate = () => {
     const currentDate = +new Date()
@@ -19,7 +52,7 @@ const getCurrentDate = () => {
 
 //Helper function to return the proper timestamp for either the past day, week, month, or year
 const getFromDate = (timeFrame) => {
-    const currentDate = new Date;
+    const currentDate = new Date();
     let newDate;
 
     switch (timeFrame) {
@@ -61,6 +94,7 @@ const getQueryParameters = (timeFrame) => {
 // afterwards, it loops through the object and crosschecks the user's assets and calculates at each time frame what their total value is.
 const fetchStock = async (symbols, resolution, fromDate, currentDate) => {
     const assetsCandleNums = {}
+    let times;
 
     // grabs info from the api for each symbol
     for (let i = 0; i < symbols.length; i++) {
@@ -68,26 +102,33 @@ const fetchStock = async (symbols, resolution, fromDate, currentDate) => {
 
         let response = await fetch(
             `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=${resolution}&from=${+fromDate}&to=${+currentDate}&token=c5f2bi2ad3ib660qt670`
+            // `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=${resolution}&from=1633588201&to=1633628581&token=c5f2bi2ad3ib660qt670`
         );
+
         let data = await response.json()
         assetsCandleNums[symbol] = data.o
+        if (!times) times = data.t
+        if (times.length > data.t.length) times = data.t
     }
-
-    return assetsCandleNums
+    
+    let res = { assetsCandleNums, times, resolution}
+    return res
 }
 
-const graph_points = (assetsCandleNums) => {
+const graph_points = (graphData) => {
+    const { assetsCandleNums, times, resolution } = graphData
+
     // finds the shortest length array in the assetsCandleNums object to use as our stopping point later.
     let len = Object.values(assetsCandleNums).reduce((val, next) => {
         if (next.length < val.length) val = next;
         return val
     }).length
 
-    const graph_points = []
+    const stockData = []
 
     // counts from 0 to the stopping point above, for each 'i' we loop through the assets from the data gathered from the query
     // we find the amount of shares the user has for that specific asset, and multiply their shares by the value in the array
-    // add it to a total for all shares they own at that point in time, and push it into the graph points array
+    // add it to a total for all shares they own at that point in time, and push it into the stockData array as well as the timestamp for that specific 'i' in times
     for (let i = 0; i < len; i++ ){
         let total = 0
         for (let asset in assetsCandleNums) {
@@ -95,16 +136,31 @@ const graph_points = (assetsCandleNums) => {
             let worth = shares * assetsCandleNums[asset][i]
             total += worth
         }
-        graph_points.push(total)
+        let priceAndTime = {time: getGraphDate(times[i], resolution), price: total}
+        stockData.push(priceAndTime)
+        stockData[i]['%'] = percentageDifference(stockData)
     }
-    console.log(graph_points)
-    return graph_points
+    
+    return stockData
 }
 
-async function all(){
-    const { resolution, fromDate, currentDate } = getQueryParameters('D')
+// Calculates the percentage difference between the first data point price compared to every other data point.
+const percentageDifference = (stockData) => {
+    if (stockData.length > 0) {
+        const originalNumber = stockData[0].price
+        const latestNumber = stockData[stockData.length - 1].price
+        const percentageDiff = (latestNumber - originalNumber) / originalNumber * 100
+        return Number(percentageDiff.toFixed(2))
+    }
+    return 0
+}
+
+
+let stockData;
+async function all(selectedResolution){
+    const { resolution, fromDate, currentDate } = getQueryParameters(selectedResolution)
     const data = await fetchStock(Object.keys(user_assets), resolution, fromDate, currentDate)
-    graph_points(data)
+    stockData = graph_points(data)
 }
 
-all()
+all('Y')
