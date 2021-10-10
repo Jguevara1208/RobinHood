@@ -28,4 +28,3 @@ def list_symbols(id):
         db.session.add(list_symbol)
         db.session.commit()
         return list_symbol.to_dict()
-

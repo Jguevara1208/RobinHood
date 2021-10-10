@@ -6,14 +6,16 @@ import themeReducer from './theme';
 import currentStoriesReducer from './currentStories';
 import watchlistStocksReducer from './watchlistStocks';
 import allStocksReducer from './allStocks';
+import userListReducer from './userLists';
 
 const rootReducer = combineReducers({
   session,
-  stocks: allStocksReducer,
   userAssets: userAssetsReducer,
+  userLists: userListReducer,
   stories: currentStoriesReducer,
+  watchlistStocks: watchlistStocksReducer,
+  stocks: allStocksReducer,
   theme: themeReducer,
-  watchlistStocks: watchlistStocksReducer
 });
 
 
