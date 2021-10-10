@@ -13,10 +13,7 @@ const mockAssets = {
 
 //This function will change the unix timestamps from the Stock Api into the timestamps we use on the graph tooltip
 function getGraphDate(unix, resolution) {
-    console.log(unix)
-    console.log(resolution)
     const dateArr = new Date(unix * 1000).toLocaleString().split(' ');
-    console.log(dateArr)
     const amOrPm = dateArr[dateArr.length - 1]
     const [ hours, minutes ] = dateArr[1].split(':') 
     const [ month, day, year ] = dateArr[0].split('/')

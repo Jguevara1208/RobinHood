@@ -26,20 +26,18 @@ def update_buying_power(id):
     db.session.commit()
     return 'ok'
 
-@user_routes.route('/<int:id>/lists', methods=['GET', 'POST'])
+@user_routes.route('/<int:id>/lists/', methods=['GET', 'POST'])
 def lists(id):
     body = request.json
     if request.method == 'GET':
         lists = List.query.filter(List.user_id == id).all()
-        # print(lists)
         return {list.to_dict()['id']: list.to_dict() for list in lists}
-    elif request.method == 'POST': #need to make a form for lists
-        # print(body)
+    elif request.method == 'POST':
+        body = request.json
         new_list = List(user_id=id, list_name=body["list_name"])
         db.session.add(new_list)
         db.session.commit()
         return new_list.to_dict()
-        # return "HELLO"
 
 @user_routes.route('/<int:id>/assets/')
 def get_all_assets(id):

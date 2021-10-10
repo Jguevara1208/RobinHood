@@ -8,7 +8,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
-import {setCompanyStories, setGeneralStories} from './store/currentStories'
+import {updateUserList, addUserList} from './store/userLists';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -17,7 +17,6 @@ function App() {
   useEffect(() => {
     (async() => {
       await dispatch(authenticate())
-      await dispatch(setGeneralStories())
       setLoaded(true);
     })();
   }, [dispatch]);
