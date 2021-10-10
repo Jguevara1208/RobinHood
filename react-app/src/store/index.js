@@ -3,10 +3,12 @@ import thunk from 'redux-thunk';
 import session from './session'
 import userAssetsReducer from './userAssets';
 import themeReducer from './theme';
+import currentStoriesReducer from './currentStories';
 
 const rootReducer = combineReducers({
   session,
   userAssets: userAssetsReducer,
+  stories: currentStoriesReducer,
   theme: themeReducer
 });
 
