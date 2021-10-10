@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import {setCompanyStories, setGeneralStories} from './store/currentStories'
+import {setWatchListStocks} from './store/watchlistStocks'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -18,6 +19,7 @@ function App() {
     (async() => {
       await dispatch(authenticate())
       await dispatch(setGeneralStories())
+      await dispatch(setWatchListStocks(['AAPL', 'GME', 'GOOG', 'ABNB']))
       setLoaded(true);
     })();
   }, [dispatch]);
