@@ -11,7 +11,7 @@ const SET_STOCKS = 'stocks/SET_STOCKS';
 
 const setStocksAction = allStocks => ({
   type: SET_STOCKS,
-  allStocks
+  payload: allStocks
 });
 
 /* ----------------------------------------------------------------------- */
@@ -19,7 +19,8 @@ const setStocksAction = allStocks => ({
 /* ----------------------------------------------------------------------- */
 
 export const fetchAllStocks = () => async (dispatch) => {
-  const allStocks = await fetch('/stocks');
+  console.log("In the fetchAllStocks thunk")
+  const allStocks = await fetch('/api/stocks/');
   const Stocks = await allStocks.json();
   console.log(Stocks)
 
@@ -36,7 +37,7 @@ const allStocksReducer = (state = initialState, action) => {
     let newState
     switch (action.type) {
         case SET_STOCKS:
-            newState = [...action.allStocks];
+            newState = [...action.payload.allStocks];
             return newState;
         default:
             return state;
