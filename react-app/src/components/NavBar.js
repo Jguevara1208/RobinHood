@@ -1,9 +1,13 @@
 
 import React from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 
 const NavBar = () => {
+
+  let session = useSelector(state => state.session)
+
   return (
     <nav>
       <ul>
@@ -28,7 +32,7 @@ const NavBar = () => {
           </NavLink>
         </li>
         <li>
-          <LogoutButton />
+          {session.email ? <LogoutButton /> : null}
         </li>
       </ul>
     </nav>

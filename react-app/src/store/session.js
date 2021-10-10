@@ -142,7 +142,7 @@ export default function reducer(state = initialState, action) {
     case SET_USER:
       return { ...action.payload }
     case REMOVE_USER:
-      return { user: null }
+      return { }
     case EDIT_BUYING_POWER:
       newState = { ...state };
       newState.buyingPower = action.buyingPower;
