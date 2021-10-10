@@ -25,10 +25,10 @@ const addAssetAction = (asset) => {
     };
 };
 
-const updateAssetAction = (updatedAsset) => {
+const updateAssetAction = (asset) => {
     return {
         type: UPDATE_USER_ASSET,
-        updatedAsset
+        asset
     };
 };
 
@@ -45,13 +45,14 @@ const deleteAssetAction = (symbol) => {
 /* ----------------------------------------------------------------------- */
 
 export const setUserAssets = (userId) => async (dispatch) => {
-    const res = await fetch(`/api/users/${userId}/assets`);
+    const res = await fetch(`/api/users/${userId}/assets/`);
     const assets = await res.json();
     dispatch(setAssetsAction(assets));
 };
 
-export const  addUserAsset = (userId, asset) => async (dispatch) => {
-    const res = await fetch(`/api/users/${userId}/assets`, {
+export const  addUserAsset = (asset) => async (dispatch) => {
+    console.log(asset)
+    const res = await fetch(`/api/assets/`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -62,27 +63,21 @@ export const  addUserAsset = (userId, asset) => async (dispatch) => {
     dispatch(addAssetAction(newAsset));
 };
 
-export const updateUserAsset = (userId, updatedAsset) => async (dispatch) => {
-    const res = await fetch(`/api/users/${userId}/assets/${updatedAsset.id}`, {
+export const updateUserAsset = (updatedAsset) => async (dispatch) => {
+    await fetch(`/api/assets/${updatedAsset.id}/`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(updatedAsset)
     });
-    // TODO: line 74 & 75 is for testing, remove after confirmation of functionality
-    const updatedAssetRes = await res.json();
-    console.log(updatedAssetRes);
     dispatch(updateAssetAction(updatedAsset));
 };
 
-export const deleteUserAsset = (userId, asset) => async (dispatch) => {
-    const res = await fetch(`/api/users/${userId}/assets/${asset.id}`, {
+export const deleteUserAsset = (asset) => async (dispatch) => {
+    await fetch(`/api/assets/${asset.id}/`, {
         method: "DELETE"
     });
-    //TODO: line 84 & 85 is for testing, remove after confirmation of functionality
-    const apiRes = await res.json();
-    console.log(apiRes);
     dispatch(deleteAssetAction(asset.symbol));
 };
 
@@ -96,8 +91,7 @@ const userAssetsReducer = (state=initialState, action) => {
     let newState;
     switch (action.type) {
         case SET_USER_ASSETS:
-            newState = {};
-            action.assets.forEach(asset => newState[asset.symbol] = asset);
+            newState = action.assets
             return newState;
         case ADD_USER_ASSET:
             newState = {...state};

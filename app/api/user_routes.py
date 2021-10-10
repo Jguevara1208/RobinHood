@@ -34,9 +34,8 @@ def lists(id):
         return new_list.to_dict()
         # return "HELLO"
 
-@user_routes.route('/<int:id>/assets')
+@user_routes.route('/<int:id>/assets/')
 def get_all_assets(id):
-    if request.method == 'GET':
-        assets_from_db = Asset.query.filter(Asset.user_id == int(id)).all()
-        assets = { asset.to_dict()['symbol']: asset.to_dict() for asset in assets_from_db }
-        return assets
+    assets_from_db = Asset.query.filter(Asset.user_id == int(id)).all()
+    assets = { asset.to_dict()['symbol']: asset.to_dict() for asset in assets_from_db }
+    return assets
