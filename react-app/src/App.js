@@ -11,6 +11,7 @@ import { authenticate } from './store/session';
 import {setCompanyStories, setGeneralStories} from './store/currentStories'
 import {setWatchListStocks} from './store/watchlistStocks'
 import { fetchAllStocks } from './store/allStocks';
+import { setUserAssets } from './store/userAssets';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -20,8 +21,9 @@ function App() {
     (async() => {
       await dispatch(authenticate())
       await dispatch(setGeneralStories())
-      await dispatch(setWatchListStocks(['AAPL', 'GME', 'GOOG', 'ABNB']))
       await dispatch(fetchAllStocks())
+      await dispatch(setWatchListStocks(['AAPL', 'GME', 'GOOG', 'ABNB']))
+      // await dispatch(setUserAssets())
       setLoaded(true);
     })();
   }, [dispatch]);
