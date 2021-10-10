@@ -97,8 +97,8 @@ const getQueryParameters = (timeFrame) => {
 }
 
 // Calculates the percentage difference between the first data point price compared to every other data point.
- => {
-    if (stockData.length > 0) {const percentageDifference = (stockData)
+const percentageDifference = (stockData) => {
+    if (stockData.length > 0) {
         const originalNumber = stockData[0].price
         const latestNumber = stockData[stockData.length - 1].price
         const percentageDiff = (latestNumber - originalNumber) / originalNumber * 100
