@@ -99,8 +99,8 @@ const percentageDifference = (stockData) => {
 
 const fetchSingleStockCandles = async (symbol, resolution, fromDate, currentDate) => {
     let response = await fetch(
-        `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=${resolution}&from=${+fromDate}&to=${+currentDate}&token=c5f2bi2ad3ib660qt670`
-        // `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=${resolution}&from=1633588200&to=1633618800&token=c5f2bi2ad3ib660qt670`
+        // `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=${resolution}&from=${+fromDate}&to=${+currentDate}&token=c5f2bi2ad3ib660qt670`
+        `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=${resolution}&from=1633588200&to=1633618800&token=c5f2bi2ad3ib660qt670`
     )
     let data = await response.json()
     let res = { prices: data.o, times: data.t, resolution }
@@ -140,8 +140,8 @@ const fetchMultipleStocksCandles = async (symbols, resolution, fromDate, current
         const symbol = symbols[i]
 
         let response = await fetch(
-            `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=${resolution}&from=${+fromDate}&to=${+currentDate}&token=c5f2bi2ad3ib660qt670`
-            // `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=${resolution}&from=1633613400&to=1633644000&token=c5f2bi2ad3ib660qt670`
+            // `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=${resolution}&from=${+fromDate}&to=${+currentDate}&token=c5f2bi2ad3ib660qt670`
+            `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=${resolution}&from=1633613400&to=1633644000&token=c5f2bi2ad3ib660qt670`
         );
 
         let data = await response.json()
@@ -202,7 +202,7 @@ async function multiAssetGraphData(selectedResolution, symbols, userAssets){
     return stockData
 }
 
-multiAssetGraphData('W', Object.keys(mockAssets), mockAssets)
+multiAssetGraphData('D', Object.keys(mockAssets), mockAssets)
 
 
 
@@ -222,4 +222,4 @@ async function singleAssetGraphData(selectedResolution, symbol){
     return stockData
 }
 
-singleAssetGraphData('W', 'AAPL')
+singleAssetGraphData('D', 'AAPL')

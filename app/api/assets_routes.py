@@ -5,13 +5,11 @@ asset_routes = Blueprint('assets', __name__)
 
 @asset_routes.route('/<int:asset_id>/', methods=["GET", "PATCH", "DELETE"])
 def asset_get_post(asset_id):
-    print('IM HERE')
     if request.method == 'GET':
         asset = Asset.query.get(asset_id)
         return asset.to_dict()
 
     elif request.method == 'PATCH':
-        print('IM INSIDE OF THE PATCH')
         body = request.json
         asset = Asset.query.get(asset_id)
         asset.shares = body['shares']

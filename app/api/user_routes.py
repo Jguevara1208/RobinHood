@@ -18,6 +18,13 @@ def user(id):
     user = User.query.get(id)
     return user.to_dict()
 
+@user_routes.route('/<int:id>/buying-power/', methods=["PATCH"])
+def update_buying_power(id):
+    body = request.json
+    user = User.query.get(id)
+    user.buying_power = body
+    db.session.commit()
+    return 'ok'
 
 @user_routes.route('/<int:id>/lists', methods=['GET', 'POST'])
 def lists(id):
