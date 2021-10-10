@@ -1,4 +1,4 @@
-import fetch from 'node-fetch'
+
 
 // This will be coming from redux
 const mockAssets = {
@@ -13,10 +13,10 @@ const mockAssets = {
 
 //This function will change the unix timestamps from the Stock Api into the timestamps we use on the graph tooltip
 function getGraphDate(unix, resolution) {
-    console.log(unix)
-    console.log(resolution)
+    // console.log(unix)
+    // console.log(resolution)
     const dateArr = new Date(unix * 1000).toLocaleString().split(' ');
-    console.log(dateArr)
+    // console.log(dateArr)
     const amOrPm = dateArr[dateArr.length - 1]
     const [ hours, minutes ] = dateArr[1].split(':') 
     const [ month, day, year ] = dateArr[0].split('/')
@@ -217,9 +217,9 @@ async function multiAssetGraphData(selectedResolution, symbols, userAssets){
     const { resolution, fromDate, currentDate } = getQueryParameters(selectedResolution)
     let data = await fetchMultipleStocksCandles(symbols, resolution, fromDate, currentDate)
     let stockData = user_assets_graph_points(data, userAssets)
-    console.log('\n \n \n \n \n')
-    console.log('multiAssetGraphData \n')
-    console.log(stockData)
+    // console.log('\n \n \n \n \n')
+    // console.log('multiAssetGraphData \n')
+    // console.log(stockData)
     return stockData
 }
 
@@ -233,14 +233,15 @@ multiAssetGraphData('D', Object.keys(mockAssets), mockAssets)
 /**---------------------------------------------Single Asset Package-------------------------------------------------- **/
 /**------------------------------------------------------------------------------------------------------------------- **/
 
-async function singleAssetGraphData(selectedResolution, symbol){
+export async function singleAssetGraphData(selectedResolution, symbol){
     const { resolution, fromDate, currentDate } = getQueryParameters(selectedResolution)
     let data = await fetchSingleStockCandles(symbol, resolution, fromDate, currentDate)
     let stockData = single_asset_graph_points(data)
-    console.log('\n \n \n \n \n')
-    console.log('singleAssetGraphData \n')
-    console.log(stockData)
+    // console.log('\n \n \n \n \n')
+    // console.log('singleAssetGraphData \n')
+    // console.log(stockData)
     return stockData
 }
 
 singleAssetGraphData('D', 'AAPL')
+
