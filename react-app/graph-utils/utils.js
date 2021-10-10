@@ -13,7 +13,10 @@ const mockAssets = {
 
 //This function will change the unix timestamps from the Stock Api into the timestamps we use on the graph tooltip
 function getGraphDate(unix, resolution) {
+    console.log(unix)
+    console.log(resolution)
     const dateArr = new Date(unix * 1000).toLocaleString().split(' ');
+    console.log(dateArr)
     const amOrPm = dateArr[dateArr.length - 1]
     const [ hours, minutes ] = dateArr[1].split(':') 
     const [ month, day, year ] = dateArr[0].split('/')
@@ -29,7 +32,7 @@ const newDateNoWeekend = () => {
         case 6:
             currentDate = new Date(ref.setDate(ref.getDate() - 1))
             break;
-        case 1:
+        case 0:
             currentDate = new Date(ref.setDate(ref.getDate() - 2))
             break;
         default:
@@ -159,6 +162,7 @@ const fetchMultipleStocksCandles = async (symbols, resolution, fromDate, current
 
         let response = await fetch(
             `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=${resolution}&from=${+fromDate}&to=${+currentDate}&token=c5f2bi2ad3ib660qt670`
+            // `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=${resolution}&from=1633618800&to=1633618800&token=c5f2bi2ad3ib660qt670`
         );
 
         let data = await response.json()

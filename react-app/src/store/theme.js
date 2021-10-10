@@ -39,7 +39,7 @@ export const toggleTheme = () => (dispatch) => {
 export const setTheme = () => (dispatch) =>{
     const isThemeInStorage = localStorage.getItem('theme')
     const theme = isThemeInStorage ? isThemeInStorage : 'light'
-    localStorage.setItem('theme', 'light')
+    localStorage.setItem('theme', theme)
     dispatch(setThemeAction(theme))
 }
 
