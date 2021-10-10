@@ -10,6 +10,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import {setCompanyStories, setGeneralStories} from './store/currentStories'
 import {setWatchListStocks} from './store/watchlistStocks'
+import { fetchAllStocks } from './store/allStocks';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -20,6 +21,7 @@ function App() {
       await dispatch(authenticate())
       await dispatch(setGeneralStories())
       await dispatch(setWatchListStocks(['AAPL', 'GME', 'GOOG', 'ABNB']))
+      await dispatch(fetchAllStocks())
       setLoaded(true);
     })();
   }, [dispatch]);
