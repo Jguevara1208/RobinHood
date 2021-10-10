@@ -22,15 +22,34 @@ function getGraphDate(unix, resolution) {
     return `${month}/${day}`
 }
 
+const newDateNoWeekend = () => {
+    let ref = new Date()
+    let currentDate;
+    switch (ref.getDay()) {
+        case 6:
+            currentDate = new Date(ref.setDate(ref.getDate() - 1))
+            break;
+        case 1:
+            currentDate = new Date(ref.setDate(ref.getDate() - 2))
+            break;
+        default:
+            currentDate = ref
+            break;
+    }
+    return currentDate
+}
+
 //Helper function to return proper timestamp for the current date and time
 const getCurrentDate = () => {
-    const currentDate = +new Date()
+    let checkWeekend = newDateNoWeekend()
+    const currentDate = +new Date(checkWeekend)
     return Number(currentDate.toString().slice(0, 10))
 }
 
 //Helper function to return the proper timestamp for either the past day, week, month, or year
 const getFromDate = (timeFrame) => {
-    const currentDate = new Date();
+    let checkWeekend = newDateNoWeekend()
+    const currentDate = new Date(checkWeekend);
     let newDate;
 
     switch (timeFrame) {
@@ -78,8 +97,8 @@ const getQueryParameters = (timeFrame) => {
 }
 
 // Calculates the percentage difference between the first data point price compared to every other data point.
-const percentageDifference = (stockData) => {
-    if (stockData.length > 0) {
+ => {
+    if (stockData.length > 0) {const percentageDifference = (stockData)
         const originalNumber = stockData[0].price
         const latestNumber = stockData[stockData.length - 1].price
         const percentageDiff = (latestNumber - originalNumber) / originalNumber * 100
@@ -99,8 +118,7 @@ const percentageDifference = (stockData) => {
 
 const fetchSingleStockCandles = async (symbol, resolution, fromDate, currentDate) => {
     let response = await fetch(
-        // `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=${resolution}&from=${+fromDate}&to=${+currentDate}&token=c5f2bi2ad3ib660qt670`
-        `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=${resolution}&from=1633588200&to=1633618800&token=c5f2bi2ad3ib660qt670`
+        `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=${resolution}&from=${+fromDate}&to=${+currentDate}&token=c5f2bi2ad3ib660qt670`
     )
     let data = await response.json()
     let res = { prices: data.o, times: data.t, resolution }
@@ -140,8 +158,7 @@ const fetchMultipleStocksCandles = async (symbols, resolution, fromDate, current
         const symbol = symbols[i]
 
         let response = await fetch(
-            // `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=${resolution}&from=${+fromDate}&to=${+currentDate}&token=c5f2bi2ad3ib660qt670`
-            `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=${resolution}&from=1633613400&to=1633644000&token=c5f2bi2ad3ib660qt670`
+            `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=${resolution}&from=${+fromDate}&to=${+currentDate}&token=c5f2bi2ad3ib660qt670`
         );
 
         let data = await response.json()
