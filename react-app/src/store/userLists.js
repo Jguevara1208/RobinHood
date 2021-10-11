@@ -6,6 +6,8 @@
     const UPDATE_USER_LIST = 'userLists/UPDATE_USER_LIST';
     const DELETE_USER_LIST = 'userLists/DELETE_USER_LIST';
     const ADD_USER_LIST = 'userLists/ADD_USER_LIST';
+    const ADD_LIST_SYMBOL = 'userLists/ADD_LIST_SYMBOL';
+    const DELETE_LIST_SYMBOL = 'userLists/DELETE_LIST_SYMBOL';
 
 /* ----------------------------------------------------------------------- */
 /* ----------------------------Action Creators---------------------------- */
@@ -39,6 +41,20 @@
         };
     };
 
+    const addListSymbolAction = (data) => {
+        return {
+            type: ADD_LIST_SYMBOL,
+            data
+        };
+    };
+
+    const deleteListSymbolAction = (data) => {
+        return {
+            type: DELETE_LIST_SYMBOL,
+            data
+        };
+    };
+
 /* ----------------------------------------------------------------------- */
 /* --------------------------------Thunks--------------------------------- */
 /* ----------------------------------------------------------------------- */
@@ -46,32 +62,59 @@
 export const setUserLists = (userId) => async (dispatch) => {
     const res = await fetch(`/api/users/${userId}/lists/`);
     const lists = await res.json();
-    dispatch(setUserListsAction(lists))
+    dispatch(setUserListsAction(lists));
 };
 
 export const updateUserList = (list) => async (dispatch) => {
+    const res = await fetch(`/api/lists/${list.id}/`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(list)
+    });
+    const updatedList = await res.json();
+    dispatch(updateUserListAction(updatedList));
 };
 
 export const deleteUserList = (listId) => async (dispatch) => {
     await fetch(`/api/lists/${listId}/`, {
         method: "DELETE"
-    })
-    dispatch(deleteUserListAction(listId))
+    });
+    dispatch(deleteUserListAction(listId));
 };
 
 export const addUserList = (list) => async (dispatch) => {
-    console.log(list.user_id)
     const res = await fetch(`/api/users/${list.user_id}/lists/`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(list)
-    })
-    const newList = await res.json()
-    console.log(newList, 'NEW LIST IN THUNK FROM RES')
-    dispatch(addUserListAction(newList))
+    });
+    const newList = await res.json();
+    dispatch(addUserListAction(newList));
 };
+
+export const addListSymbol = (listId, symbol) => async (dispatch) => {
+    const res = await fetch(`/api/lists/${listId}/listsymbols/`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({list_id: listId, symbol})
+    });
+    const listSymbol = await res.json();
+    dispatch(addListSymbolAction(listSymbol));
+}
+
+export const deleteListSymbol = (listSymbol) => async (dispatch) => {
+    const {id, listId, symbol} =listSymbol
+    await fetch(`/api/listsymbols/${id}/`, {
+        method: "DELETE"
+    });
+    dispatch(deleteListSymbolAction({listId, symbol}));
+}
 
 /* ----------------------------------------------------------------------- */
 /* -----------------------Initial State & Reducer------------------------- */
@@ -97,6 +140,14 @@ const userListsReducer = (state=initialState, action) => {
             newState = {...state}
             newState[action.list.id] = action.list
             return newState;
+        case ADD_LIST_SYMBOL:
+            newState = {...state}
+            newState[action.data.listId].symbols = [...newState[action.data.listId].symbols, action.data]
+            return newState;
+        case DELETE_LIST_SYMBOL:
+            newState = {...state}
+            delete newState[action.data.listId].symbols[action.data.symbol]
+            return newState
         default:
             return state;
     }
