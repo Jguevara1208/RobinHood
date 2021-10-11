@@ -40,7 +40,6 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
       <Switch>
         <Route path="/login" exact={true}>
           <LoginForm />
@@ -49,12 +48,13 @@ function App() {
           <SignUpForm />
         </Route>
         <Route path='/'>
-          {
-            user?.id ? 
-            (<h1>My page</h1>)
-            :
-            <Index />
-          }
+          <NavBar />
+            {
+              user?.id ?
+              (<h1>My page</h1>)
+              :
+              <Index />
+            }
         </Route>
       </Switch>
     </BrowserRouter>

@@ -16,7 +16,7 @@ const NavBar = () => {
             Home
           </NavLink>
         {
-          !session.email ? 
+          !session.email ?
           (
             <div class="user-actions-container">
                 <NavLink to='/login' exact={true} activeClassName='active'>
@@ -29,7 +29,7 @@ const NavBar = () => {
           )
             :
             <LogoutButton />
-          
+
         }
     </nav>
   );

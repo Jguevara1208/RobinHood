@@ -5,7 +5,7 @@ import { signUp } from '../../store/session';
 
 const SignUpForm = () => {
   const user = useSelector(state => state.session.id);
-  
+
   const [errors, setErrors] = useState([]);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('')
@@ -14,7 +14,7 @@ const SignUpForm = () => {
   const [repeatPassword, setRepeatPassword] = useState('');
   console.log("User: ", user)
   const dispatch = useDispatch();
-  
+
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
