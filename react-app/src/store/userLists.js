@@ -106,7 +106,7 @@ export const addListSymbol = (listId, symbol) => async (dispatch) => {
     });
     const listSymbol = await res.json();
     dispatch(addListSymbolAction(listSymbol));
-}
+};
 
 export const deleteListSymbol = (listSymbol) => async (dispatch) => {
     const {id, listId, symbol} =listSymbol
@@ -114,7 +114,7 @@ export const deleteListSymbol = (listSymbol) => async (dispatch) => {
         method: "DELETE"
     });
     dispatch(deleteListSymbolAction({listId, symbol}));
-}
+};
 
 /* ----------------------------------------------------------------------- */
 /* -----------------------Initial State & Reducer------------------------- */
