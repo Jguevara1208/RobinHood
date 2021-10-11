@@ -15,7 +15,6 @@ import Portfolio from './components/PortfolioPage/Portfolio';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
-  const graphData = useSelector(state => state.currentStock.graphData)
 
   useEffect(() => {
     (async() => {
