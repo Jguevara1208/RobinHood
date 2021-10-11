@@ -27,12 +27,12 @@ function App() {
     (async() => {
       await dispatch(authenticate())
       await dispatch(setCurrentStock('AAPL', 'D'))
-      // await dispatch(fetchAllStocks())
-      // await dispatch(setGeneralStories())
-      // await dispatch(setTheme())
-      // await dispatch(setUserAssets(1))
-      // await dispatch(setUserLists(1))
-      // await dispatch(setWatchListStocks(['AAPL', 'GME', 'TSLA', 'AMC']))
+      await dispatch(fetchAllStocks())
+      await dispatch(setGeneralStories())
+      await dispatch(setTheme())
+      await dispatch(setUserAssets(1))
+      await dispatch(setUserLists(1))
+      await dispatch(setWatchListStocks(['AAPL', 'GME', 'TSLA', 'AMC']))
       setLoaded(true);
     })();
   }, [dispatch]);
