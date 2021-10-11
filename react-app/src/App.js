@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
@@ -15,22 +15,24 @@ import { setTheme } from './store/theme'
 import { setUserAssets } from './store/userAssets' //id
 import { setUserLists } from './store/userLists'
 import { setWatchListStocks } from './store/watchlistStocks' //symbols
+import MainGraph from './components/MainGraph/MainGraph';
 
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+  const graphData = useSelector(state => state.currentStock.graphData)
 
   useEffect(() => {
     (async() => {
       await dispatch(authenticate())
-      await dispatch(setCurrentStock('AAPL', 'W'))
-      await dispatch(fetchAllStocks())
-      await dispatch(setGeneralStories())
-      await dispatch(setTheme())
-      await dispatch(setUserAssets(1))
-      await dispatch(setUserLists(1))
-      await dispatch(setWatchListStocks(['AAPL', 'GME', 'TSLA', 'AMC']))
+      await dispatch(setCurrentStock('AAPL', 'D'))
+      // await dispatch(fetchAllStocks())
+      // await dispatch(setGeneralStories())
+      // await dispatch(setTheme())
+      // await dispatch(setUserAssets(1))
+      // await dispatch(setUserLists(1))
+      // await dispatch(setWatchListStocks(['AAPL', 'GME', 'TSLA', 'AMC']))
       setLoaded(true);
     })();
   }, [dispatch]);
@@ -43,20 +45,20 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        <Route path='/login' exact={true}>
+        <Route path="/login" exact={true}>
           <LoginForm />
         </Route>
-        <Route path='/sign-up' exact={true}>
+        <Route path="/sign-up" exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
+        <ProtectedRoute path="/users" exact={true}>
+          <UsersList />
         </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
+        <ProtectedRoute path="/users/:userId" exact={true}>
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
+        <ProtectedRoute path="/" exact={true}>
+          <MainGraph graphData={graphData}  />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
