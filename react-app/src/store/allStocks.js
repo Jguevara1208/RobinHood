@@ -2,14 +2,14 @@
 /* -----------------------------Actions----------------------------------- */
 /* ----------------------------------------------------------------------- */
 
-const SET_STOCKS = 'stocks/SET_STOCKS';
+const SET_STOCKS = 'allStocks/SET_STOCKS';
 
 
 /* ----------------------------------------------------------------------- */
 /* ----------------------------Action Creators---------------------------- */
 /* ----------------------------------------------------------------------- */
 
-const setStocksAction = allStocks => ({
+const setStocksAction = (allStocks) => ({
   type: SET_STOCKS,
   payload: allStocks
 });
@@ -19,12 +19,9 @@ const setStocksAction = allStocks => ({
 /* ----------------------------------------------------------------------- */
 
 export const fetchAllStocks = () => async (dispatch) => {
-  console.log("In the fetchAllStocks thunk")
   const allStocks = await fetch('/api/stocks/');
-  const Stocks = await allStocks.json();
-  console.log(Stocks)
-
-  dispatch(setStocksAction(Stocks));
+  const stocks = await allStocks.json();
+  dispatch(setStocksAction(stocks));
 };
 
 /* ----------------------------------------------------------------------- */
@@ -34,7 +31,7 @@ export const fetchAllStocks = () => async (dispatch) => {
 const initialState = [];
 
 const allStocksReducer = (state = initialState, action) => {
-    let newState
+    let newState;
     switch (action.type) {
         case SET_STOCKS:
             newState = [...action.payload.allStocks];

@@ -19,12 +19,16 @@ const addWatchListAction = (stocks) => {
 /* ----------------------------------------------------------------------- */
 export const setWatchListStocks = (symbols) => async (dispatch) => {
   let stockInfo = {};
-  symbols.forEach(async(symbol) => {
+  
+  for (let i = 0; i < symbols.length; i++) {
+    let symbol = symbols[i];
     const stockData = await singleAssetGraphData("D", symbol);
-    // console.log('STOCK DATA',stockData)
-    stockInfo[symbol] = stockData;
-  });
-//   console.log("HERE",stockInfo)
+    stockInfo[symbol] = stockData
+  }
+  // symbols.forEach(async(symbol) => {
+  //   const stockData = await singleAssetGraphData("D", symbol);
+  //   stockInfo[symbol] = stockData;
+  // });
   dispatch(addWatchListAction(stockInfo));
 };
 

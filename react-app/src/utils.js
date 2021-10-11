@@ -1,18 +1,9 @@
-
-
-// This will be coming from redux
-const mockAssets = {
-    "AAPL": { id: 1, shares: 100, average: 60 },
-    "TSLA": { id: 1, shares: 100, average: 60 },
-    "AMC": { id: 1, shares: 100, average: 60 },
-}
-
 /**---------------------------------------------------------------------------------------------------------------------- **/
 /**---------------------------------------------Unix/Date Formatting Functions------------------------------------------- **/
 /**---------------------------------------------------------------------------------------------------------------------- **/
 
 //This function will change the unix timestamps from the Stock Api into the timestamps we use on the graph tooltip
-function getGraphDate(unix, resolution) {
+export function getGraphDate(unix, resolution) {
     const dateArr = new Date(unix * 1000).toLocaleString().split(' ');
     const amOrPm = dateArr[dateArr.length - 1]
     const [ hours, minutes ] = dateArr[1].split(':') 
@@ -87,7 +78,7 @@ const getFromDate = (timeFrame) => {
 
 // Return an object with all of the information needed to query the API, depending on how long in the past they want to see,
 // it decides the resolution for the query, it also calls the two helper functions to get the correct timestamps
-const getQueryParameters = (timeFrame) => {
+export const getQueryParameters = (timeFrame) => {
     let timeFrameTranslate = { 'D': '30', 'W': 'D', 'M': 'D', 'Y': 'M' }
     return {
         resolution: timeFrameTranslate[timeFrame],
@@ -210,17 +201,14 @@ const user_assets_graph_points = (graphData, userAssets) => {
 /**---------------------------------------------Multiple Assets Package----------------------------------------------- **/
 /**------------------------------------------------------------------------------------------------------------------- **/
 
-async function multiAssetGraphData(selectedResolution, symbols, userAssets){
+export async function multiAssetGraphData(selectedResolution, symbols, userAssets){
     const { resolution, fromDate, currentDate } = getQueryParameters(selectedResolution)
     let data = await fetchMultipleStocksCandles(symbols, resolution, fromDate, currentDate)
     let stockData = user_assets_graph_points(data, userAssets)
-    // console.log('\n \n \n \n \n')
-    // console.log('multiAssetGraphData \n')
-    // console.log(stockData)
     return stockData
 }
 
-multiAssetGraphData('D', Object.keys(mockAssets), mockAssets)
+// multiAssetGraphData('D', Object.keys(mockAssets), mockAssets)
 
 
 
@@ -234,11 +222,8 @@ export async function singleAssetGraphData(selectedResolution, symbol){
     const { resolution, fromDate, currentDate } = getQueryParameters(selectedResolution)
     let data = await fetchSingleStockCandles(symbol, resolution, fromDate, currentDate)
     let stockData = single_asset_graph_points(data)
-    // console.log('\n \n \n \n \n')
-    // console.log('singleAssetGraphData \n')
-    // console.log(stockData)
     return stockData
 }
 
-singleAssetGraphData('D', 'AAPL')
+// singleAssetGraphData('D', 'AAPL')
 
