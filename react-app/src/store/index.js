@@ -7,6 +7,7 @@ import currentStoriesReducer from './currentStories';
 import userListsReducer from './userLists';
 import watchlistStocksReducer from './watchlistStocks';
 import allStocksReducer from './allStocks';
+import currentStockReducer from './currentStock';
 
 const rootReducer = combineReducers({
   session,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   userLists: userListsReducer,
   stories: currentStoriesReducer,
   watchlistStocks: watchlistStocksReducer,
-  stocks: allStocksReducer,
+  allStocks: allStocksReducer,
+  currentStock: currentStockReducer,
   theme: themeReducer,
 });
 

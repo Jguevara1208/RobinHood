@@ -1,20 +1,20 @@
 /* ----------------------------------------------------------------------- */
 /* -----------------------------Actions----------------------------------- */
 /* ----------------------------------------------------------------------- */
+
 function todayAndYesterday(){
 
     const date1 = new Date();
-    const [month1, day1, year1]  = date1.toLocaleString().split(' ')[0].split('/')
-    const today = `${year1.slice(0, year1.length - 1)}-${month1}-${day1}`
+    const [month1, day1, year1]  = date1.toLocaleString().split(' ')[0].split('/');
+    const today = `${year1.slice(0, year1.length - 1)}-${month1}-${day1}`;
 
     const date2 = new Date();
-    const yesterdayTemp = new Date(date2.setDate(date2.getDate() - 1))
-    const [month2, day2, year2] = yesterdayTemp.toLocaleString().split(' ')[0].split('/')
-    const yesterday = `${year2.slice(0, year2.length - 1)}-${month2}-${day2}`
+    const yesterdayTemp = new Date(date2.setDate(date2.getDate() - 1));
+    const [month2, day2, year2] = yesterdayTemp.toLocaleString().split(' ')[0].split('/');
+    const yesterday = `${year2.slice(0, year2.length - 1)}-${month2}-${day2}`;
 
-
-    return [today, yesterday]
-}
+    return [today, yesterday];
+};
 
 /* ----------------------------------------------------------------------- */
 /* -----------------------------Actions----------------------------------- */
@@ -38,9 +38,9 @@ const setStoriesAction = (stories) => {
 /* ----------------------------------------------------------------------- */
 
 export const setGeneralStories = () => async (dispatch) => {
-    const data = await fetch('https://finnhub.io/api/v1//news?category=general&token=c5f2bi2ad3ib660qt670')
-    const APIStories = await data.json()
-    const stories = []
+    const data = await fetch('https://finnhub.io/api/v1//news?category=general&token=c5f2bi2ad3ib660qt670');
+    const APIStories = await data.json();
+    const stories = [];
     APIStories.slice(0, 16).forEach(APIstory => {
         let story = {
             link: APIstory.url,
@@ -49,19 +49,19 @@ export const setGeneralStories = () => async (dispatch) => {
             photoUrl: APIstory.image,
             title: APIstory.headline,
             description: APIstory.summary
-        }
+        };
         if (story.photoUrl) {
             stories.push(story)
-        }
-    })
-    dispatch(setStoriesAction(stories))
-}
+        };
+    });
+    dispatch(setStoriesAction(stories));
+};
 
 export const setCompanyStories = (symbol) => async (dispatch) => {
-    const [today, yesterday] = todayAndYesterday()
-    const data = await fetch(`https://finnhub.io/api/v1/company-news?symbol=${symbol}&from=${yesterday}&to=${today}&token=c5f2bi2ad3ib660qt670`)
-    const APIStories = await data.json()
-    const stories = []
+    const [today, yesterday] = todayAndYesterday();
+    const data = await fetch(`https://finnhub.io/api/v1/company-news?symbol=${symbol}&from=${yesterday}&to=${today}&token=c5f2bi2ad3ib660qt670`);
+    const APIStories = await data.json();
+    const stories = [];
     APIStories.slice(0, 16).forEach(APIstory => {
         let story = {
                 link: APIstory.url,
@@ -70,25 +70,27 @@ export const setCompanyStories = (symbol) => async (dispatch) => {
                 photoUrl: APIstory.image,
                 title: APIstory.headline,
                 description: APIstory.summary
-            }
+            };
             if (story.photoUrl) {
-                stories.push(story)
-            }
-    })
-    dispatch(setStoriesAction(stories))
-}
+                stories.push(story);
+            };
+    });
+    dispatch(setStoriesAction(stories));
+};
+
+
 /* ----------------------------------------------------------------------- */
 /* -----------------------Initial State & Reducer------------------------- */
 /* ----------------------------------------------------------------------- */
 
-const initialState = []
+const initialState = [];
 
 const currentStoriesReducer = (state=initialState, action) => {
     let newState;
     switch (action.type) {
         case SET_STORIES:
-            newState = [...action.stories]
-            return newState
+            newState = [...action.stories];
+            return newState;
         default:
             return state;
     };

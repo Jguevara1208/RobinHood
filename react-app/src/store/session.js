@@ -134,9 +134,7 @@ export const signUp = (username, email, password) => async (dispatch) => {
 /* -----------------------Initial State & Reducer------------------------- */
 /* ----------------------------------------------------------------------- */
 
-const initialState = {
-  
-}
+const initialState = {}
 
 export default function reducer(state = initialState, action) {
   let newState;
