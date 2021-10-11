@@ -5,6 +5,9 @@ import { setGeneralStories } from '../../store/currentStories';
 import WatchList from '../WatchList/WatchList';
 import MainGraph from '../MainGraph/MainGraph';
 import StockStories from '../StockStories/StockStories';
+import BuyingPower from '../BuyingPower/BuyingPower';
+
+
 
 function Portfolio(){
     const dispatch = useDispatch();
@@ -32,22 +35,21 @@ function Portfolio(){
     }, [dispatch, resolution]);
 
     return (
-        <>
-            {graphData && 
-            <MainGraph graphData={graphData} />
-            }
-            {resolutions.map(res => (
-                <button 
-                    className={res === resolution ? 'active-res' : ''}
-                    value={res}
-                    onClick={toggleResolution}
-                >
-                    {res}
-                </button>  
-            ))}
-            <WatchList/>
-            <StockStories stories={stories}/>
-        </>
+      <>
+        {graphData && <MainGraph graphData={graphData} />}
+        {resolutions.map((res) => (
+          <button
+            className={res === resolution ? "active-res" : ""}
+            value={res}
+            onClick={toggleResolution}
+          >
+            {res}
+          </button>
+        ))}
+        <BuyingPower user={user}/>
+        <WatchList />
+        <StockStories stories={stories} />
+      </>
     );
 };
 
