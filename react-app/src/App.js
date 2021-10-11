@@ -8,14 +8,8 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
-import { setCurrentStock } from './store/currentStock' //symbol, res
-import { fetchAllStocks } from './store/allStocks'
-import { setGeneralStories } from  './store/currentStories'
-import { setTheme } from './store/theme'
-import { setUserAssets } from './store/userAssets' //id
-import { setUserLists } from './store/userLists'
-import { setWatchListStocks } from './store/watchlistStocks' //symbols
-import MainGraph from './components/MainGraph/MainGraph';
+import { setUserLists } from './store/userLists';
+import Portfolio from './components/PortfolioPage/Portfolio';
 
 
 function App() {
@@ -26,13 +20,8 @@ function App() {
   useEffect(() => {
     (async() => {
       await dispatch(authenticate())
-      await dispatch(setCurrentStock('AAPL', 'D'))
-      await dispatch(fetchAllStocks())
-      await dispatch(setGeneralStories())
-      await dispatch(setTheme())
-      await dispatch(setUserAssets(1))
       await dispatch(setUserLists(1))
-      await dispatch(setWatchListStocks(['AAPL', 'GME', 'TSLA', 'AMC']))
+
       setLoaded(true);
     })();
   }, [dispatch]);
@@ -58,7 +47,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true}>
-          <MainGraph graphData={graphData}  />
+            <Portfolio />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
