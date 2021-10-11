@@ -8,15 +8,8 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
-import { setCurrentStock } from './store/currentStock' //symbol, res
-import { fetchAllStocks } from './store/allStocks'
-import { setGeneralStories } from  './store/currentStories'
-import { setTheme } from './store/theme'
-import { setUserAssets } from './store/userAssets' //id
-import { setUserLists } from './store/userLists'
-import { setWatchListStocks } from './store/watchlistStocks' //symbols
-import WatchList from './components/WatchList/WatchList';
-import MainGraph from './components/MainGraph/MainGraph';
+import { setUserLists } from './store/userLists';
+import Portfolio from './components/PortfolioPage/Portfolio';
 
 
 function App() {
@@ -54,8 +47,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true}>
-            <WatchList/>
-          {/* <MainGraph graphData={graphData}  /> */}
+            <Portfolio />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

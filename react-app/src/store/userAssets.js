@@ -1,3 +1,5 @@
+import { multiAssetGraphData } from '../utils';
+
 /* ----------------------------------------------------------------------- */
 /* -----------------------------Actions----------------------------------- */
 /* ----------------------------------------------------------------------- */
@@ -44,9 +46,11 @@ const deleteAssetAction = (symbol) => {
 /* --------------------------------Thunks--------------------------------- */
 /* ----------------------------------------------------------------------- */
 
-export const setUserAssets = (userId) => async (dispatch) => {
+export const setUserAssets = (userId, resolution) => async (dispatch) => {
     const res = await fetch(`/api/users/${userId}/assets/`);
     const assets = await res.json();
+    const symbols = Object.keys(assets)
+    assets['graphData'] = await multiAssetGraphData(resolution, symbols, assets)
     dispatch(setAssetsAction(assets));
 };
 

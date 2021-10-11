@@ -1,25 +1,24 @@
-import { LineChart, XAxis, YAxis, Tooltip, CartesianGrid, Line, ReferenceLine } from 'recharts'
+import { LineChart, XAxis, YAxis, Tooltip, Line, ReferenceLine } from 'recharts';
 import { useState } from 'react';
-import Odometer from 'react-odometerjs'
+import Odometer from 'react-odometerjs';
 
-import './MainGraph.css'
+import './MainGraph.css';
 
 
 
 function MainGraph({graphData, isWatchList=false}){
-  const [hoverPrice, setHoverPrice] = useState(graphData[graphData.length -1].price)
-  const [percentDiff, setPercentDiff] = useState(graphData[graphData.length-1]["%"])
-  console.log(isWatchList)
+  const [hoverPrice, setHoverPrice] = useState(graphData[graphData.length -1].price);
+  const [percentDiff, setPercentDiff] = useState(graphData[graphData.length-1]["%"]);
 
   function handleMouseHover(e){
     if (!isWatchList) {
       if(e.activePayload){
-          setHoverPrice(e.activePayload[0].payload.price)
-          setPercentDiff(e.activePayload[0].payload["%"])
+          setHoverPrice(e.activePayload[0].payload.price);
+          setPercentDiff(e.activePayload[0].payload["%"]);
 
-      }
-    }
-  }
+      };
+    };
+  };
   
   function resetHoverPrice(){
         setHoverPrice(graphData[graphData.length - 1].price);
@@ -78,8 +77,7 @@ function MainGraph({graphData, isWatchList=false}){
         </div>
       )}
     </div>
-  );
-    
-}
+  );  
+};
 
-export default MainGraph
+export default MainGraph;

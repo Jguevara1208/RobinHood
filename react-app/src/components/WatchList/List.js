@@ -1,4 +1,4 @@
-import { useDispatch, useSelector} from "react-redux";
+import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { setWatchListStocks } from "../../store/watchlistStocks";
 import ListSymbolData from "./ListSymbolData";
@@ -9,7 +9,7 @@ function List({list}){
 
     useEffect(() => {
         (async () => {
-            dispatch(setWatchListStocks(symbols))
+           await dispatch(setWatchListStocks(symbols))
         })();
     })
 
