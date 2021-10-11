@@ -25,6 +25,39 @@ export default function Index() {
                     <Link>See the campaign</Link>
                 </div>
             </div>
+            <div>
+                <img></img>
+                <div>
+                    <h1>Introducing IPO Access</h1>
+                    <p>Get in at the IPO price. Now you can become one of the first public investors in upcoming IPOs.</p>
+                    <div>
+                        <div>
+                            <img></img>
+                            <div>
+                                <h3>It's your turn</h3>
+                                <p>No minimum account balances or special status requirements</p>
+                            </div>
+                        </div>
+                        <div>
+                            <img></img>
+                            <div>
+                                <h3>Be one of the first</h3>
+                                <p>Request shares in new companies before their stock starts trading on public exchanges</p>
+                            </div>
+                        </div>
+                        <div>
+                            <img></img>
+                            <div>
+                                <h3>Get a fair shot</h3>
+                                <p>While IPO shares are limited, IPO Access gives you the same opportunity to invest, regardless of order size or account value</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+
+                </div>
+            </div>
             <div class="container-3">
                 <div>
                     <h1>Introducing Fractional Shares</h1>
@@ -45,6 +78,17 @@ export default function Index() {
                     </div>
                 </div>
                 
+
+            <div>
+                <div></div>
+                <div>
+                    <img></img>
+                    <div>
+                        <h1></h1>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
 
 
                 <video height="563px" width="650px" class="video-1" autoplay="" controlslist="nodownload nofullscreen noremoteplayback" loop="" preload="auto">
