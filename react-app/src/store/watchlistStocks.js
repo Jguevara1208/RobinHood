@@ -2,21 +2,25 @@ import {singleAssetGraphData}  from "../utils"
 /* ----------------------------------------------------------------------- */
 /* -----------------------------Actions----------------------------------- */
 /* ----------------------------------------------------------------------- */
-const ADD_WATCHLIST_STOCKS = "watchlistStocks/ADD_WATCHLIST_STOCKS";
+const SET_WATCHLIST_STOCKS = "watchlistStocks/SET_WATCHLIST_STOCKS";
+const ADD_WATCHLIST_STOCK = 'watchlistStocks/ADD_WATCHLIST_STOCK';
+const DELETE_WATCHLIST_STOCK = 'watchlistStocks/DELETE_WATCHLIST_STOCK';
 
 /* ----------------------------------------------------------------------- */
 /* ----------------------------Action Creators---------------------------- */
 /* ----------------------------------------------------------------------- */
-const addWatchListAction = (stocks) => {
+const setWatchListAction = (stocks) => {
   return {
-    type: ADD_WATCHLIST_STOCKS,
+    type: SET_WATCHLIST_STOCKS,
     stocks,
   };
 };
 
+
 /* ----------------------------------------------------------------------- */
 /* --------------------------------Thunks--------------------------------- */
 /* ----------------------------------------------------------------------- */
+
 export const setWatchListStocks = (symbols) => async (dispatch) => {
   let stockInfo = {};
   
@@ -25,12 +29,10 @@ export const setWatchListStocks = (symbols) => async (dispatch) => {
     const stockData = await singleAssetGraphData("D", symbol);
     stockInfo[symbol] = stockData
   }
-  // symbols.forEach(async(symbol) => {
-  //   const stockData = await singleAssetGraphData("D", symbol);
-  //   stockInfo[symbol] = stockData;
-  // });
-  dispatch(addWatchListAction(stockInfo));
+
+  dispatch(setWatchListAction(stockInfo));
 };
+
 
 /* ----------------------------------------------------------------------- */
 /* -----------------------Initial State & Reducer------------------------- */
@@ -41,8 +43,8 @@ const initialState = {};
 const watchlistStocksReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
-    case ADD_WATCHLIST_STOCKS:
-      newState = action.stocks
+    case SET_WATCHLIST_STOCKS:
+      newState = {...state, ...action.stocks}
       return newState;
     default:
       return state;

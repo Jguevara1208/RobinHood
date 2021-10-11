@@ -93,7 +93,12 @@ const percentageDifference = (stockData) => {
         const originalNumber = stockData[0].price
         const latestNumber = stockData[stockData.length - 1].price
         const percentageDiff = (latestNumber - originalNumber) / originalNumber * 100
-        return Number(percentageDiff.toFixed(2))
+        if (!percentageDiff.toString().startsWith("-")){
+
+            return "+" + Number(percentageDiff.toFixed(2));
+        }else{
+            return Number(percentageDiff.toFixed(2));
+        }
     }
     return 0
 }
