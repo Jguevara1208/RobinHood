@@ -15,6 +15,7 @@ import { setTheme } from './store/theme'
 import { setUserAssets } from './store/userAssets' //id
 import { setUserLists } from './store/userLists'
 import { setWatchListStocks } from './store/watchlistStocks' //symbols
+import Index from './components/SplashPage/SplashPage'
 
 
 function App() {
@@ -61,7 +62,7 @@ function App() {
             user?.id ? 
             (<h1>My page</h1>)
             :
-            (<h1>Splash page</h1>)
+            <Index />
           }
         </Route>
       </Switch>
