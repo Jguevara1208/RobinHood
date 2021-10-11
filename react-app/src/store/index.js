@@ -4,12 +4,14 @@ import session from './session'
 import userAssetsReducer from './userAssets';
 import themeReducer from './theme';
 import currentStoriesReducer from './currentStories';
+import userListsReducer from './userLists';
 import watchlistStocksReducer from './watchlistStocks';
 import allStocksReducer from './allStocks';
 
 const rootReducer = combineReducers({
   session,
   userAssets: userAssetsReducer,
+  userLists: userListsReducer,
   stories: currentStoriesReducer,
   watchlistStocks: watchlistStocksReducer,
   stocks: allStocksReducer,

@@ -8,11 +8,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
-import {setCompanyStories, setGeneralStories} from './store/currentStories'
-import {setWatchListStocks} from './store/watchlistStocks'
-import { fetchAllStocks } from './store/allStocks';
-import { setUserAssets } from './store/userAssets';
-import { fetchList } from './store/userLists';
+import {updateUserList, addUserList} from './store/userLists';
 
 
 function App() {
@@ -21,16 +17,7 @@ function App() {
 
   useEffect(() => {
     (async() => {
-      await dispatch(authenticate());
-      await dispatch(setGeneralStories());
-      await dispatch(fetchAllStocks());
-      /**
-       * The two dispatch function below rely on a userId to function.
-       * For testing purposes, I am going to use a userId of 1
-       */
-      await dispatch(fetchList(1))
-      await dispatch(setUserAssets(1))
-      await dispatch(setWatchListStocks(['AAPL', 'GME', 'GOOG', 'ABNB']))
+      await dispatch(authenticate())
       setLoaded(true);
     })();
   }, [dispatch]);
