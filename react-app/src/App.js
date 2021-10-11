@@ -11,6 +11,9 @@ import { authenticate } from './store/session';
 import {setCompanyStories, setGeneralStories} from './store/currentStories'
 import {setWatchListStocks} from './store/watchlistStocks'
 import { fetchAllStocks } from './store/allStocks';
+import { setUserAssets } from './store/userAssets';
+import { fetchList } from './store/userLists';
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -18,10 +21,16 @@ function App() {
 
   useEffect(() => {
     (async() => {
-      await dispatch(authenticate())
-      await dispatch(setGeneralStories())
+      await dispatch(authenticate());
+      await dispatch(setGeneralStories());
+      await dispatch(fetchAllStocks());
+      /**
+       * The two dispatch function below rely on a userId to function.
+       * For testing purposes, I am going to use a userId of 1
+       */
+      await dispatch(fetchList(1))
+      await dispatch(setUserAssets(1))
       await dispatch(setWatchListStocks(['AAPL', 'GME', 'GOOG', 'ABNB']))
-      await dispatch(fetchAllStocks())
       setLoaded(true);
     })();
   }, [dispatch]);

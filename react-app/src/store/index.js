@@ -9,11 +9,11 @@ import allStocksReducer from './allStocks';
 
 const rootReducer = combineReducers({
   session,
-  stocks: allStocksReducer,
   userAssets: userAssetsReducer,
   stories: currentStoriesReducer,
+  watchlistStocks: watchlistStocksReducer,
+  stocks: allStocksReducer,
   theme: themeReducer,
-  watchlistStocks: watchlistStocksReducer
 });
 
 
