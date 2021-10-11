@@ -23,14 +23,21 @@ const setWatchListAction = (stocks) => {
 
 export const setWatchListStocks = (symbols) => async (dispatch) => {
   let stockInfo = {};
-  
+  let error = false
   for (let i = 0; i < symbols.length; i++) {
     let symbol = symbols[i];
     const stockData = await singleAssetGraphData("D", symbol);
-    stockInfo[symbol] = stockData
+    if (stockData) {
+      stockInfo[symbol] = stockData
+    } else {
+      error = true
+    }
   }
-
-  dispatch(setWatchListAction(stockInfo));
+  if (error) {
+    return 
+  } else {
+    dispatch(setWatchListAction(stockInfo));
+  }
 };
 
 

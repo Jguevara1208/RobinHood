@@ -12,8 +12,13 @@ function Portfolio(){
     const stories = useSelector(state => state.stories);
     const graphData = useSelector(state => state.userAssets.graphData)
     const [resolution, setResolution] = useState('D')
-    console.log(graphData)
-    
+    const resolutions = ['D', 'W', 'M', 'Y']
+
+    const toggleResolution = async (e) => {
+        let res = e.target.value
+        setResolution(res)
+    }
+
     useEffect(() => {
         (async () => {
             await dispatch(setGeneralStories())
@@ -31,6 +36,15 @@ function Portfolio(){
             {graphData && 
             <MainGraph graphData={graphData} />
             }
+            {resolutions.map(res => (
+                <button 
+                    className={res === resolution ? 'active-res' : ''}
+                    value={res}
+                    onClick={toggleResolution}
+                >
+                    {res}
+                </button>  
+            ))}
             <WatchList/>
             <StockStories stories={stories}/>
         </>

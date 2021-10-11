@@ -116,7 +116,8 @@ const fetchSingleStockCandles = async (symbol, resolution, fromDate, currentDate
     let response = await fetch(
         `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=${resolution}&from=${+fromDate}&to=${+currentDate}&token=c5f2bi2ad3ib660qt670`
     )
-    let data = await response.json()
+    let data = await response.json();
+    if (data.error) return false;
     let res = { prices: data.o, times: data.t, resolution }
     return res
 }
@@ -159,6 +160,7 @@ const fetchMultipleStocksCandles = async (symbols, resolution, fromDate, current
         );
 
         let data = await response.json()
+        if (data.error) return false
         assetsCandleNums[symbol] = data.o
         if (!times) times = data.t
         if (times.length > data.t.length) times = data.t
@@ -209,8 +211,11 @@ const user_assets_graph_points = (graphData, userAssets) => {
 export async function multiAssetGraphData(selectedResolution, symbols, userAssets){
     const { resolution, fromDate, currentDate } = getQueryParameters(selectedResolution)
     let data = await fetchMultipleStocksCandles(symbols, resolution, fromDate, currentDate)
-    let stockData = user_assets_graph_points(data, userAssets)
-    return stockData
+    if (data) {
+        let stockData = user_assets_graph_points(data, userAssets)
+        return stockData
+    }
+    return false
 }
 
 // multiAssetGraphData('D', Object.keys(mockAssets), mockAssets)
@@ -226,8 +231,11 @@ export async function multiAssetGraphData(selectedResolution, symbols, userAsset
 export async function singleAssetGraphData(selectedResolution, symbol){
     const { resolution, fromDate, currentDate } = getQueryParameters(selectedResolution)
     let data = await fetchSingleStockCandles(symbol, resolution, fromDate, currentDate)
-    let stockData = single_asset_graph_points(data)
-    return stockData
+    if (data) {
+        let stockData = single_asset_graph_points(data)
+        return stockData
+    }
+    return false
 }
 
 // singleAssetGraphData('D', 'AAPL')
