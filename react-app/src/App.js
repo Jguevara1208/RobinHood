@@ -15,6 +15,7 @@ import { setTheme } from './store/theme'
 import { setUserAssets } from './store/userAssets' //id
 import { setUserLists } from './store/userLists'
 import { setWatchListStocks } from './store/watchlistStocks' //symbols
+import WatchList from './components/WatchList/WatchList';
 import MainGraph from './components/MainGraph/MainGraph';
 
 
@@ -26,13 +27,8 @@ function App() {
   useEffect(() => {
     (async() => {
       await dispatch(authenticate())
-      await dispatch(setCurrentStock('AAPL', 'D'))
-      await dispatch(fetchAllStocks())
-      await dispatch(setGeneralStories())
-      await dispatch(setTheme())
-      await dispatch(setUserAssets(1))
       await dispatch(setUserLists(1))
-      await dispatch(setWatchListStocks(['AAPL', 'GME', 'TSLA', 'AMC']))
+
       setLoaded(true);
     })();
   }, [dispatch]);
@@ -58,7 +54,8 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true}>
-          <MainGraph graphData={graphData}  />
+            <WatchList/>
+          {/* <MainGraph graphData={graphData}  /> */}
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
