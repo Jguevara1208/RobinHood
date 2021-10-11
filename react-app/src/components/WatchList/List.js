@@ -11,7 +11,7 @@ function List({list}){
         (async () => {
            await dispatch(setWatchListStocks(symbols))
         })();
-    })
+    },[dispatch])
 
     return (
         <>
