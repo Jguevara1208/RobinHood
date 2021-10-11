@@ -12,3 +12,8 @@ nav{
 a{
     text-decoration: none;
 }
+
+.user-actions-container{
+    display: flex;
+    gap: 15px;
+}
