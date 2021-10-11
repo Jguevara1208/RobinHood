@@ -8,19 +8,24 @@ import './MainGraph.css'
 
 function MainGraph({graphData}){
     const [hoverPrice, setHoverPrice] = useState(graphData[graphData.length -1].price)
+    const [percentDiff, setPercentDiff] = useState(graphData[graphData.length-1]["%"])
 
     function handleMouseHover(e){
         if(e.activePayload){
             setHoverPrice(e.activePayload[0].payload.price)
+            setPercentDiff(e.activePayload[0].payload["%"])
+
         }
     }
     function resetHoverPrice(){
-        return setHoverPrice(graphData[graphData.length - 1].price);
+         setHoverPrice(graphData[graphData.length - 1].price);
+         setPercentDiff(graphData[graphData.length - 1]["%"]);
     }
-
+    // console.log(graphData)
     return (
       <div>
         <Odometer value={hoverPrice} format="(,ddd).dd" />
+        <p>{percentDiff}%</p>
         {graphData && (
           <div>
             <LineChart
