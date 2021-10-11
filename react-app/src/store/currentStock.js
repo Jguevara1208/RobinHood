@@ -38,32 +38,38 @@ export const setCurrentStock = (symbol, res) => async (dispatch) => {
 
     let graphData = await singleAssetGraphData(res, symbol);
 
-    let stockInfo = {
-        name: companyInfo.Name,
-        description: companyInfo.Description,
-        HQ: companyInfo.Address,
-        sector: companyInfo.Sector
-    };
+    let stockInfo, stockStats, currentPrice = {}
 
-    let stockStats = {
-        marketCap: Number(companyInfo.MarketCapitalization),
-        PERatio: Number(companyInfo.PERatio),
-        dividendYield: Number(companyInfo.DividendYield),
-        '52weekHigh': Number(companyInfo['52WeekHigh']),
-        '52weekLow': Number(companyInfo['52WeekLow']),
-        highToday: companyStats.h,
-        lowToday: companyStats.l,
-        openPrice: companyStats.o,
-        previousClose: companyStats.pc
-    };
-
-    let currentPrice = {
-        price: companyStats.c,
-        time: getGraphDate(companyStats.t, '30'),
-        '%': companyStats.dp,
-    };
-
-    dispatch(setCurrentStockAction({graphData, stockInfo, stockStats, currentPrice}));
+    if (graphData) {
+        stockInfo = {
+            name: companyInfo.Name,
+            description: companyInfo.Description,
+            HQ: companyInfo.Address,
+            sector: companyInfo.Sector
+        };
+    
+        stockStats = {
+            marketCap: Number(companyInfo.MarketCapitalization),
+            PERatio: Number(companyInfo.PERatio),
+            dividendYield: Number(companyInfo.DividendYield),
+            '52weekHigh': Number(companyInfo['52WeekHigh']),
+            '52weekLow': Number(companyInfo['52WeekLow']),
+            highToday: companyStats.h,
+            lowToday: companyStats.l,
+            openPrice: companyStats.o,
+            previousClose: companyStats.pc
+        };
+    
+        currentPrice = {
+            price: companyStats.c,
+            time: getGraphDate(companyStats.t, '30'),
+            '%': companyStats.dp,
+        };
+    
+        dispatch(setCurrentStockAction({graphData, stockInfo, stockStats, currentPrice}));
+    } else {
+        return
+    }
 };
 
 export const getCurrentPrice = (symbol) => async (dispatch) => {

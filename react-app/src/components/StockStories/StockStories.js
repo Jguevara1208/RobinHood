@@ -1,4 +1,3 @@
-import {round} from 'mathjs'
 import './StockStories.css'
 
 
@@ -17,7 +16,6 @@ function StockStories({stories}){
             return `${hoursDiff}h`
         }
     }
-    // console.log(findTimeDiff(1633981320));
 
 
     return (
