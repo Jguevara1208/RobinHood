@@ -4,6 +4,7 @@ import { setUserAssets } from '../../store/userAssets';
 import { setGeneralStories } from '../../store/currentStories';
 import WatchList from '../WatchList/WatchList';
 import MainGraph from '../MainGraph/MainGraph';
+import StockStories from '../StockStories/StockStories';
 
 function Portfolio(){
     const dispatch = useDispatch();
@@ -27,8 +28,11 @@ function Portfolio(){
 
     return (
         <>
+            {graphData && 
             <MainGraph graphData={graphData} />
+            }
             <WatchList/>
+            <StockStories stories={stories}/>
         </>
     );
 };
