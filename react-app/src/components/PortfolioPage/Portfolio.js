@@ -11,7 +11,7 @@ function Portfolio(){
     const user = useSelector(state => state.session);
     const stories = useSelector(state => state.stories);
     const graphData = useSelector(state => state.userAssets.graphData)
-    const [resolution, setResolution] = useState('W')
+    const [resolution, setResolution] = useState('D')
     console.log(graphData)
     
     useEffect(() => {
