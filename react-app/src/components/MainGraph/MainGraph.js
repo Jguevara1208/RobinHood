@@ -6,9 +6,10 @@ import './MainGraph.css'
 
 
 
-function MainGraph({graphData}){
+function MainGraph({graphData, isWatchList=false}){
     const [hoverPrice, setHoverPrice] = useState(graphData[graphData.length -1].price)
     const [percentDiff, setPercentDiff] = useState(graphData[graphData.length-1]["%"])
+    console.log(isWatchList)
 
     function handleMouseHover(e){
         if(e.activePayload){
@@ -24,8 +25,12 @@ function MainGraph({graphData}){
     // console.log(graphData)
     return (
       <div>
-        <Odometer value={hoverPrice} format="(,ddd).dd" />
-        <p>{percentDiff}%</p>
+          {isWatchList === false && 
+          <div>
+              <Odometer value={hoverPrice} format="(,ddd).dd" />
+              <p>{percentDiff}%</p>
+          </div>
+          }
         {graphData && (
           <div>
             <LineChart
