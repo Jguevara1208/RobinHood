@@ -10,6 +10,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import {updateUserList, addUserList} from './store/userLists';
 
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();

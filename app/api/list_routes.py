@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from app.models import List, db
+from app.models import List, db, ListSymbol
 
 list_routes = Blueprint('lists', __name__)
 
@@ -17,3 +17,14 @@ def lists(id):
         db.session.commit()
         return 'ok'
 
+@list_routes.route('/<int:id>/listsymbols', methods=['POST'])
+def list_symbols(id):
+    if request.method == 'POST':
+        body = request.json
+        list_symbol = ListSymbol(
+            list_id = id,
+            symbol = body["symbol"]
+        )
+        db.session.add(list_symbol)
+        db.session.commit()
+        return list_symbol.to_dict()
