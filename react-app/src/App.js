@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
@@ -20,6 +20,7 @@ import { setWatchListStocks } from './store/watchlistStocks' //symbols
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+  const user = useSelector(state => state.session);
 
   useEffect(() => {
     (async() => {
@@ -55,9 +56,14 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
-        </ProtectedRoute>
+        <Route path='/'>
+          {
+            user?.id ? 
+            (<h1>My page</h1>)
+            :
+            (<h1>Splash page</h1>)
+          }
+        </Route>
       </Switch>
     </BrowserRouter>
   );
