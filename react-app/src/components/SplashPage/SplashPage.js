@@ -26,21 +26,23 @@ export default function Index() {
                 </div>
             </div>
             <div class="container-3">
-                <h1>Introducing Fractional Shares</h1>
-                <h3>Invest in thousands of stocks, with just 1$</h3>
                 <div>
-                    <h4>Invest Any Amount</h4>
-                    <p>
-                    Choose how much you want to invest, and we’ll convert from dollars to parts of a whole share.
-                    </p>
+                    <h1>Introducing Fractional Shares</h1>
+                    <h3>Invest in thousands of stocks, with just 1$</h3>
                 </div>
-                <div>
-                    <h4>Build a balanced Portfolio</h4>
-                    <p>Customize your portfolio with pieces of different companies and funds to help reduce risk.</p>
-                </div>
-                <div>
-                    <h4>Trade in real time</h4>
-                    <p>Trades placed during market hours are executed at that time, so you’ll always know the share price.</p>
+                <div class="subcontainer-3">
+                    <div>
+                        <h4>Invest Any Amount</h4>
+                        <p>Choose how much you want to invest, and we’ll convert from dollars to parts of a whole share.</p>
+                    </div>
+                    <div>
+                        <h4>Build a balanced Portfolio</h4>
+                        <p>Customize your portfolio with pieces of different companies and funds to help reduce risk.</p>
+                    </div>
+                    <div>
+                        <h4>Trade in real time</h4>
+                        <p>Trades placed during market hours are executed at that time, so you’ll always know the share price.</p>
+                    </div>
                 </div>
 
 
