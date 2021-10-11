@@ -33,6 +33,7 @@ function BuyingPower({ user }) {
             setError(null)
             dispatch(editBuyingPower(user.id, buyingPower))
             setDepositAmount("$0.00")
+            setOpenBuyingPower(false)
         }
     }
 
