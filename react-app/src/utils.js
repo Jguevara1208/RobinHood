@@ -79,7 +79,7 @@ const getFromDate = (timeFrame) => {
 // Return an object with all of the information needed to query the API, depending on how long in the past they want to see,
 // it decides the resolution for the query, it also calls the two helper functions to get the correct timestamps
 export const getQueryParameters = (timeFrame) => {
-    let timeFrameTranslate = { 'D': '30', 'W': 'D', 'M': 'D', 'Y': 'M' }
+    let timeFrameTranslate = { 'D': '5', 'W': '60', 'M': 'D', 'Y': 'M' }
     return {
         resolution: timeFrameTranslate[timeFrame],
         fromDate: getFromDate(timeFrame),
