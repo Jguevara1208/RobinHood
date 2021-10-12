@@ -25,6 +25,39 @@ export default function Index() {
                     <Link>See the campaign</Link>
                 </div>
             </div>
+            <div>
+                <img></img>
+                <div>
+                    <h1>Introducing IPO Access</h1>
+                    <p>Get in at the IPO price. Now you can become one of the first public investors in upcoming IPOs.</p>
+                    <div>
+                        <div>
+                            <img></img>
+                            <div>
+                                <h3>It's your turn</h3>
+                                <p>No minimum account balances or special status requirements</p>
+                            </div>
+                        </div>
+                        <div>
+                            <img></img>
+                            <div>
+                                <h3>Be one of the first</h3>
+                                <p>Request shares in new companies before their stock starts trading on public exchanges</p>
+                            </div>
+                        </div>
+                        <div>
+                            <img></img>
+                            <div>
+                                <h3>Get a fair shot</h3>
+                                <p>While IPO shares are limited, IPO Access gives you the same opportunity to invest, regardless of order size or account value</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+
+                </div>
+            </div>
             <div class="container-3">
                 <div>
                     <h1>Introducing Fractional Shares</h1>
@@ -44,7 +77,31 @@ export default function Index() {
                         <p>Trades placed during market hours are executed at that time, so you’ll always know the share price.</p>
                     </div>
                 </div>
-                
+            </div>
+
+            <div className="container-4">
+                <div></div>
+                <div>
+
+                    <img></img>
+                    <div>
+                        <h1>Learn As You Go</h1>
+                        <p>Our goal is to make investing in financial markets more affordable, more intuitive, and more fun, no matter how much experience you have (or don’t have).</p>
+                    </div>
+                    
+                    <img></img>
+                    <div>
+                        <h1>Manage Your Portfolio</h1>
+                        <p>Our goal is to make investing in financial markets more affordable, more intuitive, and more fun, no matter how much experience you have (or don’t have).</p>
+                    </div>
+                    
+                    <img></img>
+                    <div>
+                        <h1>Keep Tabs on Your Money</h1>
+                        <p>Set up customized news and notifications to stay on top of your assets as casually or as relentlessly as you like. Controlling the flow of info is up to you.</p>
+                    </div>
+                </div>
+            </div>
 
 
                 <video height="563px" width="650px" class="video-1" autoplay="" controlslist="nodownload nofullscreen noremoteplayback" loop="" preload="auto">
@@ -52,10 +109,6 @@ export default function Index() {
                     <img draggable="false" role="presentation" src="https://cdn.robinhood.com/assets/robinhood/brand/_next/static/images/1x__36a396f664677ed80a2459d1dca75f00.png" srcset="https://cdn.robinhood.com/assets/robinhood/brand/_next/static/images/1x__36a396f664677ed80a2459d1dca75f00.png, https://cdn.robinhood.com/assets/robinhood/brand/_next/static/images/2x__c7dcadbbb72fc298e85e94844f68342c.png 2x, https://cdn.robinhood.com/assets/robinhood/brand/_next/static/images/3x__7c5da6ba049983f3558423906f16f0af.png 3x"></img></video>
             <img src={"https://cdn.robinhood.com/assets/robinhood/brand/_next/static/images/2x__ff9c36e27d7018cf707b95d8675793a3.png"}></img>
 
-
-
-
-            </div>
         </div>
     )
 }
