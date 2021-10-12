@@ -15,33 +15,19 @@ function AddToList({symbol, userId}) {
         dispatch(setUserLists(userId))
     },[dispatch])
 
-    // useEffect(() => {
-    //     Object.keys(lists).forEach(key => {
-    //          const symbolsInList = Object.keys(lists[key].symbols)
-    //          if(symbolsInList.includes(symbol)){
-    //              setInList(true)
-    //          }
-    //      })
-    // }, [dispatch, lists])
-
     function isInList(list){
         return list.symbols[symbol] ? true : false
     }
 
     function handleSubmit(){
         const listInputs = document.querySelectorAll(".listInputs")
-        // console.log(listInputs)
         const checkedInputs = Array.from(listInputs).filter(list => list.checked)
-        // console.log("CHECKED",checkedInputs)
-        // console.log(checkedInputs[0].attributes.id)
 
         for(let i = 0; i < checkedInputs.length; i++){
             const input = checkedInputs[i]
             const listId = Number(input.attributes.id.value.split("-")[1])
             dispatch(addListSymbol(listId, symbol))
         }
-
-
     }
 
     function handleNewList(){
