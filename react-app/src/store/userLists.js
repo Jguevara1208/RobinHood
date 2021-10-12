@@ -142,7 +142,7 @@ const userListsReducer = (state=initialState, action) => {
             return newState;
         case ADD_LIST_SYMBOL:
             newState = {...state}
-            newState[action.data.listId].symbols = [...newState[action.data.listId].symbols, action.data]
+            newState[action.data.listId].symbols = {...newState[action.data.listId].symbols, [action.data.symbol]: action.data}
             return newState;
         case DELETE_LIST_SYMBOL:
             newState = {...state}
