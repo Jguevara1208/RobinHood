@@ -6,33 +6,73 @@ import './SearchBar.css'
 function SearchBar() {
     const [filteredStocks, setFilteredStocks] = useState([])
     const allStocks = useSelector(state => state.allStocks)
+    const [searchText, setSearchText] = useState('')
+    const [showFilter, setShowFilter] = useState(false)
+
     // console.log(allStocks)
+    useEffect(() => {
+
+        filterStocksFunc()
+        if(searchText){
+            setShowFilter(true)
+        }else{
+            setShowFilter(false)
+        }
+    }, [searchText])
+
     const filterStocksFunc = (e) => {
-        const searchText = e.target.value
+        // console.log(e.target.value)
+        // setSearchText(e.target.value)
+        // console.log(searchText)
+        
+        
         const newFilteredStocks = allStocks.filter(stock => {
             if(stock.name.toLowerCase().startsWith(searchText.toLowerCase()) || stock.symbol.toLowerCase().startsWith(searchText.toLowerCase())){
                 return stock
             }
         })
-         if (searchText === "") {
-           setFilteredStocks([]);
-         } else {
-           setFilteredStocks(newFilteredStocks);
-         }
+        if (searchText === "") {
+            setFilteredStocks([]);
+        } else {
+            setFilteredStocks(newFilteredStocks);
+        }
+        
+        
+    }
+    // console.log("OUTSIDE",searchText)
+    // const bothFuncs = (e) =>{
+    //     console.log("BEFORE",searchText)
+    //     setSearchText(e.target.value)
+    //     console.log("AFTER",searchText)
+    //     filterStocksFunc()
+    // }
 
+
+    const clearSearch = (e)=>{
+        setFilteredStocks([])
+        setSearchText('')
     }
 
-    const clearSearch = ()=>{
-        setFilteredStocks([])
+    const loseFocus = (e) => {
+        setTimeout(() => {
+            setShowFilter(false)
+        }, 100);
     }
 
     return (
       <div className="searchContainer">
         <div className="searchInput">
-          <input type="text" onChange={filterStocksFunc} />
+          <input
+            type="text"
+            onChange={(e) => setSearchText(e.target.value)}
+            placeholder="search"
+            value={searchText}
+            onFocus={()=> setShowFilter(true)}
+            onBlur={loseFocus}
+          />
         </div>
-        {filteredStocks && (
-          <div className="filteredStocks">
+        {showFilter && (
+          <div className="filteredStocks" >
             {filteredStocks.map((stock) => (
               <Link to={`/stocks/${stock.symbol}`} onClick={clearSearch}>
                 <p>{`${stock.symbol} ${stock.name}`}</p>
