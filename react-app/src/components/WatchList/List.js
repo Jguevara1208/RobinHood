@@ -1,11 +1,14 @@
 import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { setWatchListStocks } from "../../store/watchlistStocks";
 import ListSymbolData from "./ListSymbolData";
 
-function List({list}){
+function List({list, listName=false}){
     const dispatch = useDispatch();
-    const symbols = Object.keys(list.symbols);
+
+    const [showList, setShowList] = useState(true)
+
+    let symbols = Object.keys(list.symbols);
 
     useEffect(() => {
         (async () => {
@@ -15,10 +18,15 @@ function List({list}){
 
     return (
         <>
-            <h1>{list.listName}</h1>
-            {symbols && symbols.map(symbol => (
-                <ListSymbolData symbol={symbol}/>
-            ))}
+            <h1>{listName ? listName : list.listName}</h1>
+            <p onClick={() => setShowList(!showList)} >{showList ? '^' : 'v'}</p>
+            {showList && (
+                <>
+                    {symbols && symbols.map(symbol => (
+                        <ListSymbolData symbol={symbol}/>
+                    ))}
+                </>
+            )}
         </>
     );
 };
