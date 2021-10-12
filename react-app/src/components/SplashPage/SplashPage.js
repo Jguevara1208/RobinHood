@@ -1,8 +1,10 @@
 import React from 'react'
 import './SplashPage.css'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux';
 
 export default function Index() {
+    const theme = useSelector(state => state.theme);
 
     const [visibleTool, setVisibleTool] = React.useState(0)
 
@@ -96,13 +98,13 @@ export default function Index() {
                 </div>
             </div>
 
-            <div className="container-4">
+            <div className="tools-container">
                 <div className="tools-buttons-container">
-                    <button onClick={decreaseVisibleToolValue}>up</button>
-                    <button onClick={e => setVisibleTool(0)}>Learn</button>
-                    <button onClick={e => setVisibleTool(1)}>Manage</button>
-                    <button onClick={e => setVisibleTool(2)}>Customize</button>
-                    <button onClick={increaseVisibleToolValue}>Down</button>
+                    <button className="tool-button" onClick={decreaseVisibleToolValue}>⬆️</button>
+                    <button className={visibleTool === 0 ? `tool-button-active` : `tool-button`} onClick={e => setVisibleTool(0)}>Learn</button>
+                    <button className={visibleTool === 1 ? `tool-button-active` : `tool-button`} onClick={e => setVisibleTool(1)}>Manage</button>
+                    <button className={visibleTool === 2? `tool-button-active` : `tool-button`} onClick={e => setVisibleTool(2)}>Customize</button>
+                    <button className="tool-button" onClick={increaseVisibleToolValue}>⬇️</button>
                 </div>
                 <div className="tools-container">
                     {
@@ -143,7 +145,7 @@ export default function Index() {
                 </div>
             </div>
             <div className="footer-contact-info">
-                <div>GitHub for Project</div>
+                    <a href="https://github.com/Jguevara1208/RobinHood">Github</a>
             </div>
 
         </div>

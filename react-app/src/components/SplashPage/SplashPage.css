@@ -1,29 +1,10 @@
-/* TODO Add site wide styles */
-.light {
-    --clr-bg: #ffffff;
-    --clr-bg-alt: #F5F5F5;
-    --clr-font: black;
-    --clr-border: rgba(0, 0, 0, .5);
-    --clr-primary: #2EDA12;
-    --clr-secondary: #FF3434;
-    --shadow: 0px 4px 4px rgba(0, 0, 0, 0.04);;
-    }
-    
-.dark {
---clr-bg: #252323;
---clr-bg-alt: #2A2A2A;
---clr-font: #ffffff;
---clr-border: rgba(255, 255, 255, .5);
---clr-primary: #5DD8FF;
---clr-secondary: #FF344A;
---shadow: 0px 4px 4px rgba(255, 255, 255, 0.05);;
-}
+@import "../../index.css";
 
 body{
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.investing-for-everyone-container, .container-2, .fractional-shares-container, .ipo-access-main-container{
+.investing-for-everyone-container, .fractional-shares-container, .ipo-access-main-container{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -42,10 +23,6 @@ body{
     flex-direction: column;
     gap: 30px;
     padding: 10px 30px;
-}
-
-.container-2 {
-    background-color : #F5F5F5;
 }
 
 .subcontainer-2 {
@@ -82,10 +59,10 @@ body{
     gap: 70px;
 }
 
-.container-4{
+.tools-container{
     display: flex;
     padding: 60px;
-    gap: 120px;
+    gap: 2.5rem;
     background-color: black;
     color: white;
 }
@@ -143,4 +120,37 @@ body{
 
 .fancy-phone-img{
     max-width: 70%;
+}
+
+
+.tool-button{
+    background-color: black;
+    
+    border: none;
+    color: grey;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.tool-button-active{
+    background-color: black;
+    
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.tool-button:hover{
+    color: #2EDA12;
 }
