@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
+import { Link } from 'react-router-dom'
 import './SearchBar.css'
 
 function SearchBar() {
@@ -21,6 +22,10 @@ function SearchBar() {
 
     }
 
+    const clearSearch = ()=>{
+        setFilteredStocks([])
+    }
+
     return (
       <div className="searchContainer">
         <div className="searchInput">
@@ -29,9 +34,9 @@ function SearchBar() {
         {filteredStocks && (
           <div className="filteredStocks">
             {filteredStocks.map((stock) => (
-              <a href={`/stocks/${stock.symbol}`}>
+              <Link to={`/stocks/${stock.symbol}`} onClick={clearSearch}>
                 <p>{`${stock.symbol} ${stock.name}`}</p>
-              </a>
+              </Link>
             ))}
           </div>
         )}
