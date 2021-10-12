@@ -29,6 +29,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <NavBar />
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
@@ -43,7 +44,6 @@ function App() {
           </ProtectedRoute>
         :
           <Route path='/' exact={true}>
-            <NavBar/>
             <Index/>
           </Route>
         }
