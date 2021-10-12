@@ -18,16 +18,16 @@ const NavBar = () => {
     return (
       <nav>
             <NavLink to='/' exact={true} activeClassName='active'>
-              Home
+              RobinHood
             </NavLink>
           {
             !session.email ?
             (
               <div class="user-actions-container">
-                  <NavLink to='/login' exact={true} activeClassName='active'>
+                  <NavLink className="login-button"to='/login' exact={true} activeClassName='active'>
                     Login
                   </NavLink>
-                  <NavLink to='/sign-up' exact={true} activeClassName='active'>
+                  <NavLink className="sign-up-button" to='/sign-up' exact={true} activeClassName='active'>
                     Sign Up
                   </NavLink>
               </div>
