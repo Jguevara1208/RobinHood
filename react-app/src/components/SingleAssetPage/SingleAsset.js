@@ -10,6 +10,7 @@ import KeyStats from "../KeyStats/KeyStats";
 import StockStories from "../StockStories/StockStories";
 import UserAssetStats from "../UserAssetStats/UserAssetStats";
 import BuySellStocks from "../BuySellStocks/BuySellStocks";
+import AddToList from "../AddToListButton/AddToList";
 
 function SingleAsset() {
   const dispatch = useDispatch()
@@ -58,6 +59,7 @@ function SingleAsset() {
         }
         <div>
           <BuySellStocks symbol={symbol} price={currentPrice.price}/>
+          <AddToList symbol={symbol} userId={userId} />
         </div>
         <div>
           <p>About</p>
