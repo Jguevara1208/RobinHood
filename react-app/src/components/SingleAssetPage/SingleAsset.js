@@ -44,7 +44,7 @@ function SingleAsset() {
     (async ()=>{
       await dispatch(setCurrentStock(symbol, resolution))
     })()
-  },[resolution])
+  },[resolution, symbol])
 
   return (
     <>
