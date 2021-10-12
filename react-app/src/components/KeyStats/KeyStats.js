@@ -1,42 +1,53 @@
+import { formatThousands } from "../BuySellStocks/utils";
 
 function KeyStats({stockStats}){
+    function formatMarketCap(number){
+        let numLength = number.toString().length
+        let numDescriptor;
+        if (numLength <= 6) numDescriptor = formatThousands(number)
+        if (numLength > 6 && numLength < 10) numDescriptor = `${formatThousands(number).split(',')[0]}M`
+        if (numLength > 9 && numLength < 13) numDescriptor = `${formatThousands(number).split(',')[0]}.${formatThousands(number).split(',')[1].slice(0, 2)}B`
+        if (numLength > 12) numDescriptor = `${formatThousands(number).split(',')[0]}.${formatThousands(number).split(',')[1].slice(0, 2)}T`
+        return numDescriptor
+    }
+
     return (
         <div>
             <div className='key-stat-pair'>
                 <p clasName='key-stat-title'>Market Cap</p>
-                <p className='key-stat'>{stockStats.marketCap}</p>
+                <p className='key-stat'>{stockStats.marketCap ? formatMarketCap(stockStats.marketCap) : '-'}</p>
             </div>
             <div className='key-stat-pair'>
                 <p clasName='key-stat-title'>P/E Ratio</p>
-                <p className='key-stat'>{stockStats.PERatio}</p>
+                <p className='key-stat'>{stockStats.PERatio ? stockStats.PERatio : '-'}</p>
             </div>
             <div className='key-stat-pair'>
                 <p clasName='key-stat-title'>Dividend Yield</p>
-                <p className='key-stat'>{stockStats.dividendYield}</p>
+                <p className='key-stat'>{stockStats.dividendYield ? stockStats.dividendYield : '-'}</p>
             </div>
             <div className='key-stat-pair'>
                 <p clasName='key-stat-title'>52 Week High</p>
-                <p className='key-stat'>{stockStats['52weekHigh']}</p>
+                <p className='key-stat'>{stockStats['52weekHigh'] ? stockStats['52weekHigh'] : '-'}</p>
             </div>
             <div className='key-stat-pair'>
                 <p clasName='key-stat-title'>52 Week Low</p>
-                <p className='key-stat'>{stockStats['52weekLow']}</p>
+                <p className='key-stat'>{stockStats['52weekLow'] ? stockStats['52weekLow'] : '-'}</p>
             </div>
             <div className='key-stat-pair'>
                 <p clasName='key-stat-title'>High Today</p>
-                <p className='key-stat'>{stockStats.highToday}</p>
+                <p className='key-stat'>{stockStats.highToday ? stockStats.highToday : '-'}</p>
             </div>
             <div className='key-stat-pair'>
                 <p clasName='key-stat-title'>Low Today</p>
-                <p className='key-stat'>{stockStats.lowToday}</p>
+                <p className='key-stat'>{stockStats.lowToday ? stockStats.lowToday : '-'}</p>
             </div>
             <div className='key-stat-pair'>
                 <p clasName='key-stat-title'>Open Price</p>
-                <p className='key-stat'>{stockStats.openPrice}</p>
+                <p className='key-stat'>{stockStats.openPrice ? stockStats.openPrice : '-'}</p>
             </div>
             <div className='key-stat-pair'>
                 <p clasName='key-stat-title'>Previous Close</p>
-                <p className='key-stat'>{stockStats.previousClose}</p>
+                <p className='key-stat'>{stockStats.previousClose ? stockStats.previousClose : '-'}</p>
             </div>
         </div>
     );

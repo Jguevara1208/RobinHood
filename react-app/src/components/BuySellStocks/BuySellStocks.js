@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { formatThousands } from "./utils";
 import { useState } from "react";
-import { updateUserAsset, deleteUserAsset } from "../../store/userAssets";
+import { updateUserAsset, deleteUserAsset, addUserAsset } from "../../store/userAssets";
 import { editBuyingPower } from "../../store/session";
 function BuySellStocks({price, symbol}){
     const dispatch = useDispatch()
@@ -9,7 +9,7 @@ function BuySellStocks({price, symbol}){
     const buyingPower = useSelector(state => state.session.buyingPower)
     const assets = useSelector(state => state.userAssets)
     const userId = useSelector(state => state.session.id)
-
+    const asset = assets?.[symbol]
     const [isBuy, setIsBuy] = useState(true);
     const [buyShares, setBuyShares] = useState(null)
     const [sellShares, setSellShares] = useState(null)
@@ -18,39 +18,61 @@ function BuySellStocks({price, symbol}){
     function handleOrder(){
         if (isBuy) {
             let totalCost = Number((buyShares * price).toFixed(2))
+            let shares, average, newBuyingPower;
             if (totalCost > Number(buyingPower)) return setError('You do not have enough Buying Power')
-            let shares = Number(buyShares) + assets[symbol].shares
-            let average = Number((assets[symbol].average + (buyShares / price)).toFixed(2))
-            let newBuyingPower = Number((Number(buyingPower) - totalCost).toFixed(2))
-            dispatch(updateUserAsset({
-                        id: assets[symbol].id,
-                        shares,
-                        average
-                    }))
+            newBuyingPower = Number((Number(buyingPower) - totalCost).toFixed(2))
+
+            if (asset) {
+                shares = Number(buyShares) + asset.shares
+                average = Number((asset.average + (buyShares / price)).toFixed(2))
+                dispatch(updateUserAsset({
+                            id: asset.id,
+                            shares,
+                            average
+                        }))
+            } else {
+                shares = Number(buyShares)
+                average = Number(price)
+                dispatch(addUserAsset({
+                    user_id: userId,
+                    symbol,
+                    shares,
+                    average
+                }))
+            }
             dispatch(editBuyingPower(userId, newBuyingPower))
             setBuyShares(0)
             setError(null)
         } else {
-            let totalCredit = Number((sellShares * price).toFixed(2))
-            if (sellShares > assets[symbol].shares) return setError('You do not have that many shares to sell')
-            let shares = assets[symbol].shares - sellShares
-            let newBuyingPower = Number((buyingPower + totalCredit).toFixed(2))
-            dispatch(updateUserAsset({
-                id: assets[symbol].id,
-                shares,
-                average: assets[symbol].average
-            }))
-            dispatch(editBuyingPower(userId, newBuyingPower))
-            setSellShares(0)
-            setError(null)
+            if (asset) {
+                let totalCredit = Number((sellShares * price).toFixed(2))
+                if (sellShares > asset.shares) return setError('You do not have that many shares to sell')
+                let shares = asset.shares - sellShares
+                let removeAsset = shares <= 0 ? true : false
+                let newBuyingPower = Number((buyingPower + totalCredit).toFixed(2))
+                if (removeAsset){
+                    dispatch(deleteUserAsset(asset))
+                } else {
+                    dispatch(updateUserAsset({
+                        id: asset.id,
+                        shares,
+                        average: asset.average
+                    }))
+                }
+                dispatch(editBuyingPower(userId, newBuyingPower))
+                setSellShares(0)
+                setError(null)
+            } else {
+                setError(`You do not own any shares of ${symbol}`)
+            }
         }
     }
 
     function sellAllShares(){
-        let totalCredit = assets[symbol].shares * price
+        let totalCredit = asset.shares * price
         let newBuyingPower = totalCredit + buyingPower
         dispatch(editBuyingPower(userId, newBuyingPower))
-        dispatch(deleteUserAsset(assets[symbol]))
+        dispatch(deleteUserAsset(asset))
     }
 
     return (
@@ -81,7 +103,10 @@ function BuySellStocks({price, symbol}){
                 </div>
             }
             <div>
-                <button onClick={handleOrder} >Complete Order</button>
+                {isBuy 
+                    ? <button onClick={handleOrder}>Complete Order</button>
+                    : <button onClick={handleOrder} disabled={asset ? false : true}>Complete Order</button>
+                }
             </div>
             {isBuy 
                 ?
@@ -91,7 +116,7 @@ function BuySellStocks({price, symbol}){
                 </div>
                 :
                 <div>
-                    <p>{assets[symbol]?.shares} Shares Available - <span onClick={sellAllShares}>Sell All</span></p>
+                    <p>{asset ? asset.shares : 0} Shares Available<span onClick={sellAllShares}>{asset ? ' - Sell All' : ''}</span></p>
                     {error && <p>{error}</p>}
                 </div>
             }
