@@ -73,14 +73,15 @@ export const  addUserAsset = (asset) => async (dispatch) => {
 };
 
 export const updateUserAsset = (updatedAsset) => async (dispatch) => {
-    await fetch(`/api/assets/${updatedAsset.id}/`, {
+    const res = await fetch(`/api/assets/${updatedAsset.id}/`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(updatedAsset)
     });
-    dispatch(updateAssetAction(updatedAsset));
+    const asset = await res.json()
+    dispatch(updateAssetAction(asset));
 };
 
 export const deleteUserAsset = (asset) => async (dispatch) => {
@@ -108,6 +109,8 @@ const userAssetsReducer = (state=initialState, action) => {
             return newState;
         case UPDATE_USER_ASSET:
             newState = {...state};
+            console.log(action.asset.symbol)
+            console.log(action.asset)
             newState[action.asset.symbol] = action.asset;
             return newState;
         case DELETE_USER_ASSET:

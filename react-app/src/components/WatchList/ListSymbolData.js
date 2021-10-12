@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import MainGraph from "../MainGraph/MainGraph";
 
 function ListSymbolData({symbol}){
@@ -6,13 +7,12 @@ function ListSymbolData({symbol}){
     return (
         <>
             {graphData && 
-                <a href={`/stocks/${symbol}`}>
-
+                <Link to={`/stocks/${symbol}`}>
                     <p>{symbol}</p>
                     <MainGraph graphData={graphData} isWatchList={true}/>
                     <p>{`$${graphData[graphData.length - 1].price}`}</p>
                     <p>{`$${graphData[graphData.length - 1][`%`]}`}</p>
-                </a>
+                </Link>
             }
         </>
     );
