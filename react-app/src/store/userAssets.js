@@ -50,12 +50,16 @@ export const setUserAssets = (userId, resolution) => async (dispatch) => {
     const res = await fetch(`/api/users/${userId}/assets/`);
     const assets = await res.json();
     const symbols = Object.keys(assets)
-    const graphData = await multiAssetGraphData(resolution, symbols, assets)
-    if (graphData) {
-        assets['graphData'] = graphData
-        dispatch(setAssetsAction(assets));
+    if (resolution) {
+        const graphData = await multiAssetGraphData(resolution, symbols, assets)
+        if (graphData) {
+            assets['graphData'] = graphData
+            dispatch(setAssetsAction(assets));
+        } else {
+            return
+        }
     } else {
-        return
+        dispatch(setAssetsAction(assets))
     }
 };
 
