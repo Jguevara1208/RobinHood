@@ -154,3 +154,11 @@ body{
 .tool-button:hover{
     color: #2EDA12;
 }
+
+
+.footer-contact-info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
