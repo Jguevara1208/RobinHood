@@ -76,7 +76,7 @@ body {
 .log-in-form-password-input {
   width: 80%;
   height: 36px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: var(--clr-border);
   border-radius: 5px;
   padding-left: 12px;
   padding-right: 12px;
@@ -136,5 +136,5 @@ body {
 
 .log-in-form-button:active,
 .demo-user-button:active {
-  background-color: var(--clr-primary);
+  background-color: var(--clr-primary-hover);
 }

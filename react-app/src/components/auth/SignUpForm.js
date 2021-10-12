@@ -54,8 +54,8 @@ const SignUpForm = () => {
     <div className="sign-up-page">
       <div className="sign-up-form-container">
           <h1>Make Your Money Move</h1>
-          <h2>Robinhood lets you invest in companies you love, commission-free.</h2>
-          <h3>Please enter your full legal name. Your legal name should match any form of government ID.</h3>
+          <p>Robinhood lets you invest in companies you love, commission-free.</p>
+          <h5>Please enter your full legal name. Your legal name should match any form of government ID.</h5>
           <form className="sign-up-form" onSubmit={onSignUp}>
             <div>
               {errors.map((error, ind) => (
