@@ -76,11 +76,12 @@ const LoginForm = () => {
 
             <div className="log-in-form-submit">
               <button className={`${theme} log-in-form-button`}type='submit'>Sign In</button>
-              </div>
+            </div>
             <div className="demo-user-button-container">
               <button className={`${theme} demo-user-button`} onClick={() => {
                 onDemoLogin();
-              }}>Demo User</button>
+                }}>Demo User
+              </button>
             </div>
           </div>
         </form>
