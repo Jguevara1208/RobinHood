@@ -19,18 +19,18 @@
 --shadow: 0px 4px 4px rgba(255, 255, 255, 0.05);;
 }
 
-.container-1, .container-2, .container-3{
-    border: solid rgba(0, 0, 0, .5) 3px;
+.investing-for-everyone-container, .container-2, .fractional-shares-container, .ipo-access-main-container{
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 5px;
     font-family: Arial, Helvetica, sans-serif;
     padding: 10px 30px;
+    border-bottom: solid black 1px;
 }
 
-.container-1{
-    background-color: #2EDA12;
+.investing-for-everyone-container{
+    background-color: rgb(195,245,60);
 }
 
 .subcontainer-1 {
@@ -45,15 +45,65 @@
     flex-direction: column;
 }
 
-.container-3{
+.fractional-shares-container{
     flex-direction: column;
+    align-items: flex-start;
+    background-color: #F0EBE6
 }
 
 .subcontainer-3{
-    display:flex
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 30px;
+
 }
 
-img {
-    width: 350px;
-    height: 350px;
+.fractional-shares-info{
+    width: 27%;
+}
+
+.fractional-shares-side-img{
+    width: 256px;
+    height: 256px;
+}
+
+.ipo-info-container{
+    display: flex;
+    align-items: center;
+    gap: 70px;
+}
+
+.container-4{
+    display: flex;
+}
+
+.ipo-access-main-container{
+    display: flex;
+    align-items: center;
+
+}
+
+.ipo-main-img{
+    width: 50%;
+}
+
+.ipo-content {
+    width: 50%;
+}
+
+.ipo-info-img{
+    width: 50px;
+    height: auto;
+}
+
+.fractional-shares-info{
+
+}
+
+.tools-buttons-container{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
 }
