@@ -9,6 +9,7 @@ import { authenticate } from './store/session';
 import Index from './components/SplashPage/SplashPage'
 import Portfolio from './components/PortfolioPage/Portfolio';
 import SingleAsset from './components/SingleAssetPage/SingleAsset';
+import { setTheme } from './store/theme';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -18,7 +19,7 @@ function App() {
   useEffect(() => {
     (async() => {
       await dispatch(authenticate())
-
+      dispatch(setTheme())
       setLoaded(true);
     })();
   }, [dispatch]);

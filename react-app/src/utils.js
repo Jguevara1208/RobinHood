@@ -6,7 +6,7 @@
 export function getGraphDate(unix, resolution) {
     const dateArr = new Date(unix * 1000).toLocaleString().split(' ');
     const amOrPm = dateArr[dateArr.length - 1]
-    const [ hours, minutes ] = dateArr[1].split(':') 
+    const [ hours, minutes ] = dateArr[1].split(':')
     const [ month, day, year ] = dateArr[0].split('/')
     if (resolution === '30') return `${hours}:${minutes}${amOrPm}`
     if (resolution === 'M') return `${month}/${year}`
@@ -239,4 +239,3 @@ export async function singleAssetGraphData(selectedResolution, symbol){
 }
 
 // singleAssetGraphData('D', 'AAPL')
-
