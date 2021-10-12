@@ -15,7 +15,7 @@ def asset_get_post(asset_id):
         asset.shares = body['shares']
         asset.average = body['average']
         db.session.commit()
-        return 'ok'
+        return asset.to_dict()
 
     elif request.method == 'DELETE':
         asset = Asset.query.get(asset_id)
