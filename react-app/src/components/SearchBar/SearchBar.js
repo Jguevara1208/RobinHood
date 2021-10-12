@@ -11,7 +11,6 @@ function SearchBar() {
 
     // console.log(allStocks)
     useEffect(() => {
-
         filterStocksFunc()
         if(searchText){
             setShowFilter(true)
