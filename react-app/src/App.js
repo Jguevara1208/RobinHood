@@ -8,6 +8,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import { authenticate } from './store/session';
 import Index from './components/SplashPage/SplashPage'
 import Portfolio from './components/PortfolioPage/Portfolio';
+import { fetchAllStocks } from './store/allStocks';
 
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
   useEffect(() => {
     (async() => {
       await dispatch(authenticate())
-
+      await dispatch(fetchAllStocks())
       setLoaded(true);
     })();
   }, [dispatch]);
