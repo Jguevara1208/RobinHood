@@ -33,7 +33,7 @@ export default function Index() {
                     </span>
                     <Link className="sign-up-button" to={'/sign-up'}> Sign Up </Link>
                 </div>
-            <img src={"https://pamplinmedia.com/images/artimg/00003641830392-0652.jpg"} alt={"We are all investors"}></img>
+                <img className={"fancy-phone-img"} src={"https://cdn.robinhood.com/assets/robinhood/brand/_next/static/images/2x__ff9c36e27d7018cf707b95d8675793a3.png"}></img>
             </div>
 
             <div className="ipo-access-main-container">
@@ -142,13 +142,6 @@ export default function Index() {
                     }
                 </div>
             </div>
-
-
-                {/* <video height="563px" width="650px" class="video-1" autoplay="" controlslist="nodownload nofullscreen noremoteplayback" loop="" preload="auto">
-                    <source class="img-1" src="https://cdn.robinhood.com/assets/robinhood/brand/_next/static/images/3x__327bf4cc768a323497d5aaa7416319c2.mp4" type="video/mp4"></source>
-                    <img draggable="false" role="presentation" src="https://cdn.robinhood.com/assets/robinhood/brand/_next/static/images/1x__36a396f664677ed80a2459d1dca75f00.png" srcset="https://cdn.robinhood.com/assets/robinhood/brand/_next/static/images/1x__36a396f664677ed80a2459d1dca75f00.png, https://cdn.robinhood.com/assets/robinhood/brand/_next/static/images/2x__c7dcadbbb72fc298e85e94844f68342c.png 2x, https://cdn.robinhood.com/assets/robinhood/brand/_next/static/images/3x__7c5da6ba049983f3558423906f16f0af.png 3x"></img></video>
-            <img src={"https://cdn.robinhood.com/assets/robinhood/brand/_next/static/images/2x__ff9c36e27d7018cf707b95d8675793a3.png"}></img> */}
-
             <div className="footer-contact-info">
                 <div>GitHub for Project</div>
             </div>
