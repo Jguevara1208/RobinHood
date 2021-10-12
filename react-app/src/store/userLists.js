@@ -146,6 +146,10 @@ const userListsReducer = (state=initialState, action) => {
             return newState;
         case DELETE_LIST_SYMBOL:
             newState = {...state}
+            console.log(
+              newState[action.data.listId].symbols[action.data.symbol]
+            );
+            console.log("DATA", action.data)
             delete newState[action.data.listId].symbols[action.data.symbol]
             return newState
         default:

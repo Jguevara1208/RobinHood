@@ -63,7 +63,7 @@ function List({list, listName=false , isStocks=false}){
             {showList && (
                 <>
                     {symbols && symbols.map(symbol => (
-                        <ListSymbolData symbol={symbol}/>
+                        <ListSymbolData symbol={symbol} isStocks={isStocks} listId={list?.symbols[symbol]?.listId} id={list?.symbols[symbol]?.id}/>
                     ))}
                 </>
             )}
