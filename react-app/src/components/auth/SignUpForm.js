@@ -13,7 +13,6 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
-  console.log("User: ", user)
   const dispatch = useDispatch();
 
   const onSignUp = async (e) => {
@@ -133,16 +132,6 @@ const SignUpForm = () => {
               Brokerage clearing services offered through Robinhood Securities, LLC.
               Both are subsidiaries of Robinhood Markets, Inc.
             </p>
-            <a href="https://brokercheck.finra.org/">Check the background of Robinhood Financial LLC and Robinhood Securities, LLC on FINRA’s BrokerCheck.</a>
-            <div>
-              <a href="https://cdn.robinhood.com/assets/robinhood/legal/Robinhood%20Terms%20and%20Conditions.pdf">Robinhood Terms & Conditions</a>
-              <span> | </span>
-              <a href="https://robinhood.com/us/en/about/legal/">Disclosure Library</a>
-              <span> | </span>
-              <a href="https://robinhood.com/contact">Contact Us</a>
-              <span> | </span>
-              <a href="https://robinhood.com/us/en/support/">FAQ</a>
-            </div>
           </div>
       </div>
       <div className="sign-up-sidebar">

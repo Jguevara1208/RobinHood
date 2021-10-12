@@ -10,6 +10,7 @@ import Index from './components/SplashPage/SplashPage'
 import Portfolio from './components/PortfolioPage/Portfolio';
 import { fetchAllStocks } from './store/allStocks';
 import SingleAsset from './components/SingleAssetPage/SingleAsset';
+import { setTheme } from './store/theme';
 
 
 function App() {
