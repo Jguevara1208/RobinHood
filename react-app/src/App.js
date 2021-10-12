@@ -21,11 +21,7 @@ function App() {
   useEffect(() => {
     (async() => {
       await dispatch(authenticate())
-<<<<<<< HEAD
-      dispatch(setTheme())
-=======
       await dispatch(fetchAllStocks())
->>>>>>> main
       setLoaded(true);
     })();
   }, [dispatch]);
