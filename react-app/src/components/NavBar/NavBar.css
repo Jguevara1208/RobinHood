@@ -17,3 +17,7 @@ a{
     display: flex;
     gap: 15px;
 }
+
+.navComp{
+    display: flex;
+}
