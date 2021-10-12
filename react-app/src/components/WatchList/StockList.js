@@ -15,7 +15,7 @@ function StockList() {
     return (
         <>
             {hack && hack.map(key => (
-                <List list={{'symbols': symbols}} listName={'Stocks'} />
+                <List list={{'symbols': symbols}} listName={'Stocks'} isStocks={true} />
             ))}
         </>
     );
