@@ -3,8 +3,6 @@ import {singleAssetGraphData}  from "../utils"
 /* -----------------------------Actions----------------------------------- */
 /* ----------------------------------------------------------------------- */
 const SET_WATCHLIST_STOCKS = "watchlistStocks/SET_WATCHLIST_STOCKS";
-const ADD_WATCHLIST_STOCK = 'watchlistStocks/ADD_WATCHLIST_STOCK';
-const DELETE_WATCHLIST_STOCK = 'watchlistStocks/DELETE_WATCHLIST_STOCK';
 
 /* ----------------------------------------------------------------------- */
 /* ----------------------------Action Creators---------------------------- */
