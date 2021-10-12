@@ -31,7 +31,7 @@ export default function Index() {
                         and get your first stock for free! Certain limits
                         apply
                     </span>
-                    <Link to={'/sign-up'}> Sign Up </Link>
+                    <Link className="sign-up-button" to={'/sign-up'}> Sign Up </Link>
                 </div>
             <img src={"https://pamplinmedia.com/images/artimg/00003641830392-0652.jpg"} alt={"We are all investors"}></img>
             </div>
@@ -98,17 +98,17 @@ export default function Index() {
 
             <div className="container-4">
                 <div className="tools-buttons-container">
-                    <button onClick={increaseVisibleToolValue}>up</button>
+                    <button onClick={decreaseVisibleToolValue}>up</button>
                     <button onClick={e => setVisibleTool(0)}>Learn</button>
                     <button onClick={e => setVisibleTool(1)}>Manage</button>
                     <button onClick={e => setVisibleTool(2)}>Customize</button>
-                    <button onClick={decreaseVisibleToolValue}>Down</button>
+                    <button onClick={increaseVisibleToolValue}>Down</button>
                 </div>
-                <div>
+                <div className="tools-container">
                     {
                         visibleTool === 0 && (
                             <div className="info-container">
-                            <img></img>
+                            <img src="https://robinhood.com/us/en/_next/static/images/1x__1dc51da06e4c47882101e8aabc4dfa1a.png"></img>
                             <div>
                                 <h1>Learn As You Go</h1>
                                 <p>Our goal is to make investing in financial markets more affordable, more intuitive, and more fun, no matter how much experience you have (or don’t have).</p>
@@ -120,7 +120,7 @@ export default function Index() {
                     {
                         visibleTool === 1 && (
                             <div className="info-container">
-                                <img></img>
+                                <img src="https://robinhood.com/us/en/_next/static/images/1x__cc218f69a51669b005f94fb4bb01b7dc.png"></img>
                                 <div>
                                     <h1>Manage Your Portfolio</h1>
                                     <p>Keep your portfolio in your pocket. Everything you need to manage your assets is available in a single app.</p>
@@ -132,7 +132,7 @@ export default function Index() {
                     {
                         visibleTool === 2 && (
                             <div className="info-container">
-                                <img></img>
+                                <img src="https://robinhood.com/us/en/_next/static/images/1x__dcb58143461f83b86fb626f71b5ae6df.png"></img>
                                 <div>
                                     <h1>Keep Tabs on Your Money</h1>
                                     <p>Set up customized news and notifications to stay on top of your assets as casually or as relentlessly as you like. Controlling the flow of info is up to you.</p>
@@ -144,10 +144,14 @@ export default function Index() {
             </div>
 
 
-                <video height="563px" width="650px" class="video-1" autoplay="" controlslist="nodownload nofullscreen noremoteplayback" loop="" preload="auto">
+                {/* <video height="563px" width="650px" class="video-1" autoplay="" controlslist="nodownload nofullscreen noremoteplayback" loop="" preload="auto">
                     <source class="img-1" src="https://cdn.robinhood.com/assets/robinhood/brand/_next/static/images/3x__327bf4cc768a323497d5aaa7416319c2.mp4" type="video/mp4"></source>
                     <img draggable="false" role="presentation" src="https://cdn.robinhood.com/assets/robinhood/brand/_next/static/images/1x__36a396f664677ed80a2459d1dca75f00.png" srcset="https://cdn.robinhood.com/assets/robinhood/brand/_next/static/images/1x__36a396f664677ed80a2459d1dca75f00.png, https://cdn.robinhood.com/assets/robinhood/brand/_next/static/images/2x__c7dcadbbb72fc298e85e94844f68342c.png 2x, https://cdn.robinhood.com/assets/robinhood/brand/_next/static/images/3x__7c5da6ba049983f3558423906f16f0af.png 3x"></img></video>
-            <img src={"https://cdn.robinhood.com/assets/robinhood/brand/_next/static/images/2x__ff9c36e27d7018cf707b95d8675793a3.png"}></img>
+            <img src={"https://cdn.robinhood.com/assets/robinhood/brand/_next/static/images/2x__ff9c36e27d7018cf707b95d8675793a3.png"}></img> */}
+
+            <div className="footer-contact-info">
+                <div>GitHub for Project</div>
+            </div>
 
         </div>
     )
