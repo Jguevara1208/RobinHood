@@ -69,7 +69,7 @@ body {
   text-align: center;
   justify-content: flex-start;
   font-family: "Roboto", sans-serif;
-  color: black;
+  color: var(--color-text-primary);
   width: 100%;
   padding: 9px 0;
 }
@@ -78,7 +78,7 @@ body {
 .log-in-form-password > input {
   width: 80%;
   height: 36px;
-  border: 1px solid #ccc;
+  border: var(--clr-border);
   border-radius: 5px;
   padding-left: 12px;
   padding-right: 12px;
@@ -95,7 +95,7 @@ body {
   align-self: flex-start;
   justify-self: flex-end;
   border-radius: 5px;
-  border: 1px solid #ccc;
+  border: var(--clr-border);
   padding: 5px;
   background-color: var(--clr-primary);
   color: var(--clr-font);
