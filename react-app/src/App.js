@@ -9,6 +9,7 @@ import { authenticate } from './store/session';
 import Index from './components/SplashPage/SplashPage'
 import Portfolio from './components/PortfolioPage/Portfolio';
 import { fetchAllStocks } from './store/allStocks';
+import SingleAsset from './components/SingleAssetPage/SingleAsset';
 
 
 function App() {
@@ -38,7 +39,7 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        { user.id 
+        { user.id
         ?
           <ProtectedRoute path='/' exact={true} >
             <Portfolio />
@@ -48,6 +49,9 @@ function App() {
             <Index/>
           </Route>
         }
+        <ProtectedRoute path='/stocks/:symbol'>
+          <SingleAsset/>
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );
