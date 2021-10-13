@@ -162,3 +162,50 @@ body{
     justify-content: center;
     padding: 1.5rem;
 }
+
+/* test */
+
+.img-1 {
+  width: 650px;
+  margin-bottom: 33px;
+  position: absolute;
+}
+
+.video-1 {
+  border: 1px solid transparent;
+  padding-top: 25px;
+}
+
+.video-img {
+  position: absolute;
+  width: 650px;
+  top: 26px;
+}
+
+.home-video-1 {
+  margin-left: 9px;
+  margin-right: 9px;
+  width: calc(58.333% - 18px);
+  display: block;
+  visibility: visible;
+}
+
+.home-video-2 {
+  display: flex;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  height: 100%;
+  align-content: center;
+  justify-content: center;
+}
+
+.home-video-3 {
+  display: flex;
+  min-height: 500px;
+  min-width: 100%;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  position: relative;
+
+}
