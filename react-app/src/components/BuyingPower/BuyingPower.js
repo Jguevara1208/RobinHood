@@ -19,10 +19,11 @@ function formatThousands(n, dp) {
   );
 }
 
-function BuyingPower({ user }) {
+function BuyingPower({ user, isPos }) {
     const [openBuyingPower, setOpenBuyingPower] = useState(false);
     const [depositAmount, setDepositAmount] = useState(null)
     const [error, setError] = useState(null)
+    const [summaryOpen, setSummaryOpen] = useState(false)
     const dispatch = useDispatch()
 
     function depositFunds(){
@@ -37,36 +38,41 @@ function BuyingPower({ user }) {
         }
     }
 
+
     
   return (
-    <div className={`buying-power-container`} >
-      <details className='buying-power-wrapper' onClick={() => setOpenBuyingPower(!openBuyingPower)}>
-        <summary>
+    <div className={`${summaryOpen ? "sumOpen" : ""} buying-power-container`}>
+      <details
+        className="buying-power-wrapper"
+        onClick={() => setOpenBuyingPower(!openBuyingPower)}
+      >
+        <summary onClick={() => setSummaryOpen(!summaryOpen)}>
           <p>Buying power</p>
-          <p>${formatThousands(user.buyingPower)}</p>
+          {summaryOpen ? '' : <p>${formatThousands(user.buyingPower)}</p>}
         </summary>
       </details>
       {openBuyingPower && (
         <div>
-          <div>
+          <div className="bp-info">
             <p>Brokerage Cash</p>
             <p>∞</p>
           </div>
-          <div>
+          <div className="bp-info">
             <p>Buying Power</p>
             <p>${formatThousands(user.buyingPower)}</p>
           </div>
-          <div>
+          <div className="bp-input">
             <p>Amount</p>
-              {error && <p>{error}</p>}
+            {error && <p>{error}</p>}
             <input
-              type="text"
+              className={`${isPos}-bp-input1`}
+              type="number"
               placeholder="$0.00"
               onChange={(e) => setDepositAmount(e.target.value)}
               value={depositAmount}
             />
           </div>
-          <button onClick={depositFunds}>Deposit Funds</button>
+          <button className={`${isPos}-bp-button`} onClick={depositFunds}>Deposit Funds</button>
         </div>
       )}
     </div>
