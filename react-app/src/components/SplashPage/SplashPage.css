@@ -153,6 +153,19 @@ body {
   color: #2eda12;
 }
 
+.tool-img{
+    width: 250px;
+    height: 500px;
+    transition: all .5s ease-in-out;
+}
+
+.tool-img:target{
+    width: 0px;
+    height: 0px;
+}
+
+
+
 .footer-contact-info {
   display: flex;
   align-items: center;

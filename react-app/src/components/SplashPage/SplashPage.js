@@ -2,25 +2,41 @@ import React from 'react'
 import './SplashPage.css'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux';
+import {Carousel} from 'react-responsive-carousel'
+
 
 export default function Index() {
     const theme = useSelector(state => state.theme);
-
+    
     const [visibleTool, setVisibleTool] = React.useState(0)
-
-
+    
+    
     function increaseVisibleToolValue () {
+        console.log("Calling increaseVisibleValue")
         if (visibleTool < 2 ){
-            console.log(visibleTool)
-            setVisibleTool((visibleTool) => visibleTool + 1)
+            setVisibleTool(visibleTool + 1)
+        }else{
+            setVisibleTool(0)
         }
     }
 
     function decreaseVisibleToolValue () {
         if (visibleTool > 0) {
-            setVisibleTool((visibleTool) => visibleTool - 1)
+            setVisibleTool(visibleTool - 1)
+        }else{
+            setVisibleTool(2)
         }
     }
+    
+    React.useEffect(() => {
+        const sliderInterval = setInterval(
+            () => { setVisibleTool((visibleTool + 1)%3) },
+            5000);
+        return () => {
+            clearInterval(sliderInterval);
+        }
+    })
+
 
     return (
         <div>
@@ -58,29 +74,30 @@ export default function Index() {
                         <h1>Introducing IPO Access</h1>
                         <p>Get in at the IPO price. Now you can become one of the first public investors in upcoming IPOs.</p>
                     </div>
-                    <div className="ipo-info-container-main">
-                        <div className="ipo-info-container">
-                            <img className="ipo-info-img" src="https://robinhood.com/us/en/_next/static/images/comeall__c29b103566f44e51d624989e65ecf3be.svg"></img>
-                            <div>
-                                <h3>It's your turn</h3>
-                                <p>No minimum account balances or special status requirements</p>
+                    
+                        <div className="ipo-info-container-main">
+                            <div className="ipo-info-container">
+                                <img className="ipo-info-img" src="https://robinhood.com/us/en/_next/static/images/comeall__c29b103566f44e51d624989e65ecf3be.svg"></img>
+                                <div>
+                                    <h3>It's your turn</h3>
+                                    <p>No minimum account balances or special status requirements</p>
+                                </div>
+                            </div>
+                            <div className="ipo-info-container">
+                                <img className="ipo-info-img" src="https://robinhood.com/us/en/_next/static/images/one-first__d86b9ee63a8475364159f2d21ea5f01f.svg"></img>
+                                <div>
+                                    <h3>Be one of the first</h3>
+                                    <p>Request shares in new companies before their stock starts trading on public exchanges</p>
+                                </div>
+                            </div>
+                            <div className="ipo-info-container">
+                                <img className="ipo-info-img" src="https://robinhood.com/us/en/_next/static/images/fair-shot__fb09db580d0ada2e8626a6e46094bb27.svg"></img>
+                                <div>
+                                    <h3>Get a fair shot</h3>
+                                    <p>While IPO shares are limited, IPO Access gives you the same opportunity to invest, regardless of order size or account value</p>
+                                </div>
                             </div>
                         </div>
-                        <div className="ipo-info-container">
-                            <img className="ipo-info-img" src="https://robinhood.com/us/en/_next/static/images/one-first__d86b9ee63a8475364159f2d21ea5f01f.svg"></img>
-                            <div>
-                                <h3>Be one of the first</h3>
-                                <p>Request shares in new companies before their stock starts trading on public exchanges</p>
-                            </div>
-                        </div>
-                        <div className="ipo-info-container">
-                            <img className="ipo-info-img" src="https://robinhood.com/us/en/_next/static/images/fair-shot__fb09db580d0ada2e8626a6e46094bb27.svg"></img>
-                            <div>
-                                <h3>Get a fair shot</h3>
-                                <p>While IPO shares are limited, IPO Access gives you the same opportunity to invest, regardless of order size or account value</p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div>
 
@@ -114,14 +131,14 @@ export default function Index() {
                     <button className="tool-button" onClick={decreaseVisibleToolValue}>⬆️</button>
                     <button className={visibleTool === 0 ? `tool-button-active` : `tool-button`} onClick={e => setVisibleTool(0)}>Learn</button>
                     <button className={visibleTool === 1 ? `tool-button-active` : `tool-button`} onClick={e => setVisibleTool(1)}>Manage</button>
-                    <button className={visibleTool === 2? `tool-button-active` : `tool-button`} onClick={e => setVisibleTool(2)}>Customize</button>
+                    <button className={visibleTool === 2 ? `tool-button-active` : `tool-button`} onClick={e => setVisibleTool(2)}>Customize</button>
                     <button className="tool-button" onClick={increaseVisibleToolValue}>⬇️</button>
                 </div>
                 <div className="tools-container">
                     {
                         visibleTool === 0 && (
                             <div className="info-container">
-                            <img src="https://robinhood.com/us/en/_next/static/images/1x__1dc51da06e4c47882101e8aabc4dfa1a.png"></img>
+                            <img className="tool-img" src={'/images/learn.png'}></img>
                             <div>
                                 <h1>Learn As You Go</h1>
                                 <p>Our goal is to make investing in financial markets more affordable, more intuitive, and more fun, no matter how much experience you have (or don’t have).</p>
@@ -133,7 +150,7 @@ export default function Index() {
                     {
                         visibleTool === 1 && (
                             <div className="info-container">
-                                <img src="https://robinhood.com/us/en/_next/static/images/1x__cc218f69a51669b005f94fb4bb01b7dc.png"></img>
+                                <img className="tool-img" src={'/images/manage.png'}></img>
                                 <div>
                                     <h1>Manage Your Portfolio</h1>
                                     <p>Keep your portfolio in your pocket. Everything you need to manage your assets is available in a single app.</p>
@@ -145,7 +162,7 @@ export default function Index() {
                     {
                         visibleTool === 2 && (
                             <div className="info-container">
-                                <img src="https://robinhood.com/us/en/_next/static/images/1x__dcb58143461f83b86fb626f71b5ae6df.png"></img>
+                                <img className="tool-img" src="/images/customize.png"></img>
                                 <div>
                                     <h1>Keep Tabs on Your Money</h1>
                                     <p>Set up customized news and notifications to stay on top of your assets as casually or as relentlessly as you like. Controlling the flow of info is up to you.</p>

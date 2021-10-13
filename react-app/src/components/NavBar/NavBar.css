@@ -12,9 +12,10 @@ nav {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 999;
   margin: auto;
   width: calc(100% - 20px);
-  background: white;\
+  background: white;
 }
 
 .sign-up-button {
