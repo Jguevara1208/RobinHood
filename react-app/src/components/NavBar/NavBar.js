@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { NavLink, useLocation } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import SearchBar from '../SearchBar/SearchBar';
@@ -33,7 +33,10 @@ const NavBar = () => {
               </div>
             )
               :
-              <LogoutButton />
+              <>
+                <SearchBar/>
+                <LogoutButton />
+              </>
           }
       </nav>
     );

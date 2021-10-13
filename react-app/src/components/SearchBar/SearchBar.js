@@ -20,9 +20,6 @@ function SearchBar() {
     }, [searchText])
 
     const filterStocksFunc = (e) => {
-        // console.log(e.target.value)
-        // setSearchText(e.target.value)
-        // console.log(searchText)
         
         
         const newFilteredStocks = allStocks.filter(stock => {
@@ -38,14 +35,6 @@ function SearchBar() {
         
         
     }
-    // console.log("OUTSIDE",searchText)
-    // const bothFuncs = (e) =>{
-    //     console.log("BEFORE",searchText)
-    //     setSearchText(e.target.value)
-    //     console.log("AFTER",searchText)
-    //     filterStocksFunc()
-    // }
-
 
     const clearSearch = (e)=>{
         setFilteredStocks([])
