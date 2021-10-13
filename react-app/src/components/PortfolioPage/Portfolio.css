@@ -111,6 +111,7 @@
     display: flex;
     width: 60%;
     justify-content: space-between;
+    align-items: center;
     border-bottom: var(--clr-border);
 }
 
@@ -177,6 +178,12 @@
     background-color: var(--clr-button-hover-neg)
 }
 
-.watchlist-container{
-    background-color: var(--clr-bg-alt);
+.infinity {
+    font-size: 30px;
+    color: var(--clr-font);
+}
+
+summary > p {
+    font-size: .8em;
+    font-weight: 500;
 }

@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import { useDispatch } from 'react-redux';
 import { editBuyingPower } from '../../store/session';
+import { CgInfinity } from 'react-icons/cg'
 
 
 
@@ -55,11 +56,11 @@ function BuyingPower({ user, isPos }) {
         <div>
           <div className="bp-info">
             <p>Brokerage Cash</p>
-            <p>∞</p>
+            <CgInfinity className='infinity'/>
           </div>
           <div className="bp-info">
             <p>Buying Power</p>
-            <p>${formatThousands(user.buyingPower)}</p>
+            <p className='bold-p' >${formatThousands(user.buyingPower)}</p>
           </div>
           <div className="bp-input">
             <p>Amount</p>

@@ -72,7 +72,8 @@ h2,
 h3,
 p,
 summary,
-button {
+button,
+span {
   color: var(--clr-font);
 }
 
@@ -81,6 +82,11 @@ input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
 input[type="number"] {
   -moz-appearance: textfield;
+}
+
+.bold-p {
+  font-weight: 500;
 }
