@@ -12,10 +12,7 @@ function MainGraph({graphData, isWatchList=false, isPos}){
   const theme = useSelector(state => state.theme)
   const [hoverPrice, setHoverPrice] = useState(graphData[graphData.length -1].price);
   const [percentDiff, setPercentDiff] = useState(graphData[graphData.length-1]["%"]);
-  // console.log(graphData[graphData.length -1])
 
-  const refPoint = Math.sign(graphData[graphData.length - 1]["%"]);
-  // const isPosPrimary = isPos ? "#5dd8ff"
   function lineColor(){
     if(theme === "light"){
       if(isPos === "pos"){
@@ -55,7 +52,10 @@ function MainGraph({graphData, isWatchList=false, isPos}){
     <div className="graph-wrapper">
       {isWatchList === false && (
         <div>
-          <Odometer value={hoverPrice} format="(,ddd).dd" />
+          <div className='odometer-container'>
+            <span className='dollar-sign'>$</span>
+            <Odometer value={hoverPrice} format="(,ddd).dd" />
+          </div>
           <p className={`${isPos} p-diff`}>{percentDiff}%</p>
         </div>
       )}

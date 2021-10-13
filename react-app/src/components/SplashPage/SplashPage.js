@@ -31,7 +31,7 @@ export default function Index() {
     React.useEffect(() => {
         const sliderInterval = setInterval(
             () => { setVisibleTool((visibleTool + 1)%3) },
-            5000);
+            50000);
         return () => {
             clearInterval(sliderInterval);
         }
@@ -135,7 +135,7 @@ export default function Index() {
                         visibleTool === 0 && (
                             <div className="info-container">
                             <img className="tool-img" src={'/images/learn.png'}></img>
-                                <div>
+                                <div className="subcontainer-4">
                                     <h1 className="par-tools">Learn As You Go</h1>
                                     <p className="par-tools">Our goal is to make investing in financial markets more affordable, more intuitive, and more fun, no matter how much experience you have (or don’t have).</p>
                                 </div>
@@ -147,7 +147,7 @@ export default function Index() {
                         visibleTool === 1 && (
                             <div className="info-container">
                                 <img className="tool-img" src={'/images/manage.png'}></img>
-                                <div>
+                                <div className="subcontainer-4">
                                     <h1 className="par-tools">Manage Your Portfolio</h1>
                                     <p className="par-tools">Keep your portfolio in your pocket. Everything you need to manage your assets is available in a single app.</p>
                                 </div>
@@ -159,7 +159,7 @@ export default function Index() {
                         visibleTool === 2 && (
                             <div className="info-container">
                                 <img className="tool-img" src="/images/customize.png"></img>
-                                <div>
+                                <div className="subcontainer-4">
                                     <h1 className="par-tools">Keep Tabs on Your Money</h1>
                                     <p className="par-tools">Set up customized news and notifications to stay on top of your assets as casually or as relentlessly as you like. Controlling the flow of info is up to you.</p>
                                 </div>

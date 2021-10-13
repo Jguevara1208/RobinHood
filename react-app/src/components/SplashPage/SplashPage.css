@@ -13,6 +13,7 @@
 .investing-for-everyone-desc{
   min-width: 350px;
   width: 25%;
+  font-size: 24px;
 }
 
 .subcontainer-1 {
@@ -24,6 +25,10 @@
   margin: 0 auto;
 }
 
+.subcontainer-1 > h1{
+  font-weight: 450;
+  font-size: 54px;
+}
 
 .subcontainer-2 {
   flex-direction: column;
@@ -65,8 +70,9 @@
 
 .tools-container {
   display: flex;
+  justify-content: center;
   padding: 60px;
-  gap: 2.5rem;
+  gap: 15.5rem;
   background-color: black;
   color: white;
 }
@@ -96,7 +102,12 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 20px;
+  align-items: flex-end;
+  gap: .1rem;
+}
+
+.tool-button-active, .tool-button {
+  font-size: 20px;
 }
 
 .info-container {
@@ -104,7 +115,15 @@
   align-items: center;
   justify-content: center;
   color: white;
-  gap: 15px;
+  gap: 30rem;
+}
+
+.subcontainer-4 > h1 {
+  font-size: 54px;
+}
+
+.subcontainer-4 > p {
+  font-size: 24px;
 }
 
 .subcontainer-1 > .sign-up-button {
@@ -222,6 +241,9 @@
 
 }
 
+.subcontainer-4{
+  width: 500px;
+}
 
 .par-tools{
   color: white;
