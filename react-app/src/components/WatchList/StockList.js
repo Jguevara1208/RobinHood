@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import List from './List'
 
-function StockList() {
+function StockList({isPos}) {
 
     const assets = useSelector(state => state.userAssets)
     const listKeys = Object.keys(assets)
@@ -15,7 +15,7 @@ function StockList() {
     return (
         <>
             {hack && hack.map(key => (
-                <List list={{'symbols': symbols}} listName={'Stocks'} isStocks={true} />
+                <List list={{'symbols': symbols}} listName={'Stocks'} isStocks={true} isPos={isPos}/>
             ))}
         </>
     );

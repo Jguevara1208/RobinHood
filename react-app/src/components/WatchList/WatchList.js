@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setUserLists } from '../../store/userLists';
 import List from './List'
 
-function WatchList() {
+function WatchList({isPos}) {
     const dispatch = useDispatch()
 
     const userId = useSelector(state => state.session.id)
@@ -20,7 +20,7 @@ function WatchList() {
     return (
         <>
             {listKeys && listKeys.map(key => (
-                <List list={lists[key]}/>
+                <List list={lists[key]} isPos={isPos}/>
             ))}
         </>
     );

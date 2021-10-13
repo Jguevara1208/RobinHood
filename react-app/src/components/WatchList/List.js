@@ -3,8 +3,10 @@ import { useEffect, useState } from "react";
 import { setWatchListStocks } from "../../store/watchlistStocks";
 import ListSymbolData from "./ListSymbolData";
 import { deleteUserList, updateUserList } from "../../store/userLists";
+import {IoIosArrowDown, IoIosArrowUp} from 'react-icons/io'
+import {BiDotsHorizontal} from 'react-icons/bi'
 
-function List({list, listName=false , isStocks=false}){
+function List({list, listName=false , isStocks=false, isPos}){
     const dispatch = useDispatch();
 
     const [showList, setShowList] = useState(true)
@@ -39,35 +41,47 @@ function List({list, listName=false , isStocks=false}){
     }
 
     return (
-        <>
-            {showEdit ? 
-            <div>
-                <input type="text" value={newListTitle} onChange={(e)=> setNewListTitle(e.target.value)}/>
-                <button onClick={handleTitleSave}>Save</button>
+      <>
+        {showEdit ? (
+          <div>
+            <input
+              type="text"
+              value={newListTitle}
+              onChange={(e) => setNewListTitle(e.target.value)}
+            />
+            <button onClick={handleTitleSave}>Save</button>
+          </div>
+        ) : (
+          <div className="list-title-edit">
+            <h1>{listName ? listName : list.listName}</h1>
+            <div className="list-settings">
+              {!isStocks && <p onClick={() => setShowMenu(!showMenu)}><BiDotsHorizontal className={`${isPos}-menu`}/></p>}
+              <p onClick={() => setShowList(!showList)}>
+                {showList ? <IoIosArrowUp id="up" className={`${isPos}-arrow`} /> : <IoIosArrowDown id="down" className={`${isPos}-arrow`}/>}
+              </p>
             </div>
-            : 
-            <div>
-                <h1>{listName ? listName : list.listName}</h1>
-                {!isStocks && 
-                <p onClick={()=>setShowMenu(!showMenu)}>Menu</p>
-                }
-            </div>
-            }
-            {showMenu && (
-                <div>
-                    <p onClick={editList}>Edit List</p>
-                    <p onClick={handleListDelete}>Delete List</p>
-                </div>
-            )}
-            <p onClick={() => setShowList(!showList)} >{showList ? '^' : 'v'}</p>
-            {showList && (
-                <>
-                    {symbols && symbols.map(symbol => (
-                        <ListSymbolData symbol={symbol} isStocks={isStocks} listId={list?.symbols[symbol]?.listId} id={list?.symbols[symbol]?.id}/>
-                    ))}
-                </>
-            )}
-        </>
+          </div>
+        )}
+        {showMenu && (
+          <div>
+            <p onClick={editList}>Edit List</p>
+            <p onClick={handleListDelete}>Delete List</p>
+          </div>
+        )}
+        {showList && (
+          <>
+            {symbols &&
+              symbols.map((symbol) => (
+                <ListSymbolData
+                  symbol={symbol}
+                  isStocks={isStocks}
+                  listId={list?.symbols[symbol]?.listId}
+                  id={list?.symbols[symbol]?.id}
+                />
+              ))}
+          </>
+        )}
+      </>
     );
 };
 
