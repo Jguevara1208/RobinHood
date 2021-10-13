@@ -50,8 +50,8 @@ function Portfolio(){
         <div className='main-wrapper'>
             <div className={`main-content`}>
                 {graphData && <MainGraph graphData={graphData} isPos={isPos}/>}
-                <ResolutionButtons resolution={resolution} setResolution={setResolution}/>
-                <BuyingPower user={user}/>
+                <ResolutionButtons resolution={resolution} setResolution={setResolution} isPos={isPos}/>
+                <BuyingPower user={user} isPos={isPos}/>
                 <StockStories stories={stories} />
             </div>
             <div className={`watchlist-container`}>
