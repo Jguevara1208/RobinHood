@@ -1,6 +1,6 @@
 import '../PortfolioPage/Portfolio.css'
 
-function ResolutionButtons({resolution, setResolution}){
+function ResolutionButtons({resolution, setResolution, isPos}){
 
     const resolutions = ['D', 'W', 'M', 'Y']
     const toggleResolution = async (e) => {
@@ -12,7 +12,7 @@ function ResolutionButtons({resolution, setResolution}){
         <div className='resolution-container'>
             {resolutions.map((res) => (
                 <button
-                    className={`${res === resolution ? "active-res" : ""} res-button`}
+                    className={`${res === resolution ? `${isPos}-active-res` : ""} res-button`}
                     value={res}
                     onClick={toggleResolution}
                 >
