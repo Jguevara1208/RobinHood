@@ -31,7 +31,7 @@ export default function Index() {
     React.useEffect(() => {
         const sliderInterval = setInterval(
             () => { setVisibleTool((visibleTool + 1)%3) },
-            50000);
+            3500);
         return () => {
             clearInterval(sliderInterval);
         }
