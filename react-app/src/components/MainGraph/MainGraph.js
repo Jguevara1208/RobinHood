@@ -1,5 +1,6 @@
 import { LineChart, XAxis, YAxis, Tooltip, Line, ReferenceLine, ResponsiveContainer} from 'recharts';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import {useSelector} from 'react-redux'
 import Odometer from 'react-odometerjs';
 
 import './MainGraph.css';
@@ -8,11 +9,32 @@ import '../PortfolioPage/Portfolio.css'
 
 
 function MainGraph({graphData, isWatchList=false, isPos}){
+  const theme = useSelector(state => state.theme)
   const [hoverPrice, setHoverPrice] = useState(graphData[graphData.length -1].price);
   const [percentDiff, setPercentDiff] = useState(graphData[graphData.length-1]["%"]);
   // console.log(graphData[graphData.length -1])
 
   const refPoint = Math.sign(graphData[graphData.length - 1]["%"]);
+  // const isPosPrimary = isPos ? "#5dd8ff"
+  function lineColor(){
+    if(theme === "light"){
+      if(isPos === "pos"){
+        return "#2eda12";
+      }else{
+        return "#FE5001";
+      }
+    }else{
+      if (isPos === "pos") {
+        return "#5dd8ff";
+      } else {
+        return "#FE5001";
+      }
+    }
+  }
+
+  useEffect(()=> {
+    setPercentDiff(graphData[graphData.length - 1]["%"]);
+  }, [graphData])
 
   function handleMouseHover(e){
     if (!isWatchList) {
@@ -58,7 +80,7 @@ function MainGraph({graphData, isWatchList=false, isPos}){
             />
             <Line
               dataKey="price"
-              stroke={refPoint === 1 ? "#00C805" : "#FE5001"}
+              stroke={lineColor()}
               dot={false}
               strokeWidth={2}
             />
