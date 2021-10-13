@@ -39,8 +39,8 @@ function BuyingPower({ user }) {
 
     
   return (
-    <div>
-      <details onClick={() => setOpenBuyingPower(!openBuyingPower)}>
+    <div className={`buying-power-container`} >
+      <details className='buying-power-wrapper' onClick={() => setOpenBuyingPower(!openBuyingPower)}>
         <summary>
           <p>Buying power</p>
           <p>${formatThousands(user.buyingPower)}</p>

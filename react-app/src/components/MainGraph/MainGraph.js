@@ -1,12 +1,13 @@
-import { LineChart, XAxis, YAxis, Tooltip, Line, ReferenceLine } from 'recharts';
+import { LineChart, XAxis, YAxis, Tooltip, Line, ReferenceLine, ResponsiveContainer} from 'recharts';
 import { useState } from 'react';
 import Odometer from 'react-odometerjs';
 
 import './MainGraph.css';
+import '../PortfolioPage/Portfolio.css'
 
 
 
-function MainGraph({graphData, isWatchList=false}){
+function MainGraph({graphData, isWatchList=false, isPos}){
   const [hoverPrice, setHoverPrice] = useState(graphData[graphData.length -1].price);
   const [percentDiff, setPercentDiff] = useState(graphData[graphData.length-1]["%"]);
 
@@ -26,19 +27,17 @@ function MainGraph({graphData, isWatchList=false}){
   }
 
   return (
-    <div>
+    <div className='graph-wrapper'>
         {isWatchList === false && 
         <div>
             <Odometer value={hoverPrice} format="(,ddd).dd" />
-            <p>{percentDiff}%</p>
+            <p className={`${isPos} p-diff`}>{percentDiff}%</p>
         </div>
         }
       {graphData && (
-        <div>
+        <ResponsiveContainer width='100%' height={300} className='graph-container'>
           <LineChart
             data={graphData}
-            width={800}
-            height={600}
             onMouseMove={handleMouseHover}
             onMouseLeave={resetHoverPrice}
           >
@@ -74,7 +73,7 @@ function MainGraph({graphData, isWatchList=false}){
               stroke="lightgrey"
             />
           </LineChart>
-        </div>
+        </ResponsiveContainer>
       )}
     </div>
   );  
