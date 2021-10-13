@@ -1,4 +1,7 @@
-/* TODO Add site wide styles */
+*{
+    font-family: 'Barlow';
+}
+
 .light {
   --clr-bg: #ffffff;
   --clr-bg-alt: #f5f5f5;
@@ -18,4 +21,21 @@
   --clr-primary: #5dd8ff;
   --clr-secondary: #ff344a;
   --shadow: 0px 4px 4px rgba(255, 255, 255, 0.05);
+}
+
+button {
+    cursor: pointer;
+}
+
+details > summary {
+  list-style: none;
+}
+
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--clr-font)
 }
