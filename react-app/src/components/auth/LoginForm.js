@@ -45,29 +45,29 @@ const LoginForm = () => {
   }
 
   return (
-    <div class= "page-container">
-      <img class="log-in-logo" src="https://cdn.robinhood.com/assets/generated_assets/632fcb3e7ed928b2a960f3e003d10b44.jpg" alt="Robin Hood" />
+    <div className= "page-container">
+      <img className="log-in-logo" src="https://cdn.robinhood.com/assets/generated_assets/632fcb3e7ed928b2a960f3e003d10b44.jpg" alt="Robin Hood" />
       <div className="log-in-form-container">
         <form className="log-in-form" onSubmit={onLogin}>
           <div className="log-in-form-elements">
-            <h2>Welcome to Robinhood</h2>
-            <div className="log-in-form-username">
-              <label htmlFor='email'>Email</label>
+            <h3>Welcome to Robinhood</h3>
+            <div className='log-in-form-username'>
+              <label  htmlFor='email'>Email</label>
               <input
+                className={`${theme} log-in-form-username-input`}
                 name='email'
                 type='text'
-                placeholder='Email'
                 value={email}
                 onChange={updateEmail}
                 required
               />
             </div>
-            <div className="log-in-form-password">
+            <div className='log-in-form-password'>
               <label htmlFor='password'>Password</label>
               <input
+                className={`${theme} log-in-form-password-input`}
                 name='password'
                 type='password'
-                placeholder='Password'
                 value={password}
                 onChange={updatePassword}
                 required
@@ -75,7 +75,11 @@ const LoginForm = () => {
             </div>
 
             <div className="log-in-form-submit">
-              <button className={`${theme} log-in-form-button`}type='submit'>Sign In</button>
+              <button
+                className={`${theme} log-in-form-button`}
+                type='submit'
+                >Sign In
+              </button>
             </div>
             <div className="demo-user-button-container">
               <button className={`${theme} demo-user-button`} onClick={() => {

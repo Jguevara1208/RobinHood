@@ -13,6 +13,7 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const theme = useSelector(state => state.theme);
   const dispatch = useDispatch();
 
   const onSignUp = async (e) => {
@@ -50,11 +51,11 @@ const SignUpForm = () => {
   }
 
   return (
-    <div className="sign-up-page-container">
+    <div className="sign-up-page">
       <div className="sign-up-form-container">
           <h1>Make Your Money Move</h1>
-          <h2>Robinhood lets you invest in companies you love, commission-free.</h2>
-          <h3>Please enter your full legal name. Your legal name should match any form of government ID.</h3>
+          <p>Robinhood lets you invest in companies you love, commission-free.</p>
+          <h5>Please enter your full legal name. Your legal name should match any form of government ID.</h5>
           <form className="sign-up-form" onSubmit={onSignUp}>
             <div>
               {errors.map((error, ind) => (
@@ -111,8 +112,8 @@ const SignUpForm = () => {
                 ></input>
               </div>
             </div>
-            <div className="sign-up-form-submit">
-            <button type='submit'>Continue</button>
+            <div className={`${theme} sign-up-form-button-container`}>
+            <button className={`${theme} sign-up-form-button`} type='submit'>Continue</button>
             </div>
           </form>
           <div className="sign-up-disclosure">
@@ -135,13 +136,13 @@ const SignUpForm = () => {
           </div>
       </div>
       <div className="sign-up-sidebar">
-        <label>Commission-free trading</label>
+        <h3>Commission-free trading</h3>
         <p>Break free from commission-fees and make unlimited commission-free trades in stocks, funds,
           and options with Robinhood Financial. Other fees may apply. View our fee schedule to learn more.</p>
-        <label>Account Protection</label>
+        <h3>Account Protection</h3>
         <p>Robinhood Financial is a member of SIPC. Securities in your account protected up to $500,000.
           For details, please see www.sipc.org.</p>
-        <label>Stay on top of your portfolio</label>
+        <h3>Stay on top of your portfolio</h3>
         <p>Set up customized news and notifications to stay on top of your assets as casually or as
           relentlessly as you like. Controlling the flow of info is up to you.</p>
       </div>

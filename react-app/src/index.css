@@ -3,23 +3,24 @@
 }
 
 .light {
---clr-bg: #ffffff;
---clr-bg-alt: #F5F5F5;
---clr-font: black;
---clr-border: rgba(0, 0, 0, .5);
---clr-primary: #2EDA12;
---clr-secondary: #FF3434;
---shadow: 0px 4px 4px rgba(0, 0, 0, 0.04);
+  --clr-bg: #ffffff;
+  --clr-bg-alt: #f5f5f5;
+  --clr-font: black;
+  --clr-border: 1px solid rgba(0, 0, 0, 0.5);
+  --clr-primary: #2eda12;
+  --clr-primary-hover: rgba(0, 180, 5, 1);
+  --clr-secondary: #ff3434;
+  --shadow: 0px 4px 4px rgba(0, 0, 0, 0.04);
 }
 
 .dark {
---clr-bg: #252323;
---clr-bg-alt: #2A2A2A;
---clr-font: #ffffff;
---clr-border: rgba(255, 255, 255, .5);
---clr-primary: #5DD8FF;
---clr-secondary: #FF344A;
---shadow: 0px 4px 4px rgba(255, 255, 255, 0.05);
+  --clr-bg: #252323;
+  --clr-bg-alt: #2a2a2a;
+  --clr-font: #ffffff;
+  --clr-border: rgba(255, 255, 255, 0.5);
+  --clr-primary: #5dd8ff;
+  --clr-secondary: #ff344a;
+  --shadow: 0px 4px 4px rgba(255, 255, 255, 0.05);
 }
 
 button {

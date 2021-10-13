@@ -1,166 +1,163 @@
 @import "../../index.css";
 
-body{
-    font-family: Arial, Helvetica, sans-serif;
+body {
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.investing-for-everyone-container, .fractional-shares-container, .ipo-access-main-container{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 5px;
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 10px 30px;
-    border-bottom: solid black 1px;
+.investing-for-everyone-container,
+.fractional-shares-container,
+.ipo-access-main-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 10px 30px;
+  border-bottom: solid black 1px;
 }
 
-.investing-for-everyone-container{
-    background-color: rgb(195,245,60);
+.investing-for-everyone-container {
+  background-color: rgb(195, 245, 60);
 }
 
 .subcontainer-1 {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    padding: 10px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 10px 30px;
 }
 
 .subcontainer-2 {
-    flex-direction: column;
+  flex-direction: column;
 }
 
-.fractional-shares-container{
-    flex-direction: column;
-    align-items: flex-start;
-    background-color: #F0EBE6
+.fractional-shares-container {
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #f0ebe6;
 }
 
-.subcontainer-3{
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    padding: 30px;
-
+.subcontainer-3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 30px;
 }
 
-.fractional-shares-info{
-    width: 27%;
+.fractional-shares-info {
+  width: 27%;
 }
 
-.fractional-shares-side-img{
-    width: 256px;
-    height: 256px;
+.fractional-shares-side-img {
+  width: 256px;
+  height: 256px;
 }
 
-.ipo-info-container{
-    display: flex;
-    align-items: center;
-    gap: 70px;
+.ipo-info-container {
+  display: flex;
+  align-items: center;
+  gap: 70px;
 }
 
-.tools-container{
-    display: flex;
-    padding: 60px;
-    gap: 2.5rem;
-    background-color: black;
-    color: white;
+.tools-container {
+  display: flex;
+  padding: 60px;
+  gap: 2.5rem;
+  background-color: black;
+  color: white;
 }
 
-.ipo-access-main-container{
-    display: flex;
-    align-items: center;
-
+.ipo-access-main-container {
+  display: flex;
+  align-items: center;
 }
 
-.ipo-main-img{
-    width: 50%;
+.ipo-main-img {
+  width: 50%;
 }
 
 .ipo-content {
-    width: 50%;
+  width: 50%;
 }
 
-.ipo-info-img{
-    width: 50px;
-    height: auto;
+.ipo-info-img {
+  width: 50px;
+  height: auto;
 }
 
-.fractional-shares-info{
-
+.fractional-shares-info {
 }
 
-.tools-buttons-container{
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 20px;
+.tools-buttons-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
 }
 
-.info-container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
+.info-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
 }
 
-.subcontainer-1 > .sign-up-button{
-    width: 60px;
-    text-align: center;
-    background-color: black;
-    color: white;
+.subcontainer-1 > .sign-up-button {
+  width: 60px;
+  text-align: center;
+  background-color: black;
+  color: white;
 }
 
-.subcontainer-1 > .sign-up-button:hover{
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.835);
-    color: white;
+.subcontainer-1 > .sign-up-button:hover {
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.835);
+  color: white;
 }
 
-
-.fancy-phone-img{
-    max-width: 70%;
+.fancy-phone-img {
+  padding: 50px 0;
+  max-width: 70%;
 }
 
+.tool-button {
+  background-color: black;
 
-.tool-button{
-    background-color: black;
-    
-    border: none;
-    color: grey;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
+  border: none;
+  color: grey;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
 }
 
-.tool-button-active{
-    background-color: black;
-    
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
+.tool-button-active {
+  background-color: black;
+
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
 }
 
-.tool-button:hover{
-    color: #2EDA12;
+.tool-button:hover {
+  color: #2eda12;
 }
 
-
-.footer-contact-info{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1.5rem;
+.footer-contact-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
 }
 
 .img-1 {
