@@ -1,0 +1,60 @@
+.watchlist-container{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 100px;
+    background-color: var(--clr-bp-bg);
+    width: 25%;
+    box-shadow: var(--shadow);
+    border: var(--clr-border);
+    border-radius: 5px;
+    height: 90vh;
+    overflow: scroll;
+    /* overflow-y: hidden; */
+    scrollbar-width: none;
+    max-width: 260px;
+    min-width: 260px;
+    padding: 0px 20px;
+}
+
+.list-title-edit{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.list-title-edit>h1{
+    font-size: 1.2em;
+    font-weight: 400;
+}
+
+.list-settings{
+    display: flex;
+    gap: 10px;
+}
+
+
+.pos-arrow, .neg-arrow{
+    font-size: 1.3em;
+    cursor: pointer;
+}
+
+.pos-arrow:hover{
+    color: var(--clr-primary);
+    
+}
+
+.neg-arrow:hover{
+    color: var(--clr-secondary);
+}
+
+.pos-menu, .neg-menu{
+    cursor: pointer;
+    font-size: 1.4em;
+}
+
+.pos-menu:hover{
+    color: var(--clr-primary);
+}
+.neg-menu:hover{
+    color: var(--clr-secondary);
+}

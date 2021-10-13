@@ -10,6 +10,7 @@ import StockStories from '../StockStories/StockStories';
 import BuyingPower from '../BuyingPower/BuyingPower';
 import ResolutionButtons from '../ResolutionButtons/ResolutionButtons';
 import './Portfolio.css'
+import '../WatchList/Watchlist.css'
 
 
 function Portfolio(){
@@ -54,6 +55,7 @@ function Portfolio(){
                 <StockStories stories={stories} />
             </div>
             <div className={`watchlist-container`}>
+                <StockList isPos={isPos}/>
                 <div className={`watchlist-header`} >
                     <h2 className={`watchlist-title`}>Lists</h2>
                     <button className={`new-watchlist-button`} onClick={() => setShowNewList(true)} >+</button>
@@ -68,8 +70,7 @@ function Portfolio(){
                     </div>
 
                 )}
-                <StockList />
-                <WatchList />
+                <WatchList isPos={isPos}/>
             </div>
         </div>
     </div>
