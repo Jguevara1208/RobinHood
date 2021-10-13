@@ -8,7 +8,7 @@ export function getGraphDate(unix, resolution) {
     const amOrPm = dateArr[dateArr.length - 1]
     const [ hours, minutes ] = dateArr[1].split(':')
     const [ month, day, year ] = dateArr[0].split('/')
-    if (resolution === '30') return `${hours}:${minutes}${amOrPm}`
+    if (resolution === '5') return `${hours}:${minutes}${amOrPm}`
     if (resolution === 'M') return `${month}/${year}`
     return `${month}/${day}`
 }
