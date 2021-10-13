@@ -32,6 +32,15 @@
     gap: 10px;
 }
 
+#up:active{
+    transition: transform 500ms ease ;
+    transform: rotate(-180deg);
+}
+
+#down:active{
+    transition: transform 500ms ease ;
+    transform: rotate(180deg);
+}
 
 .pos-arrow, .neg-arrow{
     font-size: 1.3em;
@@ -57,4 +66,33 @@
 }
 .neg-menu:hover{
     color: var(--clr-secondary);
+}
+
+.list-stock-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.list-price{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    width: 25%;
+    text-align: right;
+}
+
+.list-price>p{
+    margin: 0px;
+}
+
+.graph-wrapper-wl{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.list-stock-wrapper>p{
+    font-weight: 500;
+    width: 25%;
 }

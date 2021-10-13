@@ -57,7 +57,7 @@ function List({list, listName=false , isStocks=false, isPos}){
             <div className="list-settings">
               {!isStocks && <p onClick={() => setShowMenu(!showMenu)}><BiDotsHorizontal className={`${isPos}-menu`}/></p>}
               <p onClick={() => setShowList(!showList)}>
-                {showList ? <IoIosArrowUp className={`${isPos}-arrow`} /> : <IoIosArrowDown className={`${isPos}-arrow`}/>}
+                {showList ? <IoIosArrowUp id="up" className={`${isPos}-arrow`} /> : <IoIosArrowDown id="down" className={`${isPos}-arrow`}/>}
               </p>
             </div>
           </div>
