@@ -95,8 +95,12 @@
 }
 
 .sumOpen {
-    background-color: var(--clr-bg-alt);
+    background-color: var(--clr-bp-bg);
     border-radius: 5px;
+}
+
+.sumOpen:hover {
+    background-color: var(--clr-bp-bg-hover);
 }
 
 .graph-wrapper {
@@ -133,11 +137,13 @@
 
 .pos-bp-input1:focus{
     outline: none;
-    border: var(--clr-border-focus);
+    background-color: var(--clr-bg);
+    border: 1px solid var(--clr-primary);
     border-radius: 3px;
 }
 .neg-bp-input1:focus{
     outline: none;
+    background-color: var(--clr-bg);
     border: 1px solid var(--clr-secondary);
     border-radius: 3px;
 }
@@ -151,6 +157,8 @@
     font-size: 1.1em;
     margin: 20px 0px;
 }
+
+
 .neg-bp-button{
     background-color: var(--clr-secondary);
     border-radius: 3px;
@@ -159,4 +167,12 @@
     font-weight: 500;
     font-size: 1.1em;
     margin: 20px 0px;
+}
+
+.pos-bp-button:hover {
+    background-color: var(--clr-button-hover-pos);
+}
+
+.neg-bp-button:hover {
+    background-color: var(--clr-button-hover-neg)
 }

@@ -5,27 +5,47 @@
 .light {
   --clr-bg: #ffffff;
   --clr-bg-alt: #f5f5f5;
+
+  --clr-bp-bg: #ffffff;
+  --clr-bp-bg-hover: #ffffff;
+
   --clr-font: rgb(0, 0, 0);
   --clr-font-alt: rgba(0, 0, 0, .5);
-  --clr-border: 1px solid rgba(0, 0, 0, 0.5);
-  --clr-border-focus: #2eda12;
+
+  --clr-border: 1px solid #E3E9ED;
+  --clr-border-focus: #ffffff;
   --clr-input-hover: #ffffff;
+
+  --clr-button-hover-pos: #2fd315;
+  --clr-button-hover-neg: #dc4600;
+
   --clr-primary: #2eda12;
   --clr-primary-hover: rgba(0, 180, 5, 1);
   --clr-secondary: #FE5001;
+
   --shadow: 0px 4px 4px rgba(0, 0, 0, 0.04);
 }
 
 .dark {
   --clr-bg: black;
   --clr-bg-alt: #2a2a2a;
+
+  --clr-bp-bg: #2a2a2a;
+  --clr-bp-bg-hover: #2a2a2a;
+
   --clr-font: rgb(255, 255, 255);
   --clr-font-alt:  rgba(255, 255, 255, .5);
+
   --clr-border: 1px solid #30363A;
   --clr-border-focus: 1px solid #5dd8ff;
   --clr-input-hover: black;
+
+  --clr-button-hover-pos: #74dfff;
+  --clr-button-hover-neg: #ff6b26;
+
   --clr-primary: #5dd8ff;
   --clr-secondary: #FE5001;
+
   --shadow: 0px 4px 4px rgba(255, 255, 255, 0.05);
 }
 
