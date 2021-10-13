@@ -17,7 +17,6 @@ function Portfolio(){
     const user = useSelector(state => state.session);
     const stories = useSelector(state => state.stories);
     const graphData = useSelector(state => state.userAssets.graphData)
-    const theme = useSelector(state => state.theme)
     let isPos = graphData?.[graphData.length - 1]['%'][0] === '+' ? 'pos' : 'neg'
 
     const [resolution, setResolution] = useState('D')
