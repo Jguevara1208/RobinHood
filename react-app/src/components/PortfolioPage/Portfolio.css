@@ -176,3 +176,7 @@
 .neg-bp-button:hover {
     background-color: var(--clr-button-hover-neg)
 }
+
+.watchlist-container{
+    background-color: var(--clr-bg-alt);
+}
