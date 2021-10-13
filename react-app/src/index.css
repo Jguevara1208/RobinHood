@@ -1,13 +1,13 @@
-*{
-    font-family: 'Barlow';
+* {
+  font-family: "Barlow";
 }
 
 .light {
   --clr-bg: #ffffff;
   --clr-bg-alt: #f5f5f5;
   --clr-font: black;
-  --clr-border: 1px solid rgba(0, 0, 0, 0.5);
-  --clr-primary: #2eda12;
+  --clr-border: 1px solid rgba(0, 0, 0, 0.1);
+  --clr-primary: rgb(0, 200, 5);
   --clr-primary-hover: rgba(0, 180, 5, 1);
   --clr-secondary: #ff3434;
   --shadow: 0px 4px 4px rgba(0, 0, 0, 0.04);
@@ -24,7 +24,7 @@
 }
 
 button {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 details > summary {
@@ -36,6 +36,6 @@ details > summary::-webkit-details-marker {
 }
 
 a {
-    text-decoration: none;
-    color: var(--clr-font)
+  text-decoration: none;
+  color: var(--clr-font);
 }

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
 import './LoginForm.css';
+import { BiErrorCircle } from 'react-icons/bi';
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -73,23 +74,31 @@ const LoginForm = () => {
                 required
               />
             </div>
-
-            <div className="log-in-form-submit">
-              <button
-                className={`${theme} log-in-form-button`}
-                type='submit'
-                >Sign In
-              </button>
+            <div className="log-in-form-error-container">
+              {errors.length > 0 &&
+                  <div className='log-in-form-error'>
+                    <BiErrorCircle className='log-in-form-error-icon' />
+                    <h5 className='log-in-form-error-message'>Unable to log in with provided credentials.</h5>
+                  </div>
+                }
             </div>
-            <div className="demo-user-button-container">
-              <button className={`${theme} demo-user-button`} onClick={() => {
-                onDemoLogin();
-                }}>Demo User
-              </button>
+            <div className="log-in-buttons-container">
+              <div className="log-in-form-button-container">
+                <button
+                  className={`${theme} log-in-form-button`}
+                  type='submit'
+                  >Sign In
+                </button>
+              </div>
+              <div className="demo-user-button-container">
+                <button className={`${theme} demo-user-button`} onClick={() => {
+                  onDemoLogin();
+                  }}>Demo User
+                </button>
+              </div>
             </div>
           </div>
         </form>
-        {errors.length > 0 && <div className="error-message">Unable to log in with provided credentials.</div>}
       </div>
     </div>
   );
