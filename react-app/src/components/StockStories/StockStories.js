@@ -25,16 +25,18 @@ function StockStories({stories}){
                 <div className='story-container'>
                     <div className='story-wrapper'>
                         <a target="_blank" href={story.link}>
-                            <div className='story-pub-time'>
-                                <p className='story-publisher'>{story.publisher}</p>
-                                <p className='story-time' >{findTimeDiff(story.publishDate)}</p>
-                            </div>
-                            <div className='story-content'>
-                                <div className='story-title-description'>
-                                    <p className='story-title' >{story.title}</p>
+                            <div className='story-text'>
+                                <div className='story-pub-time'>
+                                    <p className='story-publisher'>{story.publisher}</p>
+                                    <p className='story-time' >{findTimeDiff(story.publishDate)}</p>
                                 </div>
-                                <div className="storyImg" style={{"backgroundImage": `url('${story.photoUrl}')`}}></div>
+                                <div className='story-content'>
+                                    <div className='story-title-description'>
+                                        <p className='story-title' >{story.title}</p>
+                                    </div>
+                                </div>
                             </div>
+                            <div className="storyImg" style={{"backgroundImage": `url('${story.photoUrl}')`}}></div>
                         </a>
                     </div>
                 </div>
