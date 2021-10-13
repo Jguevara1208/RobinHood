@@ -107,6 +107,12 @@
   gap: .1rem;
 }
 
+.tools-buttons-container > button{
+  font-size: 20px;
+  font-weight: 300;
+}
+
+
 .tool-button-active, .tool-button {
   font-size: 20px;
 }
