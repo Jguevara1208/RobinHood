@@ -3,7 +3,7 @@ import './SplashPage.css'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import {Carousel} from 'react-responsive-carousel'
-
+import { AiOutlineArrowUp, AiOutlineArrowDown } from 'react-icons/ai';
 
 export default function Index() {
     const theme = useSelector(state => state.theme);
@@ -43,12 +43,12 @@ export default function Index() {
             <div className="investing-for-everyone-container">
                 <div className="subcontainer-1">
                     <h1>Investing for Everyone</h1>
-                    <span>
+                    <p className="investing-for-everyone-desc">
                         Commission-free investing, plush the tools
                         you need to put your money in motion. Sign up
                         and get your first stock for free! Certain limits
                         apply
-                    </span>
+                    </p>
                     <Link className="sign-up-button" to={'/sign-up'}> Sign Up </Link>
                 </div>
                 <div className="home-video-1">
@@ -65,10 +65,8 @@ export default function Index() {
                 </div>
             </div>
 
-            <div className="ipo-access-main-container">
-
+        <div className="ipo-access-main-container">
                 <img className="ipo-main-img" src="https://robinhood.com/us/en/_next/static/images/balloon__ef7d8a9bb1c7845fcb7a6799c35d513e.svg"></img>
-
                 <div className="ipo-container">
                     <div>
                         <h1>Introducing IPO Access</h1>
@@ -99,16 +97,14 @@ export default function Index() {
                             </div>
                         </div>
                 </div>
-                <div>
 
-                </div>
-            </div>
-
+        </div>
+            
             <div className="fractional-shares-container">
-                <div>
-                    <h1>Introducing Fractional Shares</h1>
-                    <h3>Invest in thousands of stocks, with just 1$</h3>
-                </div>
+                    <div className="ipo-header">
+                        <h1>Introducing Fractional Shares</h1>
+                        <p>Invest in thousands of stocks, with just 1$</p>
+                    </div>
                 <div className="subcontainer-3">
                     <div className="fractional-shares-info">
                         <h4>Invest Any Amount</h4>
@@ -128,20 +124,20 @@ export default function Index() {
 
             <div className="tools-container">
                 <div className="tools-buttons-container">
-                    <button className="tool-button" onClick={decreaseVisibleToolValue}>⬆️</button>
+                    <button className="tool-button" onClick={decreaseVisibleToolValue}><AiOutlineArrowUp /></button>
                     <button className={visibleTool === 0 ? `tool-button-active` : `tool-button`} onClick={e => setVisibleTool(0)}>Learn</button>
                     <button className={visibleTool === 1 ? `tool-button-active` : `tool-button`} onClick={e => setVisibleTool(1)}>Manage</button>
                     <button className={visibleTool === 2 ? `tool-button-active` : `tool-button`} onClick={e => setVisibleTool(2)}>Customize</button>
-                    <button className="tool-button" onClick={increaseVisibleToolValue}>⬇️</button>
+                    <button className="tool-button" onClick={increaseVisibleToolValue}><AiOutlineArrowDown /></button>
                 </div>
                 <div className="tools-container">
                     {
                         visibleTool === 0 && (
                             <div className="info-container">
                             <img className="tool-img" src={'/images/learn.png'}></img>
-                            <div>
-                                <h1>Learn As You Go</h1>
-                                <p>Our goal is to make investing in financial markets more affordable, more intuitive, and more fun, no matter how much experience you have (or don’t have).</p>
+                                <div>
+                                    <h1 className="par-tools">Learn As You Go</h1>
+                                    <p className="par-tools">Our goal is to make investing in financial markets more affordable, more intuitive, and more fun, no matter how much experience you have (or don’t have).</p>
                                 </div>
                             </div>
                         )
@@ -152,8 +148,8 @@ export default function Index() {
                             <div className="info-container">
                                 <img className="tool-img" src={'/images/manage.png'}></img>
                                 <div>
-                                    <h1>Manage Your Portfolio</h1>
-                                    <p>Keep your portfolio in your pocket. Everything you need to manage your assets is available in a single app.</p>
+                                    <h1 className="par-tools">Manage Your Portfolio</h1>
+                                    <p className="par-tools">Keep your portfolio in your pocket. Everything you need to manage your assets is available in a single app.</p>
                                 </div>
                             </div>
                         )
@@ -164,8 +160,8 @@ export default function Index() {
                             <div className="info-container">
                                 <img className="tool-img" src="/images/customize.png"></img>
                                 <div>
-                                    <h1>Keep Tabs on Your Money</h1>
-                                    <p>Set up customized news and notifications to stay on top of your assets as casually or as relentlessly as you like. Controlling the flow of info is up to you.</p>
+                                    <h1 className="par-tools">Keep Tabs on Your Money</h1>
+                                    <p className="par-tools">Set up customized news and notifications to stay on top of your assets as casually or as relentlessly as you like. Controlling the flow of info is up to you.</p>
                                 </div>
                             </div>
                         )

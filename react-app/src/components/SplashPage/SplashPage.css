@@ -1,23 +1,18 @@
 @import "../../index.css";
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.investing-for-everyone-container,
-.fractional-shares-container,
-.ipo-access-main-container {
+.investing-for-everyone-container{
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin: 5px;
-  font-family: Arial, Helvetica, sans-serif;
-  padding: 10px 30px;
+  padding: 0 20%;
+  border-bottom: solid black 1px;
+  height: 75vh;
+  background-color: rgb(195, 245, 60);
   border-bottom: solid black 1px;
 }
 
-.investing-for-everyone-container {
-  background-color: rgb(195, 245, 60);
+.investing-for-everyone-desc{
+  min-width: 350px;
+  width: 25%;
 }
 
 .subcontainer-1 {
@@ -25,39 +20,47 @@ body {
   flex-direction: column;
   gap: 30px;
   padding: 10px 30px;
+  width: 45%;
+  margin: 0 auto;
 }
+
 
 .subcontainer-2 {
   flex-direction: column;
 }
 
 .fractional-shares-container {
+  display: flex;
   flex-direction: column;
-  align-items: flex-start;
+
   background-color: #f0ebe6;
+  border-top: solid black 1px;
+  padding: 0 15%;
+
 }
 
 .subcontainer-3 {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 15px;
-  padding: 30px;
+  gap: 30px;
+  width: 70%;
+  padding: 0 30px;
 }
 
 .fractional-shares-info {
   width: 27%;
 }
 
-.fractional-shares-side-img {
-  width: 256px;
-  height: 256px;
+.ipo-container{
+  width: 100%;
+  max-width: 600px;
 }
 
 .ipo-info-container {
   display: flex;
   align-items: center;
-  gap: 70px;
+  gap: 20px;
 }
 
 .tools-container {
@@ -70,11 +73,14 @@ body {
 
 .ipo-access-main-container {
   display: flex;
+  justify-content: center;
   align-items: center;
+
 }
 
 .ipo-main-img {
-  width: 50%;
+  height: 75%;
+  width: 594px;
 }
 
 .ipo-content {
@@ -82,11 +88,8 @@ body {
 }
 
 .ipo-info-img {
-  width: 50px;
+  width: 40px;
   height: auto;
-}
-
-.fractional-shares-info {
 }
 
 .tools-buttons-container {
@@ -100,6 +103,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  color: white;
   gap: 15px;
 }
 
@@ -216,4 +220,9 @@ body {
   height: 100%;
   position: relative;
 
+}
+
+
+.par-tools{
+  color: white;
 }
