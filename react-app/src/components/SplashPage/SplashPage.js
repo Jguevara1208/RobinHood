@@ -24,8 +24,8 @@ export default function Index() {
 
     return (
         <div>
-            <div class="investing-for-everyone-container">
-                <div class="subcontainer-1">
+            <div className="investing-for-everyone-container">
+                <div className="subcontainer-1">
                     <h1>Investing for Everyone</h1>
                     <span>
                         Commission-free investing, plush the tools
@@ -87,12 +87,12 @@ export default function Index() {
                 </div>
             </div>
 
-            <div class="fractional-shares-container">
+            <div className="fractional-shares-container">
                 <div>
                     <h1>Introducing Fractional Shares</h1>
                     <h3>Invest in thousands of stocks, with just 1$</h3>
                 </div>
-                <div class="subcontainer-3">
+                <div className="subcontainer-3">
                     <div className="fractional-shares-info">
                         <h4>Invest Any Amount</h4>
                         <p>Choose how much you want to invest, and we’ll convert from dollars to parts of a whole share.</p>

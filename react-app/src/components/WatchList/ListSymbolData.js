@@ -15,6 +15,8 @@ function ListSymbolData({symbol, isStocks, listId, id}){
         }))
     }
 
+    let isPos = graphData?.[graphData.length - 1]["%"][0] === "+" ? "pos" : "neg";
+
     return (
         <>
             {graphData &&
@@ -24,7 +26,7 @@ function ListSymbolData({symbol, isStocks, listId, id}){
                 }
                 <Link to={`/stocks/${symbol}`}>
                     <p>{symbol}</p>
-                    <MainGraph graphData={graphData} isWatchList={true}/>
+                    <MainGraph graphData={graphData} isWatchList={true} isPos={isPos}/>
                     <p>{`$${graphData[graphData.length - 1].price}`}</p>
                     <p>{`$${graphData[graphData.length - 1][`%`]}`}</p>
                 </Link>
