@@ -87,3 +87,19 @@
 .odometer.odometer-auto-theme .odometer-value, .odometer.odometer-theme-default .odometer-value {
   text-align: center;
 }
+
+.odometer {
+  color: var(--clr-font);
+  font-size: 2em;
+}
+
+.dollar-sign {
+  color: var(--clr-font);
+  font-size: 2em;
+  margin-bottom: 4px;
+}
+
+.odometer-container {
+  display: flex;
+  align-items: center;
+}
