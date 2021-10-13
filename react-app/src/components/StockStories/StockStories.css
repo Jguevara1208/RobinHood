@@ -28,6 +28,7 @@
     display: flex;
     align-items: center;
     column-gap: 10px;
+    width: 100%;
 }
 
 .story-publisher {
@@ -42,10 +43,11 @@
 .story-title {
     font-weight: 300;
     font-size: 1em;
+    width: 100%
 }
 
 .story-title-description {
-    width: 70%;
+    width: 95%;
 }
 
 .story-content {
@@ -63,6 +65,11 @@
     justify-content: center;
 }
 
+.story-wrapper > a{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
 .story-container:hover {
     background-color: var(--clr-bg-alt);
     border-radius: 1px;
@@ -71,6 +78,11 @@
 .story-wrapper {
     width: 90%;
     display: flex;
-    justify-content: center;
     border-bottom: var(--clr-border);
+}
+
+.story-text {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
