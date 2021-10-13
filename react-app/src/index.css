@@ -1,5 +1,5 @@
-*{
-    font-family: 'Barlow';
+* {
+  font-family: "Barlow";
 }
 
 .light {
@@ -50,8 +50,8 @@
 }
 
 button {
-    cursor: pointer;
-    border: none;
+  cursor: pointer;
+  border: none;
 }
 
 details > summary {
@@ -63,21 +63,24 @@ details > summary::-webkit-details-marker {
 }
 
 a {
-    text-decoration: none;
-    color: var(--clr-font)
-}
-
-h1,h2,h3,p,summary,button{
+  text-decoration: none;
   color: var(--clr-font);
 }
 
+h1,
+h2,
+h3,
+p,
+summary,
+button {
+  color: var(--clr-font);
+}
 
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 input[type="number"] {
-    -moz-appearance: textfield;
+  -moz-appearance: textfield;
 }
-

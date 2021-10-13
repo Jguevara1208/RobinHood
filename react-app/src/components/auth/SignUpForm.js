@@ -57,11 +57,6 @@ const SignUpForm = () => {
           <p>Robinhood lets you invest in companies you love, commission-free.</p>
           <h5>Please enter your full legal name. Your legal name should match any form of government ID.</h5>
           <form className="sign-up-form" onSubmit={onSignUp}>
-            <div>
-              {errors.map((error, ind) => (
-                <div key={ind}>{error}</div>
-              ))}
-            </div>
             <div className="sign-up-first-last">
               <div className="sign-up-first-name">
                 <input
@@ -111,6 +106,11 @@ const SignUpForm = () => {
                   required={true}
                 ></input>
               </div>
+            </div>
+            <div>
+              {errors.map((error, ind) => (
+                <div key={ind}>{error}</div>
+              ))}
             </div>
             <div className={`${theme} sign-up-form-button-container`}>
             <button className={`${theme} sign-up-form-button`} type='submit'>Continue</button>
