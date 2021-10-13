@@ -1,3 +1,4 @@
+import '../PortfolioPage/Portfolio.css'
 
 function ResolutionButtons({resolution, setResolution}){
 
@@ -8,17 +9,17 @@ function ResolutionButtons({resolution, setResolution}){
     }
 
     return (
-        <>
+        <div className='resolution-container'>
             {resolutions.map((res) => (
                 <button
-                    className={res === resolution ? "active-res" : ""}
+                    className={`${res === resolution ? "active-res" : ""} res-button`}
                     value={res}
                     onClick={toggleResolution}
                 >
                     {res}
                 </button>
             ))}
-        </>
+        </div>
     );
 };
 
