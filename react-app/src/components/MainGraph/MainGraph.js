@@ -1,6 +1,7 @@
 import { LineChart, XAxis, YAxis, Tooltip, Line, ReferenceLine, ResponsiveContainer} from 'recharts';
 import { useEffect, useState } from 'react';
 import {useSelector} from 'react-redux'
+import { CustomToolTip } from '../../utils';
 import Odometer from 'react-odometerjs';
 
 import './MainGraph.css';
@@ -86,12 +87,18 @@ function MainGraph({graphData, isWatchList=false, isPos}){
             />
             {isWatchList === false && (
               <Tooltip
-                wrapperStyle={{
-                  borderColor: "white",
-                  boxShadow: "2px 2px 3px 0px rgb(204, 204, 204)",
-                }}
-                contentStyle={{ backgroundColor: "rgba(255, 255, 255, 0.8)" }}
-                labelStyle={{ fontWeight: "bold", color: "#666666" }}
+                // wrapperStyle={{
+                //   borderColor: "white",
+                //   boxShadow: "2px 2px 3px 0px rgb(204, 204, 204)",
+                // }}
+                // contentStyle={{ backgroundColor: "rgba(255, 255, 255, 0.8)" }}
+                // labelStyle={{ fontWeight: "bold", color: "#666666" }}
+                content={<CustomToolTip />}
+                cursor={{ stroke: "white", strokeWidth: 0.5}}
+                isAnimationActive={false}
+                offset={-40}
+                position={{ y: -35}}
+                allowEscapeViewBox={{x: true, y: true}}
               />
             )}
             <ReferenceLine
