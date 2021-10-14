@@ -87,6 +87,10 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
+
+body{
+  margin: 0;
+}
 .bold-p {
   font-weight: 500;
 }

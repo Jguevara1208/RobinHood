@@ -1,23 +1,19 @@
 @import "../../index.css";
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.investing-for-everyone-container,
-.fractional-shares-container,
-.ipo-access-main-container {
+.investing-for-everyone-container{
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin: 5px;
-  font-family: Arial, Helvetica, sans-serif;
-  padding: 10px 30px;
+  padding: 0 20%;
+  border-bottom: solid black 1px;
+  height: 75vh;
+  background-color: rgb(195, 245, 60);
   border-bottom: solid black 1px;
 }
 
-.investing-for-everyone-container {
-  background-color: rgb(195, 245, 60);
+.investing-for-everyone-desc{
+  min-width: 350px;
+  width: 25%;
+  font-size: 24px;
 }
 
 .subcontainer-1 {
@@ -25,6 +21,14 @@ body {
   flex-direction: column;
   gap: 30px;
   padding: 10px 30px;
+  width: 45%;
+  margin: 0 auto;
+}
+
+.subcontainer-1 > h1{
+  font-weight: 450;
+  font-size: 54px;
+  width: 350px;
 }
 
 .subcontainer-2 {
@@ -32,49 +36,58 @@ body {
 }
 
 .fractional-shares-container {
+  display: flex;
   flex-direction: column;
-  align-items: flex-start;
+
   background-color: #f0ebe6;
+  border-top: solid black 1px;
+  padding: 0 15%;
+
 }
 
 .subcontainer-3 {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 15px;
-  padding: 30px;
+  gap: 30px;
+  width: 70%;
+  padding: 0 30px;
 }
 
 .fractional-shares-info {
   width: 27%;
 }
 
-.fractional-shares-side-img {
-  width: 256px;
-  height: 256px;
+.ipo-container{
+  width: 100%;
+  max-width: 600px;
 }
 
 .ipo-info-container {
   display: flex;
   align-items: center;
-  gap: 70px;
+  gap: 20px;
 }
 
 .tools-container {
   display: flex;
+  justify-content: center;
   padding: 60px;
-  gap: 2.5rem;
+  gap: 15.5rem;
   background-color: black;
   color: white;
 }
 
 .ipo-access-main-container {
   display: flex;
+  justify-content: center;
   align-items: center;
+
 }
 
 .ipo-main-img {
-  width: 50%;
+  height: 75%;
+  width: 594px;
 }
 
 .ipo-content {
@@ -82,25 +95,42 @@ body {
 }
 
 .ipo-info-img {
-  width: 50px;
+  width: 40px;
   height: auto;
-}
-
-.fractional-shares-info {
 }
 
 .tools-buttons-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 20px;
+  align-items: flex-end;
+  gap: .1rem;
+}
+
+.tools-buttons-container > button{
+  font-size: 20px;
+  font-weight: 300;
+}
+
+
+.tool-button-active, .tool-button {
+  font-size: 20px;
 }
 
 .info-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 15px;
+  color: white;
+  gap: 30rem;
+}
+
+.subcontainer-4 > h1 {
+  font-size: 54px;
+}
+
+.subcontainer-4 > p {
+  font-size: 24px;
 }
 
 .subcontainer-1 > .sign-up-button {
@@ -153,6 +183,19 @@ body {
   color: #2eda12;
 }
 
+.tool-img{
+    width: 250px;
+    height: 500px;
+    transition: all .5s ease-in-out;
+}
+
+.tool-img:target{
+    width: 0px;
+    height: 0px;
+}
+
+
+
 .footer-contact-info {
   display: flex;
   align-items: center;
@@ -203,4 +246,12 @@ body {
   height: 100%;
   position: relative;
 
+}
+
+.subcontainer-4{
+  width: 500px;
+}
+
+.par-tools{
+  color: white;
 }
