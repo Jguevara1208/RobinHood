@@ -129,7 +129,7 @@
 .sign-up-directions {
   margin: 0px;
   color: black;
-  font-family: var(--rh__type-palette__textSBold__stack);
+  font-family: var(font-family);
   font-size: 13px;
   font-style: normal;
   font-weight: 700;
@@ -257,7 +257,7 @@
 .sign-up-password-input:focus,
 .sign-up-confirm-password-input:focus {
   outline: none;
-  border: 1px solid var(--clr-primary);
+  border: 1px solid #2eda12;
 }
 
 .sign-up-form-button-outer-container {
@@ -307,7 +307,7 @@
   max-width: 420px;
   padding-left: calc(4 * 12px);
   padding-right: calc(4 * 12px);
-  color: var(--clr-primary);
+  color: #2eda12;
 }
 
 .sign-up-form-button:hover {
@@ -338,7 +338,7 @@
 .sign-up-form-button-label {
   margin: 0px;
   color: white;
-  font-family: var(--rh__type-palette__textSBold__stack);
+  font-family: var(font-family);
   font-size: 13px;
   font-style: normal;
   font-weight: 700;
