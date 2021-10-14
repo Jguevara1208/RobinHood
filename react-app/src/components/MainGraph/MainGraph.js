@@ -79,22 +79,22 @@ function MainGraph({graphData, isWatchList=false, isPos}){
               ]}
               hide
             />
-            <Line
-              dataKey="price"
-              stroke={lineColor()}
-              dot={false}
-              strokeWidth={isWatchList ? 1 : 2}
-            />
             {isWatchList === false && (
               <Tooltip
-                content={<CustomToolTip />}
-                cursor={{ stroke: "var(--clr-tooltip)", strokeWidth: .8, fill: 'red' }}
-                isAnimationActive={false}
-                offset={-17.5}
-                position={{ y: -40 }}
-                allowEscapeViewBox={{ x: true, y: true }}
+              content={<CustomToolTip />}
+              cursor={{ stroke: "var(--clr-tooltip)", strokeWidth: .8, fill: 'red' }}
+              isAnimationActive={false}
+              offset={-17.5}
+              position={{ y: -40 }}
+              allowEscapeViewBox={{ x: true, y: true }}
               />
-            )}
+              )}
+              <Line
+                dataKey="price"
+                stroke={lineColor()}
+                dot={false}
+                strokeWidth={isWatchList ? 1 : 2}
+              />
             {isWatchList ? 
               <ReferenceLine
                 ifOverflow="extendDomain"

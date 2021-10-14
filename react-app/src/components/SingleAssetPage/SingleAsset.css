@@ -1,0 +1,81 @@
+.stock-name {
+    width: 100%;
+    display: flex;
+}
+.stock-name > h2 {
+    font-weight: 400;
+    font-size: 2em;
+    text-align: left;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.about-section {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.sa-header {
+    width: 100%;
+    font-weight: 400;
+    font-size: 1.3em;
+    padding: 0px 0px 20px 0px;
+    margin-bottom: 0px;
+    border-bottom: var(--clr-border);
+}
+
+.sa-about {
+    font-size: .9em;
+    width: 85%;
+    line-height: 160%;
+}
+
+.pos-read-more, .neg-read-more {
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.pos-read-more {
+    color: var(--clr-primary);
+}
+
+.neg-read-more {
+    color: var(--clr-secondary);
+}
+
+.ua-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.ua-right-wrapper, .ua-left-wrapper {
+    border: var(--clr-border);
+    padding: 1.5em;
+    width: 48%;
+}
+
+.ua-title {
+    font-size: .8em;
+    font-weight: 400;
+    width: fit-content;
+}
+
+.ua-box-header > p {
+    margin: 2px;
+}
+
+.ua-value {
+    font-size: 1.5em;
+    width: fit-content;
+}
+
+.ua-section {
+   display: flex; 
+   width: fit-content;
+}
+
+.return-title {
+    
+}

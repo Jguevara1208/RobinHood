@@ -11,6 +11,8 @@ import StockStories from "../StockStories/StockStories";
 import UserAssetStats from "../UserAssetStats/UserAssetStats";
 import BuySellStocks from "../BuySellStocks/BuySellStocks";
 import AddToList from "../AddToListButton/AddToList";
+import '../PortfolioPage/Portfolio.css'
+import './SingleAsset.css'
 
 function SingleAsset() {
   const dispatch = useDispatch()
@@ -23,6 +25,8 @@ function SingleAsset() {
 
   const [resolution, setResolution] = useState('D');
   const [readMore, setReadMore] = useState(false);
+
+  let isPos = graphData?.[graphData.length - 1]['%'][0] === '+' ? 'pos' : 'neg'
 
   const description = stockInfo?.description
   const shortDescription = description?.split(' ').slice(0, 40).join(' ')
@@ -50,31 +54,45 @@ function SingleAsset() {
   return (
     <>
     {stockInfo && 
-      <>
-        <h2>{stockInfo.name}</h2>
-        {graphData && <MainGraph graphData={graphData} />}
-        <ResolutionButtons resolution={resolution} setResolution={setResolution} />
-        {assets[symbol] &&
-          <UserAssetStats currentPrice={currentPrice} stockStats={stockStats} assets={assets} symbol={symbol}/>
-        }
+      <div className={`main-body`}>
+        <div className='main-wrapper'>
+          <div className={`main-content`}>
+            <div className='stock-name'>
+              <h2>{stockInfo.name}</h2>
+            </div>
+            {graphData && <MainGraph graphData={graphData} isPos={isPos}/>}
+            <ResolutionButtons resolution={resolution} setResolution={setResolution} isPos={isPos} />
+            {assets[symbol] &&
+              <div className='about-section'>
+                <UserAssetStats currentPrice={currentPrice} stockStats={stockStats} assets={assets} symbol={symbol} />
+              </div>
+            }
+            <div className='about-section'>
+              <p className='sa-header'>About</p>
+              {moreDesctiption 
+                ? 
+                <p className='sa-about'>
+                  {shortDescription} {!readMore ? '...' : moreDesctiption}
+                  <span className={`${isPos}-read-more`} onClick={toggleReadMore} >
+                    {readMore ? '   Read Less' : '   Read More'}
+                  </span>
+                </p>
+                : 
+                  <p className='sa-about'>{shortDescription}</p>
+              }
+            </div>
+            <div className='about-section'>
+              <p className='sa-header'>Key Statistics</p>
+              <KeyStats stockStats={stockStats}/>
+            </div>
+              <StockStories stories={stories}/>
+            </div>
+          </div>
         <div>
           <BuySellStocks symbol={symbol} price={currentPrice.price}/>
           <AddToList symbol={symbol} userId={userId} />
         </div>
-        <div>
-          <p>About</p>
-          <p>{shortDescription} {!readMore ? '...' : moreDesctiption} {}</p>
-          <span onClick={toggleReadMore} >{readMore ? 'Read Less' : 'Read More'}</span>
-        </div>
-        <div>
-          <p>Key Statistics</p>
-          <KeyStats stockStats={stockStats}/>
-        </div>
-        <div>
-          <p>Stories</p>
-            <StockStories stories={stories}/>
-        </div>
-      </>
+      </div>
     }
     </>
   );

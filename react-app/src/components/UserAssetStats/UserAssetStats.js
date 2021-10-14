@@ -10,32 +10,38 @@ function UserAssetStats({currentPrice, stockStats, assets, symbol}) {
     return (
         <>
             {assets[symbol] &&
-                <div>
-                    <div>
-                        <div>
-                            <p>Your Market Value</p>
-                            <p>{marketValueData}</p>
+                <div className='ua-container'>
+                    <div className='ua-left-wrapper'>
+                        <div className='ua-box-header'>
+                            <p className='ua-title'>Your Market Value</p>
+                            <p className='ua-value'>{marketValueData}</p>
                         </div>
-                        <div>
+                        <div className='ua-section'>
                             <p>Today's Return</p>
-                            <p>{todaysReturnData['return']}</p>
-                            <p>({todaysReturnData['%']}%)</p>
+                            <div className='ua-inner-section'>
+                                <p className='return-title' >{todaysReturnData['return']}</p>
+                                <p>({todaysReturnData['%']}%)</p>
+                            </div>
                         </div>
-                        <div>
+                        <div className='ua-section'>
                             <p>Total Return</p>
-                            <p>{totalReturnData['return']}</p>
-                            <p>({totalReturnData['%']}%)</p>
+                            <div className='ua-inner-section'>
+                                <p>{totalReturnData['return']}</p>
+                                <p>({totalReturnData['%']}%)</p>
+                            </div>
                         </div>
                     </div>
-                    <div>
+                    <div className='ua-right-wrapper'>
                         <div>
-                            <p>Your Average Cost</p>
-                            <p>${assets[symbol].average.toFixed(2)}</p>
-                            <div>
+                            <div className='ua-box-header'>
+                                <p className='ua-title'>Your Average Cost</p>
+                                <p className='ua-value'>${assets[symbol].average.toFixed(2)}</p>
+                            </div>
+                            <div className='ua-section'>
                                 <p>Shares</p>
                                 <p>{assets[symbol].shares}</p>
                             </div>
-                            <div>
+                            <div className='ua-section'>
                                 <p>Portfolio Diversity</p>
                                 <p>{pdData}</p>
                             </div>

@@ -129,7 +129,7 @@
 .sign-up-directions {
   margin: 0px;
   color: black;
-  font-family: var(--rh__type-palette__textSBold__stack);
+  font-family: var(font-family);
   font-size: 13px;
   font-style: normal;
   font-weight: 700;
@@ -243,6 +243,23 @@
   height: 36px;
 }
 
+.sign-up-first-name-input:hover,
+.sign-up-last-name-input:hover,
+.sign-up-email-input:hover,
+.sign-up-password-input:hover,
+.sign-up-confirm-password-input:hover {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.sign-up-first-name-input:focus,
+.sign-up-last-name-input:focus,
+.sign-up-email-input:focus,
+.sign-up-password-input:focus,
+.sign-up-confirm-password-input:focus {
+  outline: none;
+  border: 1px solid #2eda12;
+}
+
 .sign-up-form-button-outer-container {
   width: 100%;
   -webkit-box-align: center;
@@ -253,7 +270,7 @@
   text-size-adjust: none;
 }
 
-.sign-up-form-button-inner-container {
+.sign-up-form-button-middle-container {
   padding-right: 24px;
   box-sizing: border-box;
   display: block;
@@ -290,7 +307,11 @@
   max-width: 420px;
   padding-left: calc(4 * 12px);
   padding-right: calc(4 * 12px);
-  color: var(--clr-primary);
+  color: #2eda12;
+}
+
+.sign-up-form-button:hover {
+  color: #dc4600;
 }
 
 .sign-up-form-button-inner-container {
@@ -306,10 +327,10 @@
 
 .sign-up-form-button-inner {
   display: flex;
+  justify-content: center;
   -webkit-box-align: center;
   align-items: center;
   -webkit-box-pack: center;
-  justify-content: center;
   box-sizing: border-box;
   text-size-adjust: none;
 }
@@ -317,7 +338,7 @@
 .sign-up-form-button-label {
   margin: 0px;
   color: white;
-  font-family: var(--rh__type-palette__textSBold__stack);
+  font-family: var(font-family);
   font-size: 13px;
   font-style: normal;
   font-weight: 700;
@@ -353,6 +374,10 @@
   text-decoration: none;
   box-sizing: border-box;
   cursor: pointer;
+}
+
+.already-started-link:hover {
+  color: #dc4600;
 }
 
 @media (max-width: 768px) {
@@ -470,4 +495,22 @@
   text-decoration: unset;
   box-sizing: border-box;
   text-size-adjust: none;
+}
+
+.sign-up-errors {
+  box-sizing: border-box;
+  display: block;
+  text-size-adjust: none;
+  padding-left: 24px;
+  padding-top: 24px;
+}
+
+.sign-up-errors > div {
+  margin-bottom: 8px;
+  display: block;
+  width: 80%;
+  box-sizing: border-box;
+  text-size-adjust: none;
+  font-family: var(font-family);
+  color: red;
 }

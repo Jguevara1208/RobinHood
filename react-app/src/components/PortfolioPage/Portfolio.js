@@ -63,10 +63,10 @@ function Portfolio(){
                 </div>
                 {showNewList && (
                     <div className={`new-list-container`}>
-                        <input className={`new-list-input`} type="text" placeholder="List Name" value={newListName} onChange={(e) => setNewListName(e.target.value)} />
+                        <input className={`${isPos}-new-list-input`} type="text" placeholder="List Name" value={newListName} onChange={(e) => setNewListName(e.target.value)} />
                         <div className={`new-list-buttons`}>
+                            <button className={`${isPos}-new-list-edit`} onClick={handleNewList}>Create List</button>
                             <button className={`new-list-cancel`} onClick={() => setShowNewList(false)}>Cancel</button>
-                            <button className={`new-list-edit`} onClick={handleNewList}>Create List</button>
                         </div>
                     </div>
 
