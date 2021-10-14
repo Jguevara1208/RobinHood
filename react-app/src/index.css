@@ -23,7 +23,11 @@
   --clr-primary-hover: rgba(0, 180, 5, 1);
   --clr-secondary: #FE5001;
 
+  --clr-tooltip-time: #A9AFB1;
+  --clr-tooltip: #A9AFB1;
+
   --shadow: 0px 4px 4px rgba(0, 0, 0, 0.04);
+  --clr-test:#00C805;
 }
 
 .dark {
@@ -45,6 +49,9 @@
 
   --clr-primary: #5dd8ff;
   --clr-secondary: #FE5001;
+
+  --clr-tooltip-time: #919EA5 ;
+  --clr-tooltip: #7A868C ;
 
   --shadow: 0px 4px 4px rgba(255, 255, 255, 0.05);
 }

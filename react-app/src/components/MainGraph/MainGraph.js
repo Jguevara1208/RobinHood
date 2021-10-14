@@ -1,6 +1,7 @@
 import { LineChart, XAxis, YAxis, Tooltip, Line, ReferenceLine, ResponsiveContainer} from 'recharts';
 import { useEffect, useState } from 'react';
 import {useSelector} from 'react-redux'
+import { CustomToolTip } from '../../utils';
 import Odometer from 'react-odometerjs';
 
 import './MainGraph.css';
@@ -49,11 +50,11 @@ function MainGraph({graphData, isWatchList=false, isPos}){
   }
 
   return (
-    <div className={isWatchList? "graph-wrapper-wl" : "graph-wrapper"}>
+    <div className={isWatchList ? "graph-wrapper-wl" : "graph-wrapper"}>
       {isWatchList === false && (
-        <div>
-          <div className='odometer-container'>
-            <span className='dollar-sign'>$</span>
+        <div className="graph-odometer-perc">
+          <div className="odometer-container">
+            <span className="dollar-sign">$</span>
             <Odometer value={hoverPrice} format="(,ddd).dd" />
           </div>
           <p className={`${isPos} p-diff`}>{percentDiff}%</p>
@@ -86,22 +87,27 @@ function MainGraph({graphData, isWatchList=false, isPos}){
             />
             {isWatchList === false && (
               <Tooltip
-                wrapperStyle={{
-                  borderColor: "white",
-                  boxShadow: "2px 2px 3px 0px rgb(204, 204, 204)",
-                }}
-                contentStyle={{ backgroundColor: "rgba(255, 255, 255, 0.8)" }}
-                labelStyle={{ fontWeight: "bold", color: "#666666" }}
+                content={<CustomToolTip />}
+                cursor={{ stroke: "var(--clr-tooltip)", strokeWidth: .8, fill: 'red' }}
+                isAnimationActive={false}
+                offset={-17.5}
+                position={{ y: -40 }}
+                allowEscapeViewBox={{ x: true, y: true }}
               />
             )}
-            <ReferenceLine
-              ifOverflow="extendDomain"
-              y={graphData[0].price}
-              strokeWidth={2}
-              strokeHeight={1.5}
-              strokeDasharray="1 6"
-              stroke="#7F7F7F"
-            />
+            {isWatchList ? 
+              <ReferenceLine
+                ifOverflow="extendDomain"
+                y={graphData[0].price}
+                strokeWidth={2}
+                strokeHeight={1.5}
+                strokeDasharray="1 6"
+                stroke="#7F7F7F"
+              />
+              :
+              null
+            
+          }
           </LineChart>
         </ResponsiveContainer>
       )}
