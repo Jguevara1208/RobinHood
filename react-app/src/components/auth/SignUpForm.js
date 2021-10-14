@@ -83,6 +83,7 @@ const SignUpForm = () => {
                       placeholder='First Name'
                       onChange={updateFirstName}
                       value={firstName}
+                      required={true}
                     ></input>
                   </div>
                   <div className="sign-up-last-name-container">
@@ -92,6 +93,7 @@ const SignUpForm = () => {
                       placeholder='Last Name'
                       onChange={updateLastName}
                       value={lastName}
+                      required={true}
                     ></input>
                   </div>
                 </div>
@@ -104,6 +106,7 @@ const SignUpForm = () => {
                       placeholder='Email'
                       onChange={updateEmail}
                       value={email}
+                      required={true}
                     ></input>
                   </div>
                 </div>
@@ -116,6 +119,7 @@ const SignUpForm = () => {
                       placeholder='Password'
                       onChange={updatePassword}
                       value={password}
+                      required={true}
                     ></input>
                   </div>
                 </div>
