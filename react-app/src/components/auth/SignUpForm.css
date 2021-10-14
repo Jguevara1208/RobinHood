@@ -253,7 +253,7 @@
   text-size-adjust: none;
 }
 
-.sign-up-form-button-inner-container {
+.sign-up-form-button-middle-container {
   padding-right: 24px;
   box-sizing: border-box;
   display: block;
@@ -306,10 +306,10 @@
 
 .sign-up-form-button-inner {
   display: flex;
+  justify-content: center;
   -webkit-box-align: center;
   align-items: center;
   -webkit-box-pack: center;
-  justify-content: center;
   box-sizing: border-box;
   text-size-adjust: none;
 }
@@ -470,4 +470,22 @@
   text-decoration: unset;
   box-sizing: border-box;
   text-size-adjust: none;
+}
+
+.sign-up-errors {
+  box-sizing: border-box;
+  display: block;
+  text-size-adjust: none;
+  padding-left: 24px;
+  padding-top: 24px;
+}
+
+.sign-up-errors > div {
+  margin-bottom: 8px;
+  display: block;
+  width: 80%;
+  box-sizing: border-box;
+  text-size-adjust: none;
+  font-family: var(font-family);
+  color: red;
 }

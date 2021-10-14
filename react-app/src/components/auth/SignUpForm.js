@@ -86,7 +86,6 @@ const SignUpForm = () => {
                       placeholder='First Name'
                       onChange={updateFirstName}
                       value={firstName}
-                      required={true}
                     ></input>
                   </div>
                   <div className="sign-up-last-name-container">
@@ -96,7 +95,6 @@ const SignUpForm = () => {
                       placeholder='Last Name'
                       onChange={updateLastName}
                       value={lastName}
-                      required={true}
                     ></input>
                   </div>
                 </div>
@@ -145,7 +143,7 @@ const SignUpForm = () => {
                       <button className={`${theme} sign-up-form-button`} type='submit'>
                         <span className="sign-up-form-button-inner-container">
                           <span className="sign-up-form-button-inner">
-                            <span class="sign-up-form-button-label">Continue</span>
+                            <span className="sign-up-form-button-label">Continue</span>
                           </span>
                         </span>
                       </button>
@@ -159,7 +157,7 @@ const SignUpForm = () => {
                     </div>
                   </div>
                 </div>
-                <div>
+                <div className="sign-up-errors">
                   {errors.map((error, ind) => (
                     <div key={ind}>{error}</div>
                   ))}
