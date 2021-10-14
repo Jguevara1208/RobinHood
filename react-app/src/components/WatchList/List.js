@@ -9,8 +9,8 @@ import EditWatchList from "./EditWatchList";
 
 function List({list, listName=false , isStocks=false, isPos}){
     const dispatch = useDispatch();
+    
     const [showList, setShowList] = useState(true)
-    const [showMenu, setShowMenu] = useState(false)
     const [showModal, setShowModal] = useState(false)
 
 
@@ -29,7 +29,7 @@ function List({list, listName=false , isStocks=false, isPos}){
         <div className={`${listName ? 'stock-title' : `list-title-edit`}`}>
           <h1>{listName ? listName : list.listName}</h1>
           <div className="list-settings">
-              {!isStocks && <BiDotsHorizontal onClick={() => setShowModal(!showMenu)} className={`${isPos}-menu`}/>}
+              {!isStocks && <BiDotsHorizontal onClick={() => setShowModal(!showModal)} className={`${isPos}-menu`}/>}
               {showList ? <IoIosArrowUp onClick={() => setShowList(!showList)} id="up" className={`${isPos}-arrow`} /> : <IoIosArrowDown onClick={() => setShowList(!showList)} id="down" className={`${isPos}-arrow`}/>}
           </div>
         </div>

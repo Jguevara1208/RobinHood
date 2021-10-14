@@ -16,7 +16,6 @@
     scrollbar-width: none;
     max-width: 280px;
     min-width: 280px;
-    /* padding: 0px 20px; */
 }
 
 .watchlist-container::-webkit-scrollbar {
@@ -164,5 +163,157 @@
 .title-edit {
     display: flex;
     justify-content: center;
+    align-items: flex-end;
     gap: 2em;
+    margin-bottom: 60px;
+} 
+
+.edit-list-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.edit-graph {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.pos-edit-list-symbol-delete, .neg-edit-list-symbol-delete {
+    font-size: 1.3em;
+    cursor: pointer;
+    color: var(--clr-font);
+}
+
+.pos-edit-list-symbol-delete:hover {
+    color: var(--clr-primary);
+}
+
+.neg-edit-list-symbol-delete:hover {
+    color: var(--clr-secondary);
+}
+
+.edit-symbols-title {
+    width: 100%;
+    padding-bottom: 10px;
+    border-bottom: var(--clr-border);
+    font-weight: 500;
+    font-size: 1em;
+}
+
+.edit-list-symbol-info {
+    border-bottom: var(--clr-border);
+}
+
+.edit-list-symbol-info:hover {
+    background-color: var(--clr-bg-alt);
+}
+
+.edit-list-symbol {
+    width: 5%;
+}
+
+.edit-list-price {
+    width: 10%;    
+}
+
+.edit-list-percent {
+    width: 15%;
+    text-align: right;
+}
+
+.edit-list-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.edit-list-title > p {
+    margin: 0px 0px 5px 0px;
+}
+
+.edit-list-title-edit {
+    background-color: var(--clr-bp-bg);
+    border: var(--clr-border);
+    color: var(--clr-font);
+    height: 30px;
+    border-radius: 5px;
+}
+
+.pos-edit-input, .neg-edit-input{
+    background-color: var(--clr-bg-alt);
+    border: none;
+    height: 2em;
+    color: var(--clr-font);
+    appearance: none;
+    border: var(--clr-border);
+    font-size: 1.5em;
+}
+
+.pos-edit-input:hover, .neg-edit-input:hover{
+    background-color: var(--clr-input-hover);
+}
+
+.pos-edit-input:focus{
+    outline: none;
+    background-color: var(--clr-bg);
+    border: 1px solid var(--clr-primary);
+    border-radius: 3px;
+}
+
+.neg-edit-input:focus{
+    outline: none;
+    background-color: var(--clr-bg);
+    border: 1px solid var(--clr-secondary);
+    border-radius: 3px;
+}
+
+.pos-save-button, .neg-save-button {
+    color: var(--clr-font);
+    font-size: 1em;
+    padding: 10px 25px;
+    height: fit-content;
+    border-radius: 3px;
+}
+
+
+.pos-save-button {
+    background-color: var(--clr-primary);
+}
+
+.pos-save-button:hover {
+    background-color: var(--clr-button-hover-pos);
+}
+
+.neg-save-button {
+    background-color: var(--clr-secondary);
+}
+
+.neg-save-button:hover {
+    background-color: var(--clr-button-hover-neg);
+}
+
+.edit-list-delete-button {
+    background-color: var(--clr-secondary);
+    height: fit-content;
+    padding: 5px 10px;
+    font-size: .9em;
+    border-radius: 5px;
+}
+
+.edit-list-delete-button:hover {
+    background-color: var(--clr-button-hover-neg);
+}
+
+.edit-delete-and-cancel {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-top: 60px;
+}
+
+.edit-delete-and-cancel > p {
+    margin: 0px;
+    cursor: pointer;
 }

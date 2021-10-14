@@ -192,3 +192,78 @@ summary > p {
     font-weight: 500;
 }
 
+.new-list-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pos-new-list-input, .neg-new-list-input{
+    background-color: var(--clr-bg-alt);
+    border: none;
+    height: 2em;
+    font-size: 1em;
+    color: var(--clr-font);
+    appearance: none;
+    border: 1px solid var(--clr-font-alt);
+    border-radius: 3px;
+    margin-bottom: 20px;
+}
+
+
+.pos-new-list-input:hover, .neg-new-list-input:hover{
+    background-color: var(--clr-input-hover);
+}
+
+.pos-new-list-input:focus{
+    outline: none;
+    background-color: var(--clr-bg);
+    border: 1px solid var(--clr-primary);
+    border-radius: 3px;
+}
+.neg-new-list-input:focus{
+    outline: none;
+    background-color: var(--clr-bg);
+    border: 1px solid var(--clr-secondary);
+    border-radius: 3px;
+}
+
+.new-list-buttons {
+    display: flex;
+    width: 60%;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.pos-new-list-edit, .neg-new-list-edit {
+    font-size: .9em;
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.pos-new-list-edit {
+    background-color: var(--clr-primary);
+}
+
+.pos-new-list-edit:hover {
+    background-color: var(--clr-button-hover-pos);
+}
+
+.neg-new-list-edit:hover {
+    background-color: var(--clr-button-hover-neg);
+}
+
+.neg-new-list-edit {
+    background-color: var(--clr-secondary);
+}
+
+.new-list-cancel {
+    background-color: var(--clr-bp-bg);
+}
+
+
+
+
