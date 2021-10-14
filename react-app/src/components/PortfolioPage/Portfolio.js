@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { setUserAssets } from '../../store/userAssets';
 import { setGeneralStories } from '../../store/currentStories';
 import { addUserList } from '../../store/userLists';
+import { AiOutlinePlus } from 'react-icons/ai'
 import StockList from '../WatchList/StockList';
 import WatchList from '../WatchList/WatchList';
 import MainGraph from '../MainGraph/MainGraph';
@@ -58,7 +59,7 @@ function Portfolio(){
                 <StockList isPos={isPos}/>
                 <div className={`watchlist-header`} >
                     <h2 className={`watchlist-title`}>Lists</h2>
-                    <button className={`new-watchlist-button`} onClick={() => setShowNewList(true)} >+</button>
+                    <AiOutlinePlus className={`${isPos}-new-watchlist-button`} onClick={() => setShowNewList(true)} />
                 </div>
                 {showNewList && (
                     <div className={`new-list-container`}>

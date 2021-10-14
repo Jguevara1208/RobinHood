@@ -216,8 +216,8 @@
 
 .video-img {
   position: absolute;
-  width: 650px;
-  top: 26px;
+  /* width: 100%;
+  top: 26px; */
 }
 
 .home-video-1 {
@@ -254,4 +254,9 @@
 
 .par-tools{
   color: white;
+}
+
+
+@media screen and (max-width: 600px) {
+
 }

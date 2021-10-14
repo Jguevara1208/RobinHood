@@ -10,7 +10,6 @@ function StockList({isPos}) {
     listKeys.slice(0, listKeys.length -1).forEach(symbol => {
         symbols[symbol] = symbol
     }) 
-    console.log(symbols)
     
     return (
         <>

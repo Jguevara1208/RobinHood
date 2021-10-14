@@ -39,7 +39,6 @@
     color: var(--clr-font);
     transition: cubic-bezier(0.075, 0.82, 0.165, 1);
     padding-bottom: .7em;
-    z-index: 50;
 }
 
 .active-res {

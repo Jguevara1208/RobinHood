@@ -9,11 +9,8 @@ export default function Index() {
     
     
     function increaseVisibleToolValue () {
-        console.log("Calling increaseVisibleValue")
         if (visibleTool < 2 ){
-            setVisibleTool(visibleTool + 1)
-        }else{
-            setVisibleTool(0)
+            setVisibleTool((visibleTool) => visibleTool + 1)
         }
     }
 
@@ -27,7 +24,7 @@ export default function Index() {
     
     React.useEffect(() => {
         const sliderInterval = setInterval(
-            () => { setVisibleTool((visibleTool + 1)%3) },
+            () => { setVisibleTool((visibleTool + 1)% 3 ) },
             3500);
         return () => {
             clearInterval(sliderInterval);
