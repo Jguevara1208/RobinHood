@@ -1,5 +1,6 @@
 import { marketValue, todaysReturn, totalReturn, portfolioDiversity } from "./utils";
 
+
 function UserAssetStats({currentPrice, stockStats, assets, symbol}) {
 
     const marketValueData = marketValue(currentPrice?.price, assets[symbol]?.shares)
@@ -16,7 +17,7 @@ function UserAssetStats({currentPrice, stockStats, assets, symbol}) {
                             <p className='ua-title'>Your Market Value</p>
                             <p className='ua-value'>{marketValueData}</p>
                         </div>
-                        <div className='ua-section'>
+                        <div className='ua-section ua-border'>
                             <p>Today's Return</p>
                             <div className='ua-inner-section'>
                                 <p className='return-title' >{todaysReturnData['return']}</p>
@@ -37,7 +38,7 @@ function UserAssetStats({currentPrice, stockStats, assets, symbol}) {
                                 <p className='ua-title'>Your Average Cost</p>
                                 <p className='ua-value'>${assets[symbol].average.toFixed(2)}</p>
                             </div>
-                            <div className='ua-section'>
+                            <div className='ua-section ua-border'>
                                 <p>Shares</p>
                                 <p>{assets[symbol].shares}</p>
                             </div>

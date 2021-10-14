@@ -60,7 +60,7 @@
 }
 
 .story-container {
-    width: 110%;
+    width: 102%;
     display: flex;
     justify-content: center;
 }
@@ -72,11 +72,11 @@
 }
 .story-container:hover {
     background-color: var(--clr-bg-alt);
-    border-radius: 1px;
+    border-radius: 3px;
 }
 
 .story-wrapper {
-    width: 90%;
+    width: 98%;
     display: flex;
     border-bottom: var(--clr-border);
 }

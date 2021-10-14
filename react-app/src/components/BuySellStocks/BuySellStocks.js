@@ -3,7 +3,7 @@ import { formatThousands } from "./utils";
 import { useState } from "react";
 import { updateUserAsset, deleteUserAsset, addUserAsset } from "../../store/userAssets";
 import { editBuyingPower } from "../../store/session";
-function BuySellStocks({price, symbol}){
+function BuySellStocks({price, symbol, isPos}){
     const dispatch = useDispatch()
 
     const buyingPower = useSelector(state => state.session.buyingPower)
@@ -14,6 +14,7 @@ function BuySellStocks({price, symbol}){
     const [buyShares, setBuyShares] = useState(null)
     const [sellShares, setSellShares] = useState(null)
     const [error, setError] = useState(null)
+    // console.log(isPos)
 
     function handleOrder(){
         if (isBuy) {
@@ -75,52 +76,113 @@ function BuySellStocks({price, symbol}){
         dispatch(deleteUserAsset(asset))
     }
 
+    function handleBNSBuy(){
+        setIsBuy(true)
+        setError(null)
+        setSellShares(0)
+        setBuyShares(0)
+    }
+
+    function handleBNSSell(){
+        setIsBuy(false)
+        setError(null)
+        setBuyShares(0)
+        setSellShares(0)
+    }
+
+
+
     return (
-        <div>
-            <p onClick={() => setIsBuy(true)} className={isBuy ? 'trade-active' : ''}>Buy {symbol}</p>
-            <p onClick={() => setIsBuy(false)} className={!isBuy ? 'trade-active' : ''}>Sell {symbol}</p>
-            <div>
-                <p>Shares</p>
-                {isBuy 
-                    ? <input value={buyShares} type="number" onChange={(e) => setBuyShares(e.target.value)}/>
-                    : <input value={sellShares} type="number" onChange={(e) => setSellShares(e.target.value)} />
-                }
-            </div>
-            <div>
-                <p>Market Price</p>
-                <p>${price}</p>
-            </div>
-            {isBuy 
-                ? 
-                <div>
-                    <p>Estimated Cost</p>
-                    <p>${formatThousands((buyShares * price))}</p>
-                </div>
-                :
-                <div>
-                    <p>Estimated Credit</p>
-                    <p>${formatThousands((sellShares * price))}</p>
-                </div>
-            }
-            <div>
-                {isBuy 
-                    ? <button onClick={handleOrder}>Complete Order</button>
-                    : <button onClick={handleOrder} disabled={asset ? false : true}>Complete Order</button>
-                }
-            </div>
-            {isBuy 
-                ?
-                <div>
-                    <p>${formatThousands(buyingPower)} Buying Power Available</p>
-                    {error && <p>{error}</p>}
-                </div>
-                :
-                <div>
-                    <p>{asset ? asset.shares : 0} Shares Available<span onClick={sellAllShares}>{asset ? ' - Sell All' : ''}</span></p>
-                    {error && <p>{error}</p>}
-                </div>
-            }
+      <div className="bns-wrapper">
+        <div className="bns-top">
+          <p
+            onClick={handleBNSBuy}
+            className={isBuy ? `trade-active ${isPos}-bns` : "bns-click"}
+          >
+            Buy {symbol}
+          </p>
+          {asset ? (
+            <p
+              onClick={handleBNSSell}
+              className={!isBuy ? `trade-active ${isPos}-bns` : "bns-click"}
+            >
+              Sell {symbol}
+            </p>
+          ) : null}
         </div>
+        <div className="bns-shares">
+          <p>Shares</p>
+          {isBuy ? (
+            <input
+              className={`${isPos}-bp-input1`}
+              value={buyShares}
+              type="number"
+              onChange={(e) => setBuyShares(e.target.value)}
+              placeholder="0"
+            />
+          ) : (
+            <input
+              className={`${isPos}-bp-input1`}
+              value={sellShares}
+              type="number"
+              onChange={(e) => setSellShares(e.target.value)}
+              placeholder="0"
+            />
+          )}
+        </div>
+        <div className="bns-interior">
+          <div className="bns-market-price">
+            <p className={`${isPos}-mark-price`}>Market Price</p>
+            <p>${price}</p>
+          </div>
+          {isBuy ? (
+            <div className="bns-estimation">
+              <p>Estimated Cost</p>
+              <p>${formatThousands(buyShares * price)}</p>
+            </div>
+          ) : (
+            <div className="bns-estimation">
+              <p>Estimated Credit</p>
+              <p>${formatThousands(sellShares * price)}</p>
+            </div>
+          )}
+        </div>
+        <div className="bns-complete-order">
+          {isBuy ? (
+            <button className={`${isPos}-bns-button`} onClick={handleOrder}>
+              Complete Order
+            </button>
+          ) : (
+            <button
+              className={`${isPos}-bns-button`}
+              onClick={handleOrder}
+              disabled={asset ? false : true}
+            >
+              Complete Order
+            </button>
+          )}
+        </div>
+        <div className="bns-singleItem">
+          {isBuy ? (
+            <div className="bns-bp-wrapper">
+              <p className={`${isPos}-bns-bp`}>
+                ${formatThousands(buyingPower)} Buying Power Available
+              </p>
+              {error && <p className="bns-bp-error">{error}</p>}
+            </div>
+          ) : (
+            <div className="bns-bp-wrapper">
+              <p>
+                {asset ? asset.shares : 0} Shares Available -
+                <span className={`${isPos}-sell-all`} onClick={sellAllShares}>
+                  {asset ? " Sell All" : ""}
+                </span>
+              </p>
+              {error && <p className="bns-bp-error">{error}</p>}
+            </div>
+          )}
+        </div>
+      </div>
     );
 };
 
