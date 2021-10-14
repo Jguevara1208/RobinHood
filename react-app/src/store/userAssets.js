@@ -64,7 +64,6 @@ export const setUserAssets = (userId, resolution) => async (dispatch) => {
 };
 
 export const  addUserAsset = (asset) => async (dispatch) => {
-    console.log(asset)
     const res = await fetch(`/api/assets/`, {
         method: "POST",
         headers: {
@@ -113,8 +112,6 @@ const userAssetsReducer = (state=initialState, action) => {
             return newState;
         case UPDATE_USER_ASSET:
             newState = {...state};
-            console.log(action.asset.symbol)
-            console.log(action.asset)
             newState[action.asset.symbol] = action.asset;
             return newState;
         case DELETE_USER_ASSET:

@@ -44,7 +44,6 @@ export function totalReturn(avg, shares, price){
 
 export function portfolioDiversity(assets, shares){
     let count = 0
-    console.log(count, 'count')
     for (let asset in assets){
         if (assets[asset].shares) {
             count += Number(assets[asset].shares)

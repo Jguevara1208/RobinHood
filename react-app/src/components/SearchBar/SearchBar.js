@@ -9,7 +9,6 @@ function SearchBar() {
     const [searchText, setSearchText] = useState('')
     const [showFilter, setShowFilter] = useState(false)
 
-    // console.log(allStocks)
     useEffect(() => {
         filterStocksFunc()
         if(searchText){

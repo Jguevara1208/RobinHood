@@ -1,36 +1,23 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { deleteListSymbol } from "../../store/userLists";
 import MainGraph from "../MainGraph/MainGraph";
 
 function ListSymbolData({symbol, isStocks, listId, id}){
-    const dispatch = useDispatch()
     const graphData = useSelector(state => state.watchlistStocks[symbol])
-    // console.log(listId, id)
-    function handleDelete(){
-        dispatch(deleteListSymbol({
-            id,
-            listId,
-            symbol
-        }))
-    }
 
     let isPos = graphData?.[graphData.length - 1]["%"][0] === "+" ? "pos" : "neg";
 
     return (
         <>
             {graphData &&
-            <div>
-                {!isStocks && 
-                <p onClick={handleDelete}>Delete</p>
-                }
+            <div className='delete-container'>
                 <Link to={`/stocks/${symbol}`}>
                     <div className="list-stock-wrapper">
                         <p>{symbol}</p>
                         <MainGraph graphData={graphData} isWatchList={true} isPos={isPos}/>
                         <div className="list-price">
                             <p>{`$${graphData[graphData.length - 1].price}`}</p>
-                            <p className={`${isPos}`}>{`$${graphData[graphData.length - 1][`%`]}`}</p>
+                            <p className={`${isPos}`}>{`${graphData[graphData.length - 1][`%`]}%`}</p>
                         </div>
                     </div>
                 </Link>

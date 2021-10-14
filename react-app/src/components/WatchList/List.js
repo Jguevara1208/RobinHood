@@ -1,18 +1,18 @@
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { setWatchListStocks } from "../../store/watchlistStocks";
-import ListSymbolData from "./ListSymbolData";
-import { deleteUserList, updateUserList } from "../../store/userLists";
+import { Modal } from "../../context/Modal";
 import {IoIosArrowDown, IoIosArrowUp} from 'react-icons/io'
 import {BiDotsHorizontal} from 'react-icons/bi'
+import ListSymbolData from "./ListSymbolData";
+import EditWatchList from "./EditWatchList";
 
 function List({list, listName=false , isStocks=false, isPos}){
     const dispatch = useDispatch();
-
     const [showList, setShowList] = useState(true)
     const [showMenu, setShowMenu] = useState(false)
-    const [showEdit, setShowEdit] = useState(false)
-    const [newListTitle, setNewListTitle] = useState(listName ? listName : list.listName)
+    const [showModal, setShowModal] = useState(false)
+
 
     let symbols = Object.keys(list.symbols);
 
@@ -20,53 +20,23 @@ function List({list, listName=false , isStocks=false, isPos}){
         (async () => {
            await dispatch(setWatchListStocks(symbols))
         })();
-    },[dispatch])
+    },[dispatch, symbols])
 
-    function editList(){
-        setShowMenu(false)
-        setShowEdit(true)
-    }
-    function handleTitleSave(){
-        const updatedList = {
-            id: list.id,
-            list_name: newListTitle
-        }
-        dispatch(updateUserList(updatedList))
-        setShowEdit(false)
-    }
 
-    function handleListDelete(){
-        dispatch(deleteUserList(list.id))
-        setShowMenu(false)
-    }
 
     return (
       <>
-        {showEdit ? (
-          <div>
-            <input
-              type="text"
-              value={newListTitle}
-              onChange={(e) => setNewListTitle(e.target.value)}
-            />
-            <button onClick={handleTitleSave}>Save</button>
+        <div className={`${listName ? 'stock-title' : `list-title-edit`}`}>
+          <h1>{listName ? listName : list.listName}</h1>
+          <div className="list-settings">
+              {!isStocks && <BiDotsHorizontal onClick={() => setShowModal(!showMenu)} className={`${isPos}-menu`}/>}
+              {showList ? <IoIosArrowUp onClick={() => setShowList(!showList)} id="up" className={`${isPos}-arrow`} /> : <IoIosArrowDown onClick={() => setShowList(!showList)} id="down" className={`${isPos}-arrow`}/>}
           </div>
-        ) : (
-          <div className="list-title-edit">
-            <h1>{listName ? listName : list.listName}</h1>
-            <div className="list-settings">
-              {!isStocks && <p onClick={() => setShowMenu(!showMenu)}><BiDotsHorizontal className={`${isPos}-menu`}/></p>}
-              <p onClick={() => setShowList(!showList)}>
-                {showList ? <IoIosArrowUp id="up" className={`${isPos}-arrow`} /> : <IoIosArrowDown id="down" className={`${isPos}-arrow`}/>}
-              </p>
-            </div>
-          </div>
-        )}
-        {showMenu && (
-          <div>
-            <p onClick={editList}>Edit List</p>
-            <p onClick={handleListDelete}>Delete List</p>
-          </div>
+        </div>
+        {showModal && (
+          <Modal onClose={() => setShowModal(false)}>
+            <EditWatchList setShowModal={setShowModal} list={list} />
+          </Modal>
         )}
         {showList && (
           <>

@@ -1,22 +1,16 @@
 import React from 'react'
 import './SplashPage.css'
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux';
-import {Carousel} from 'react-responsive-carousel'
 import { AiOutlineArrowUp, AiOutlineArrowDown } from 'react-icons/ai';
 
 export default function Index() {
-    const theme = useSelector(state => state.theme);
     
     const [visibleTool, setVisibleTool] = React.useState(0)
     
     
     function increaseVisibleToolValue () {
-        console.log("Calling increaseVisibleValue")
         if (visibleTool < 2 ){
-            setVisibleTool(visibleTool + 1)
-        }else{
-            setVisibleTool(0)
+            setVisibleTool((visibleTool) => visibleTool + 1)
         }
     }
 
@@ -30,7 +24,7 @@ export default function Index() {
     
     React.useEffect(() => {
         const sliderInterval = setInterval(
-            () => { setVisibleTool((visibleTool + 1)%3) },
+            () => { setVisibleTool((visibleTool + 1)% 3 ) },
             3500);
         return () => {
             clearInterval(sliderInterval);
