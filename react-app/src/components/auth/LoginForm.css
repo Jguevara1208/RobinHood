@@ -135,7 +135,7 @@ body {
 
 .log-in-form-button:hover,
 .demo-user-button:hover {
-  background-color: var(--clr-primary-hover);
+  background-color: #dc4600;
 }
 
 .log-in-form-button:active,
