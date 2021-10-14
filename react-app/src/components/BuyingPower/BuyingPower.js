@@ -36,6 +36,7 @@ function BuyingPower({ user, isPos }) {
             dispatch(editBuyingPower(user.id, buyingPower))
             setDepositAmount("$0.00")
             setOpenBuyingPower(false)
+            setSummaryOpen(false)
         }
     }
 

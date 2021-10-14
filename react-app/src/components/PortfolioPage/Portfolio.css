@@ -8,15 +8,19 @@
 .main-wrapper {
     display: flex;
     width: 70%;
-    margin-top: 60px;
+    margin-top: 90px;
     justify-content: space-around;
+    column-gap: 30px;
+    max-width: 1030px;
+    min-width: 1030px;
 }
 
 .main-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 50%;
+    width: 65%;
+    max-width: 700px;
 }
 
 .resolution-container {
@@ -97,6 +101,7 @@
 .sumOpen {
     background-color: var(--clr-bp-bg);
     border-radius: 5px;
+    box-shadow: 0px 12px 24px rgba(0,0,0,0.06), 0px -12px 24px rgba(0,0,0,0.02);
 }
 
 .sumOpen:hover {

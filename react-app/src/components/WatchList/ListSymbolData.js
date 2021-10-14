@@ -25,10 +25,14 @@ function ListSymbolData({symbol, isStocks, listId, id}){
                 <p onClick={handleDelete}>Delete</p>
                 }
                 <Link to={`/stocks/${symbol}`}>
-                    <p>{symbol}</p>
-                    <MainGraph graphData={graphData} isWatchList={true} isPos={isPos}/>
-                    <p>{`$${graphData[graphData.length - 1].price}`}</p>
-                    <p>{`$${graphData[graphData.length - 1][`%`]}`}</p>
+                    <div className="list-stock-wrapper">
+                        <p>{symbol}</p>
+                        <MainGraph graphData={graphData} isWatchList={true} isPos={isPos}/>
+                        <div className="list-price">
+                            <p>{`$${graphData[graphData.length - 1].price}`}</p>
+                            <p className={`${isPos}`}>{`$${graphData[graphData.length - 1][`%`]}`}</p>
+                        </div>
+                    </div>
                 </Link>
             </div> 
             }
