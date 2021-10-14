@@ -1,12 +1,9 @@
 import React from 'react'
 import './SplashPage.css'
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux';
-import {Carousel} from 'react-responsive-carousel'
 import { AiOutlineArrowUp, AiOutlineArrowDown } from 'react-icons/ai';
 
 export default function Index() {
-    const theme = useSelector(state => state.theme);
     
     const [visibleTool, setVisibleTool] = React.useState(0)
     
