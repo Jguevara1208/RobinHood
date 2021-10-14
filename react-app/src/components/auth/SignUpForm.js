@@ -187,26 +187,26 @@ const SignUpForm = () => {
         </div>
         <div className="sign-up-sidebar">
           <div className="sign-up-sidebar-elements">
-            <div>
-              <h3>Commission-free trading</h3>
+            <div className="sign-up-sidebar-element1">
+              <span className="sign-up-sidebar-style1">Commission-free trading</span>
             </div>
             <div>
-              <p>Break free from commission-fees and make unlimited commission-free trades in stocks, funds,
-                and options with Robinhood Financial. Other fees may apply. View our fee schedule to learn more.</p>
+              <span className="sign-up-sidebar-style2">Break free from commission-fees and make unlimited commission-free trades in stocks, funds,
+                and options with Robinhood Financial. Other fees may apply. View our fee schedule to learn more.</span>
+            </div>
+            <div className="sign-up-sidebar-element2">
+              <span className="sign-up-sidebar-style1">Account Protection</span>
             </div>
             <div>
-            <h3>Account Protection</h3>
+              <span className="sign-up-sidebar-style2">Robinhood Financial is a member of SIPC. Securities in your account protected up to $500,000.
+                For details, please see www.sipc.org.</span>
+            </div>
+            <div className="sign-up-sidebar-element2">
+              <span className="sign-up-sidebar-style1">Stay on top of your portfolio</span>
             </div>
             <div>
-              <p>Robinhood Financial is a member of SIPC. Securities in your account protected up to $500,000.
-                For details, please see www.sipc.org.</p>
-            </div>
-            <div>
-              <h3>Stay on top of your portfolio</h3>
-            </div>
-            <div>
-              <p>Set up customized news and notifications to stay on top of your assets as casually or as
-                relentlessly as you like. Controlling the flow of info is up to you.</p>
+              <span className="sign-up-sidebar-style2">Set up customized news and notifications to stay on top of your assets as casually or as
+                relentlessly as you like. Controlling the flow of info is up to you.</span>
             </div>
           </div>
         </div>
