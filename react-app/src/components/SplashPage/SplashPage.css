@@ -1,4 +1,4 @@
-@import "../../index.css";
+
 
 .investing-for-everyone-container{
   display: flex;
@@ -8,11 +8,10 @@
   height: 75vh;
   background-color: rgb(195, 245, 60);
   border-bottom: solid black 1px;
+  padding: 10px;
 }
 
 .investing-for-everyone-desc{
-  min-width: 350px;
-  width: 25%;
   font-size: 24px;
 }
 
@@ -38,11 +37,10 @@
 .fractional-shares-container {
   display: flex;
   flex-direction: column;
-
+  align-items: center;
+  justify-content: center;
   background-color: #f0ebe6;
   border-top: solid black 1px;
-  padding: 0 15%;
-
 }
 
 .subcontainer-3 {
@@ -50,8 +48,8 @@
   align-items: center;
   justify-content: center;
   gap: 30px;
-  width: 70%;
-  padding: 0 30px;
+  width: 100%;
+  padding: 60px;
 }
 
 .fractional-shares-info {
@@ -72,8 +70,8 @@
 .tools-container {
   display: flex;
   justify-content: center;
+  align-items: center;
   padding: 60px;
-  gap: 15.5rem;
   background-color: black;
   color: white;
 }
@@ -120,16 +118,18 @@
 .info-container {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   color: white;
-  gap: 30rem;
+  gap: 15%;
 }
 
-.subcontainer-4 > h1 {
+
+
+.tool-info > h1 {
   font-size: 54px;
 }
 
-.subcontainer-4 > p {
+.tool-info > p {
   font-size: 24px;
 }
 
@@ -153,10 +153,9 @@
 
 .tool-button {
   background-color: black;
-
+  align-items: center;
   border: none;
   color: grey;
-  padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -167,10 +166,9 @@
 
 .tool-button-active {
   background-color: black;
-
+  align-items: center;
   border: none;
   color: white;
-  padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -216,8 +214,8 @@
 
 .video-img {
   position: absolute;
-  /* width: 100%;
-  top: 26px; */
+  width: 618px;
+  top: 26px;
 }
 
 .home-video-1 {
@@ -248,15 +246,103 @@
 
 }
 
-.subcontainer-4{
-  width: 500px;
-}
-
 .par-tools{
   color: white;
 }
 
+.tools-info-container{
+  display: flex;
+  gap: 15%;
+}
 
-@media screen and (max-width: 600px) {
+
+.fractional-shares-side-img{
+  background-image: url("https://robinhood.com/us/en/_next/static/images/1x__1358464522fc1bd88f9bf62a40f42192.png");
+}
+
+@media screen and (max-width: 880px) {
+
+  .ipo-access-main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .tools-container {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    padding: 60px;
+    background-color: black;
+    color: white;
+    gap: 30px;
+  }
+
+  .info-container{
+    display: flex;
+    flex-direction: column;
+    gap: 15%;
+  }
+
+  .tool-img{
+    height: 25vh;
+    width: auto;
+  }
+
+  .tools-buttons-container{
+    flex-direction: row;
+    width: 50%;
+    padding: 0px;
+  }
+
+  .tool-button, .tool-button-active{
+    width: 50%;
+  }
+
+  .tool-info{
+    padding: 15px;
+  }
+
+  .tool-info > h1{
+    color: white;
+    font-size: 16px;
+    font-weight: 450;
+    font-size: 24px;
+  }
+
+  .tool-info > p {
+    color: white;
+    font-size: 14px;
+  }
+
+  .par-tools-title {
+    font-size: 1px;
+  }
+
+  .subcontainer-3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .fractional-shares-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0ebe6;
+    border-top: solid black 1px;
+    padding: 5px;
+  }
+
+  .fractional-shares-info {
+    width: 80%;
+  }  
 
 }

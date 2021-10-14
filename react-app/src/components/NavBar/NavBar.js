@@ -17,12 +17,13 @@ const NavBar = () => {
   } else {
     return (
       <nav>
-            <NavLink to='/' exact={true} activeClassName='active'>
-              RobinHood
-            </NavLink>
           {
             !session.email ?
             (
+              <>
+              <NavLink to='/' exact={true} activeClassName='active'>
+              RobinHood
+            </NavLink>
               <div class="user-actions-container">
                   <NavLink className="login-button"to='/login' exact={true} activeClassName='active'>
                     Login
@@ -31,9 +32,13 @@ const NavBar = () => {
                     Sign Up
                   </NavLink>
               </div>
+              </>
             )
               :
               <>
+                <NavLink to='/' exact={true} activeClassName='active'>
+                  RobinHood test
+                </NavLink>
                 <SearchBar/>
                 <LogoutButton />
               </>
