@@ -10,7 +10,9 @@ export default function Index() {
     
     function increaseVisibleToolValue () {
         if (visibleTool < 2 ){
-            setVisibleTool((visibleTool) => visibleTool + 1)
+            setVisibleTool(visibleTool + 1)
+        } else {
+            setVisibleTool(0)
         }
     }
 
@@ -23,12 +25,12 @@ export default function Index() {
     }
     
     React.useEffect(() => {
-        const sliderInterval = setInterval(
-            () => { setVisibleTool((visibleTool + 1)% 3 ) },
-            3500);
-        return () => {
-            clearInterval(sliderInterval);
-        }
+        // const sliderInterval = setInterval(
+        //     () => { setVisibleTool((visibleTool + 1)% 3 ) },
+        //     3500);
+        // return () => {
+        //     clearInterval(sliderInterval);
+        // }
     })
 
 
@@ -45,10 +47,10 @@ export default function Index() {
                     </p>
                     <Link className="sign-up-button" to={'/sign-up'}> Sign Up </Link>
                 </div>
-                <div className="home-video-1">
+                {/* <div className="home-video-1">
                     <div className="home-video-2">
                         <div className="home-video-3">
-                            <video height="563px" width="650px" className="video-1" autoPlay controlsList="nodownload nofullscreen noremoteplayback" loop muted playsInline="" preload="auto">
+                            <video className="video-1" autoPlay controlsList="nodownload nofullscreen noremoteplayback" loop muted playsInline="" preload="auto">
                                 <source className="img-1" src="https://cdn.robinhood.com/assets/robinhood/brand/_next/static/images/3x__327bf4cc768a323497d5aaa7416319c2.mp4" type="video/mp4" />
                                 <img draggable="false" role="presentation" src="https://cdn.robinhood.com/assets/robinhood/brand/_next/static/images/1x__36a396f664677ed80a2459d1dca75f00.png"
                                     srcSet="https://cdn.robinhood.com/assets/robinhood/brand/_next/static/images/1x__36a396f664677ed80a2459d1dca75f00.png, https://cdn.robinhood.com/assets/robinhood/brand/_next/static/images/2x__c7dcadbbb72fc298e85e94844f68342c.png 2x, https://cdn.robinhood.com/assets/robinhood/brand/_next/static/images/3x__7c5da6ba049983f3558423906f16f0af.png 3x" />
@@ -56,7 +58,7 @@ export default function Index() {
                             <img className="video-img" draggable="false" src="https://cdn.robinhood.com/assets/robinhood/brand/_next/static/images/2x__ff9c36e27d7018cf707b95d8675793a3.png" alt="" />
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
 
         <div className="ipo-access-main-container">
@@ -112,7 +114,7 @@ export default function Index() {
                         <h4>Trade in real time</h4>
                         <p>Trades placed during market hours are executed at that time, so you’ll always know the share price.</p>
                     </div>
-                    <img className="fractional-shares-side-img" src="https://robinhood.com/us/en/_next/static/images/1x__1358464522fc1bd88f9bf62a40f42192.png"></img>
+                    <div className="fractional-shares-side-img"></div>
                 </div>
             </div>
 
@@ -123,15 +125,16 @@ export default function Index() {
                     <button className={visibleTool === 1 ? `tool-button-active` : `tool-button`} onClick={e => setVisibleTool(1)}>Manage</button>
                     <button className={visibleTool === 2 ? `tool-button-active` : `tool-button`} onClick={e => setVisibleTool(2)}>Customize</button>
                     <button className="tool-button" onClick={increaseVisibleToolValue}><AiOutlineArrowDown /></button>
+                    
                 </div>
-                <div className="tools-container">
+                <div className="tools-info-container">
                     {
                         visibleTool === 0 && (
                             <div className="info-container">
                             <img className="tool-img" src={'/images/learn.png'}></img>
-                                <div className="subcontainer-4">
-                                    <h1 className="par-tools">Learn As You Go</h1>
-                                    <p className="par-tools">Our goal is to make investing in financial markets more affordable, more intuitive, and more fun, no matter how much experience you have (or don’t have).</p>
+                                <div className="tool-info">
+                                    <h1 >Learn As You Go</h1>
+                                    <p >Our goal is to make investing in financial markets more affordable, more intuitive, and more fun, no matter how much experience you have (or don’t have).</p>
                                 </div>
                             </div>
                         )
@@ -141,9 +144,9 @@ export default function Index() {
                         visibleTool === 1 && (
                             <div className="info-container">
                                 <img className="tool-img" src={'/images/manage.png'}></img>
-                                <div className="subcontainer-4">
-                                    <h1 className="par-tools">Manage Your Portfolio</h1>
-                                    <p className="par-tools">Keep your portfolio in your pocket. Everything you need to manage your assets is available in a single app.</p>
+                                <div className="tool-info">
+                                    <h1>Manage Your Portfolio</h1>
+                                    <p >Keep your portfolio in your pocket. Everything you need to manage your assets is available in a single app.</p>
                                 </div>
                             </div>
                         )
@@ -153,9 +156,9 @@ export default function Index() {
                         visibleTool === 2 && (
                             <div className="info-container">
                                 <img className="tool-img" src="/images/customize.png"></img>
-                                <div className="subcontainer-4">
-                                    <h1 className="par-tools">Keep Tabs on Your Money</h1>
-                                    <p className="par-tools">Set up customized news and notifications to stay on top of your assets as casually or as relentlessly as you like. Controlling the flow of info is up to you.</p>
+                                <div className="tool-info">
+                                    <h1 >Keep Tabs on Your Money</h1>
+                                    <p>Set up customized news and notifications to stay on top of your assets as casually or as relentlessly as you like. Controlling the flow of info is up to you.</p>
                                 </div>
                             </div>
                         )

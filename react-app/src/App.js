@@ -18,7 +18,7 @@ function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
   const user = useSelector(state => state.session);
-  const theme = useSelector(state => state.theme)
+  const theme = useSelector(state => state.theme);
   useEffect(() => {
     (async() => {
       await dispatch(authenticate())
