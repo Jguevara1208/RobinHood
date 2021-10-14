@@ -34,7 +34,7 @@ function List({list, listName=false , isStocks=false, isPos}){
           </div>
         </div>
         {showModal && (
-          <Modal onClose={() => setShowModal(false)}>
+          <Modal onClose={() => setShowModal(false)} isWatchList={true}>
             <EditWatchList setShowModal={setShowModal} list={list} />
           </Modal>
         )}

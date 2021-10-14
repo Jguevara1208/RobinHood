@@ -33,6 +33,8 @@
 
   --clr-atl-hover-pos: rgba(46, 218, 18, .4);
   --clr-atl-hover-neg: rgba(220, 70, 0, .4);
+
+  --atl-emoji-bg: #F4F8FA;
 }
 
 .dark {
@@ -64,6 +66,8 @@
 
   --clr-atl-hover-pos: rgba(93, 216, 255, .4);
   --clr-atl-hover-neg: rgba(255, 107, 38, .4);
+
+  --atl-emoji-bg: #30363A ;
 }
 
 button {

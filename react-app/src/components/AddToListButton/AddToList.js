@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useState, useEffect } from "react"
 import { addListSymbol, addUserList, setUserLists } from "../../store/userLists"
 import { Modal } from "../../context/Modal";
-import {AiOutlineClose} from 'react-icons/ai'
+import {AiOutlineClose, AiOutlinePlus} from 'react-icons/ai'
 
 
 function AddToList({symbol, userId, isPos, stockName}) {
@@ -43,40 +43,76 @@ function AddToList({symbol, userId, isPos, stockName}) {
 
     return (
       <div className="atl-wrapper">
-        <button className={`${isPos}-atl-button`} onClick={() => setOpenLists(!openLists)}>Add to Lists</button>
-        
+        <button
+          className={`${isPos}-atl-button`}
+          onClick={() => setOpenLists(!openLists)}
+        >
+          Add to Lists
+        </button>
+
         {openLists && (
-          <Modal onClose={() => setOpenLists(false)}>
+          <Modal onClose={() => setOpenLists(false)} isWatchList={false}>
             <div className="atl-modal-wrapper">
-                <div className="atl-close-btn">
-                  <p>Add {symbol} to Your Lists</p>
-                  <AiOutlineClose className="atl-close"/></div>
-                {showNewList ? 
+              <div className="atl-close-btn">
+                <p>Add {symbol} to Your Lists</p>
+                <AiOutlineClose className="atl-close" />
+              </div>
+              {showNewList ? (
                 <div>
-                    <input type="text" placeholder="List Name" value={newListName} onChange={(e)=> setNewListName(e.target.value)}/>
-                    <div>
-                        <button onClick={()=>setShowNewList(false)}>Cancel</button>
-                        <button onClick={handleNewList}>Create List</button>
-                    </div>
-                </div> 
-                : 
-                <div onClick={()=> setShowNewList(true)}>
-                    <div>+</div>
-                    <div>
-                        <p>Create New List</p>
-                    </div>
-                </div>}
-              {Object.keys(lists).map((key) => (
-                <div>
-                  <input className="listInputs" id={`list-${lists[key].id}`} type="checkbox" disabled={isInList(lists[key]) ? true : false}/>
+                  <input
+                    type="text"
+                    placeholder="List Name"
+                    value={newListName}
+                    onChange={(e) => setNewListName(e.target.value)}
+                  />
                   <div>
-                    <p>{lists[key].listName}</p>
-                    <p>{Object.keys(lists[key].symbols).length} items</p>
-                    <p>{isInList(lists[key]) ? "Already in list" : ''}</p>
+                    <button onClick={() => setShowNewList(false)}>
+                      Cancel
+                    </button>
+                    <button onClick={handleNewList}>Create List</button>
+                  </div>
+                </div>
+              ) : (
+                <div className="new-list" onClick={() => setShowNewList(true)}>
+                  <div className={`${isPos}-plus-btn-bg`}>
+                    <AiOutlinePlus className={`${isPos}-plus-btn`} />
+                  </div>
+                  <div>
+                    <p className="atl-list-names">Create New List</p>
+                  </div>
+                </div>
+              )}
+              {Object.keys(lists).map((key) => (
+                <div className="atl-watchlist-wrapper">
+                  <label
+                    htmlFor={`list-${lists[key].id}`}
+                    className={`${isPos}-atl-label`}
+                  >
+                    <input
+                      className="listInputs"
+                      id={`list-${lists[key].id}`}
+                      type="checkbox"
+                      disabled={isInList(lists[key]) ? true : false}
+                    />
+                    <span class={`${isPos}2 checkmark`}></span>
+                  </label>
+                  <div className="atl-watchlist-info">
+                    <div className="atl-emoji">
+                      <p>🥸</p>
+                    </div>
+                    <div className="atl-watchlist-stats">
+                      <p className="atl-list-names1">{lists[key].listName}</p>
+                      <div className="atl-watchlist-stats-btm">
+                        <p>{Object.keys(lists[key].symbols).length} items</p>
+                        <p className="atl-in-list">
+                          {isInList(lists[key]) ? "Already in list" : ""}
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               ))}
-              <button onClick={handleSubmit}>Save Changes</button>
+              <button className="atl-save-btn" onClick={handleSubmit}>Save Changes</button>
             </div>
           </Modal>
         )}
