@@ -6,7 +6,7 @@ import MainGraph from "../MainGraph/MainGraph";
 function ListSymbolData({symbol, isStocks, listId, id}){
     const dispatch = useDispatch()
     const graphData = useSelector(state => state.watchlistStocks[symbol])
-    // console.log(listId, id)
+
     function handleDelete(){
         dispatch(deleteListSymbol({
             id,

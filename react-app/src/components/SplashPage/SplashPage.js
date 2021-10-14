@@ -1,17 +1,14 @@
 import React from 'react'
 import './SplashPage.css'
 import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux';
 
 export default function Index() {
-    const theme = useSelector(state => state.theme);
 
     const [visibleTool, setVisibleTool] = React.useState(0)
 
 
     function increaseVisibleToolValue () {
         if (visibleTool < 2 ){
-            console.log(visibleTool)
             setVisibleTool((visibleTool) => visibleTool + 1)
         }
     }

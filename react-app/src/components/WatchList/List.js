@@ -8,7 +8,6 @@ import {BiDotsHorizontal} from 'react-icons/bi'
 
 function List({list, listName=false , isStocks=false, isPos}){
     const dispatch = useDispatch();
-
     const [showList, setShowList] = useState(true)
     const [showMenu, setShowMenu] = useState(false)
     const [showEdit, setShowEdit] = useState(false)
@@ -20,7 +19,7 @@ function List({list, listName=false , isStocks=false, isPos}){
         (async () => {
            await dispatch(setWatchListStocks(symbols))
         })();
-    },[dispatch])
+    },[dispatch, symbols])
 
     function editList(){
         setShowMenu(false)

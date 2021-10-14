@@ -9,11 +9,14 @@
     border-radius: 5px;
     height: 90vh;
     overflow: scroll;
-    /* overflow-y: hidden; */
     scrollbar-width: none;
     max-width: 260px;
     min-width: 260px;
     padding: 0px 20px;
+}
+
+.watchlist-container::-webkit-scrollbar {
+  display: none;
 }
 
 .list-title-edit{
