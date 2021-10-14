@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useSelector, useDispatch} from "react-redux";
 import { updateUserList, deleteUserList } from "../../store/userLists";
 import { deleteListSymbol } from "../../store/userLists";
-import ListSymbolData from "./ListSymbolData";
 import MainGraph from "../MainGraph/MainGraph";
 
 
@@ -43,35 +42,30 @@ function EditWatchList({ list, setShowModal, listId, id}){
 
     return (
         <>
-            <div>
+            <div className='title-edit'>
                 <input
                     type="text"
                     value={newListTitle}
                     onChange={(e) => setNewListTitle(e.target.value)}
                 />
                 <button onClick={handleTitleSave}>Save</button>
+                <p onClick={handleListDelete}>Delete List</p>
             </div>
-            <p onClick={handleListDelete}>Delete List</p>
             <>
                 {symbols &&
                     symbols.map((symbol) => (
                         <div>
                             {graphData && (
                                 <>
-                                    <div className='delete-container'>
-                                        <div className="list-stock-wrapper">
-                                            <p>{symbol}</p>
-                                            <MainGraph graphData={graphData[symbol]} isWatchList={true} isPos={isPos(symbol)} />
-                                            <p>{`$${graphData?.[symbol]?.[graphData[symbol].length - 1]?.price}`}</p>
-                                            <p className={`${isPos(symbol)}`}>{`$${graphData?.[symbol]?.[graphData[symbol]?.length - 1][`%`]}`}</p>
-                                            <p onClick={() => handleDelete(symbol, list?.symbols[symbol]?.listId, list?.symbols[symbol]?.id)}>Delete Symbol</p>
-                                        </div>
+                                    <div className="list-stock-wrapper">
+                                        <p>{symbol}</p>
+                                        <MainGraph graphData={graphData[symbol]} isWatchList={true} isPos={isPos(symbol)} />
+                                        <p>{`$${graphData?.[symbol]?.[graphData[symbol].length - 1]?.price}`}</p>
+                                        <p className={`${isPos(symbol)}`}>{`$${graphData?.[symbol]?.[graphData[symbol]?.length - 1][`%`]}`}</p>
+                                        <p onClick={() => handleDelete(symbol, list?.symbols[symbol]?.listId, list?.symbols[symbol]?.id)}>Delete Symbol</p>
                                     </div>
                                 </>
                             )}
-                                {/* // symbol={symbol}
-                                // listId={list?.symbols[symbol]?.listId}
-                                // id={list?.symbols[symbol]?.id} */}
                         </div>
 
                     ))}

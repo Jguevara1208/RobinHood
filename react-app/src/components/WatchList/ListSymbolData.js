@@ -12,13 +12,12 @@ function ListSymbolData({symbol, isStocks, listId, id}){
             {graphData &&
             <div className='delete-container'>
                 <Link to={`/stocks/${symbol}`}>
-
                     <div className="list-stock-wrapper">
                         <p>{symbol}</p>
                         <MainGraph graphData={graphData} isWatchList={true} isPos={isPos}/>
                         <div className="list-price">
                             <p>{`$${graphData[graphData.length - 1].price}`}</p>
-                            <p className={`${isPos}`}>{`$${graphData[graphData.length - 1][`%`]}`}</p>
+                            <p className={`${isPos}`}>{`${graphData[graphData.length - 1][`%`]}%`}</p>
                         </div>
                     </div>
                 </Link>
