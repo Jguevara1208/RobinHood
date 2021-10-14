@@ -173,9 +173,9 @@ function BuySellStocks({price, symbol, isPos}){
           ) : (
             <div className="bns-bp-wrapper">
               <p>
-                {asset ? asset.shares : 0} Shares Available
-                <span onClick={sellAllShares}>
-                  {asset ? " - Sell All" : ""}
+                {asset ? asset.shares : 0} Shares Available -
+                <span className={`${isPos}-sell-all`} onClick={sellAllShares}>
+                  {asset ? " Sell All" : ""}
                 </span>
               </p>
               {error && <p className="bns-bp-error">{error}</p>}

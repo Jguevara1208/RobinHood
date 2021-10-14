@@ -246,3 +246,65 @@
     color: var(--clr-secondary);
     font-weight: 700;
 }
+
+.pos-sell-all{
+    color: var(--clr-primary);
+    cursor: pointer;
+    font-weight: 600;
+}
+.neg-sell-all{
+    color: var(--clr-secondary);
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.pos-atl-button, .neg-atl-button{
+    background-color: var(--clr-bg);
+    /* margin-top: 20px; */
+    height: 48px;
+    width: 100%;
+    border: 5px;
+}
+
+.pos-atl-button{
+    border: 2px solid var(--clr-primary);
+    color: var(--clr-primary);
+}
+.neg-atl-button{
+    border: 2px solid var(--clr-secondary);
+    color: var(--clr-secondary);
+}
+
+.pos-atl-button:hover{
+    background-color: var(--clr-atl-hover-pos);
+}
+.neg-atl-button:hover{
+    background-color: var(--clr-atl-hover-neg);
+}
+
+.atl-wrapper{
+    width: 100%;
+    padding: 20px;
+}
+
+.atl-close{
+    color: var(--clr-font);
+}
+
+.atl-modal-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+.atl-close-btn{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-size: 1.5em;
+    cursor: pointer;
+    font-weight: 600;
+}
+.atl-close:hover{
+    color: var(--clr-secondary);
+}
