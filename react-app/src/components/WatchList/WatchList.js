@@ -18,11 +18,11 @@ function WatchList({isPos}) {
     }, [dispatch]);
 
     return (
-        <div key=''>
+        <>
             {listKeys && listKeys.map(key => (
                 <List list={lists[key]} isPos={isPos}/>
             ))}
-        </div>
+        </>
     );
 };
 
