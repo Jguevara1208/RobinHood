@@ -243,6 +243,23 @@
   height: 36px;
 }
 
+.sign-up-first-name-input:hover,
+.sign-up-last-name-input:hover,
+.sign-up-email-input:hover,
+.sign-up-password-input:hover,
+.sign-up-confirm-password-input:hover {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.sign-up-first-name-input:focus,
+.sign-up-last-name-input:focus,
+.sign-up-email-input:focus,
+.sign-up-password-input:focus,
+.sign-up-confirm-password-input:focus {
+  outline: none;
+  border: 1px solid var(--clr-primary);
+}
+
 .sign-up-form-button-outer-container {
   width: 100%;
   -webkit-box-align: center;
@@ -291,6 +308,10 @@
   padding-left: calc(4 * 12px);
   padding-right: calc(4 * 12px);
   color: var(--clr-primary);
+}
+
+.sign-up-form-button:hover {
+  color: #dc4600;
 }
 
 .sign-up-form-button-inner-container {
@@ -353,6 +374,10 @@
   text-decoration: none;
   box-sizing: border-box;
   cursor: pointer;
+}
+
+.already-started-link:hover {
+  color: #dc4600;
 }
 
 @media (max-width: 768px) {
