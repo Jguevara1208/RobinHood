@@ -77,12 +77,14 @@
     color: var(--clr-font);
     padding: 5px 20px;
     margin: 10px 0px;
+    border-bottom: var(--clr-border);
 }
 
 
 .buying-power-container:hover{
     background-color: var(--clr-bg-alt);
     border-radius: 5px;
+    /* width: 110%; */
 }
 
 .buying-power-wrapper {
@@ -93,8 +95,27 @@
     display: flex;
     justify-content: space-between;
     font-size: 1.3em;
-    border-bottom: var(--clr-border);
     padding-bottom: 5px;
+}
+details
+{
+    transition: height .3s ease;
+    overflow: hidden;
+}
+
+details:not([open])
+{
+    height: 70px;
+}
+
+details[open]
+{
+    height: 310px;
+}
+
+
+.sumBorder{
+    border-bottom: var(--clr-border);
 }
 
 .sumOpen {

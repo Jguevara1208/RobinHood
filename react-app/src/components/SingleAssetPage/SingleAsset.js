@@ -60,7 +60,7 @@ function SingleAsset() {
             <div className='stock-name'>
               <h2>{stockInfo.name}</h2>
             </div>
-            {graphData && <MainGraph graphData={graphData} isPos={isPos}/>}
+            {graphData && <MainGraph graphData={graphData} isPos={isPos} isSingleAsset={true}/>}
             <ResolutionButtons resolution={resolution} setResolution={setResolution} isPos={isPos} />
             {assets[symbol] &&
               <div className='about-section'>
@@ -74,7 +74,7 @@ function SingleAsset() {
                 <p className='sa-about'>
                   {shortDescription} {!readMore ? '...' : moreDesctiption}
                   <span className={`${isPos}-read-more`} onClick={toggleReadMore} >
-                    {readMore ? '   Read Less' : '   Read More'}
+                    {readMore ? '   View Less' : '   View More'}
                   </span>
                 </p>
                 : 
@@ -87,11 +87,11 @@ function SingleAsset() {
             </div>
               <StockStories stories={stories}/>
             </div>
+            <div className="bns-container">
+              <BuySellStocks symbol={symbol} price={currentPrice.price} isPos={isPos}/>
+              <AddToList symbol={symbol} userId={userId} isPos={isPos}/>
+            </div>
           </div>
-        <div>
-          <BuySellStocks symbol={symbol} price={currentPrice.price}/>
-          <AddToList symbol={symbol} userId={userId} />
-        </div>
       </div>
     }
     </>
