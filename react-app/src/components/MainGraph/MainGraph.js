@@ -49,7 +49,7 @@ function MainGraph({graphData, isWatchList=false, isPos}){
   }
 
   return (
-    <div className="graph-wrapper">
+    <div className={isWatchList? "graph-wrapper-wl" : "graph-wrapper"}>
       {isWatchList === false && (
         <div>
           <div className='odometer-container'>
@@ -61,8 +61,8 @@ function MainGraph({graphData, isWatchList=false, isPos}){
       )}
       {graphData && (
         <ResponsiveContainer
-          width="100%"
-          height={300}
+          width={isWatchList ? "90%" : "100%"}
+          height={isWatchList ? 45 : 300}
           className="graph-container"
         >
           <LineChart
@@ -82,7 +82,7 @@ function MainGraph({graphData, isWatchList=false, isPos}){
               dataKey="price"
               stroke={lineColor()}
               dot={false}
-              strokeWidth={2}
+              strokeWidth={isWatchList ? 1 : 2}
             />
             {isWatchList === false && (
               <Tooltip
