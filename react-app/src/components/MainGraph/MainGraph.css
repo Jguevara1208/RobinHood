@@ -103,3 +103,12 @@
   display: flex;
   align-items: center;
 }
+
+.tooltip{
+  color: var(--clr-tooltip-time);
+  font-size: .85em;
+}
+
+.graph-odometer-perc{
+  margin-bottom: 40px;
+}

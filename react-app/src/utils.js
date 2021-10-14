@@ -239,3 +239,20 @@ export async function singleAssetGraphData(selectedResolution, symbol){
 }
 
 // singleAssetGraphData('D', 'AAPL')
+
+
+/**------------------------------------------------------------------------------------------------------------------- **/
+/**-----------------------------------------------Custom Tooltip------------------------------------------------------ **/
+/**------------------------------------------------------------------------------------------------------------------- **/
+
+export function CustomToolTip({active, payload, label}) {
+  if (active) {
+    return (
+    <div className="tooltip">
+      <h4>{label}</h4>
+    </div>
+    )
+  }else{
+    return null;
+  }
+}
