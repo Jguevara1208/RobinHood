@@ -105,6 +105,10 @@
 }
 
 .tooltip{
-  color: white;
-  display: ;
+  color: var(--clr-tooltip-time);
+  font-size: .85em;
+}
+
+.graph-odometer-perc{
+  margin-bottom: 40px;
 }

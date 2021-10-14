@@ -252,6 +252,7 @@ export function CustomToolTip({active, payload, label}) {
       <h4>{label}</h4>
     </div>
     )
+  }else{
+    return null;
   }
-  return null;
 }
