@@ -1,3 +1,5 @@
+@import url("../../index.css");
+
 * {
   box-sizing: border-box;
 }
@@ -126,7 +128,7 @@
 
 .sign-up-directions {
   margin: 0px;
-  color: var(--rh__text-color);
+  color: black;
   font-family: var(--rh__type-palette__textSBold__stack);
   font-size: 13px;
   font-style: normal;
@@ -325,7 +327,6 @@
 }
 
 .already-started-container {
-  margin-top: 24px;
   box-sizing: border-box;
   display: block;
   text-size-adjust: none;
@@ -411,6 +412,9 @@
   padding: 174px 4% 0px;
   width: 40%;
   background-color: rgb(245, 248, 250);
+  box-sizing: border-box;
+  display: block;
+  text-size-adjust: none;
 }
 
 .sign-up-sidebar-elements {
@@ -420,32 +424,50 @@
   flex-grow: 1;
   height: 100%;
   max-width: 266px;
-}
-
-.sign-up-sidebar-elements > div {
+  box-sizing: border-box;
   display: block;
+  text-size-adjust: none;
 }
 
-.sign-up-sidebar-elements > h3 {
+.sign-up-sidebar-element1 {
+  margin-bottom: 8px;
+  box-sizing: border-box;
+  display: block;
+  text-size-adjust: none;
+  font-family: var(font-family);
+}
+
+.sign-up-sidebar-element2 {
+  margin: 40px 0px 8px;
+  box-sizing: border-box;
+  display: block;
+  text-size-adjust: none;
+}
+
+.sign-up-sidebar-style1 {
   margin: 0px;
   color: black;
   font-family: var(font-family);
   font-size: 15px;
   font-style: normal;
-  font-weight: 700px;
+  font-weight: 700;
   line-height: 24px;
   letter-spacing: -0.1px;
   text-decoration: unset;
+  box-sizing: border-box;
+  text-size-adjust: none;
 }
 
-.sign-up-sidebar-elements > p {
+.sign-up-sidebar-style2 {
   margin: 0px;
   color: black;
   font-family: var(font-family);
   font-size: 15px;
   font-style: normal;
-  font-weight: 400px;
+  font-weight: 400;
   line-height: 24px;
   letter-spacing: -0.1px;
   text-decoration: unset;
+  box-sizing: border-box;
+  text-size-adjust: none;
 }
