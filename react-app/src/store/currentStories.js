@@ -64,6 +64,8 @@ export const setCompanyStories = (symbol) => async (dispatch) => {
     const [today, yesterday] = todayAndYesterday();
     const data = await fetch(`https://finnhub.io/api/v1/company-news?symbol=${symbol}&from=${yesterday}&to=${today}&token=c5f2bi2ad3ib660qt670`);
     const APIStories = await data.json();
+    console.log("AGAIN--------------", APIStories)
+    console.log("HERE__________-------------", APIStories.error)
     if (!APIStories.error) {
         const stories = [];
         APIStories.slice(0, 16).forEach(APIstory => {

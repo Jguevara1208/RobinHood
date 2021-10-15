@@ -21,6 +21,7 @@ function BuySellStocks({price, symbol, isPos}){
             let totalCost = Number((buyShares * price).toFixed(2))
             let shares, average, newBuyingPower;
             if (totalCost > Number(buyingPower)) return setError('You do not have enough Buying Power')
+            if(buyShares === 0)return setError("Please enter an amount greater than 0")
             newBuyingPower = Number((Number(buyingPower) - totalCost).toFixed(2))
 
             if (asset) {
@@ -74,6 +75,7 @@ function BuySellStocks({price, symbol, isPos}){
         let newBuyingPower = totalCredit + buyingPower
         dispatch(editBuyingPower(userId, newBuyingPower))
         dispatch(deleteUserAsset(asset))
+        setIsBuy(true)
     }
 
     function handleBNSBuy(){
@@ -88,6 +90,13 @@ function BuySellStocks({price, symbol, isPos}){
         setError(null)
         setBuyShares(0)
         setSellShares(0)
+    }
+
+    function preventLetters(e){
+      const charCode = typeof e.which == "undefined" ? e.keyCode : e.which;
+      const charStr = String.fromCharCode(charCode);
+
+      if (!charStr.match(/^[0-9]+$/)) e.preventDefault();
     }
 
 
@@ -117,16 +126,18 @@ function BuySellStocks({price, symbol, isPos}){
               className={`${isPos}-bp-input1`}
               value={buyShares}
               type="number"
+              onKeyPress={(e) => preventLetters(e)}
               onChange={(e) => setBuyShares(e.target.value)}
-              placeholder="0"
+              placeholder={0}
             />
           ) : (
             <input
               className={`${isPos}-bp-input1`}
               value={sellShares}
               type="number"
+              onKeyPress={(e) => preventLetters(e)}
               onChange={(e) => setSellShares(e.target.value)}
-              placeholder="0"
+              placeholder={0}
             />
           )}
         </div>
@@ -173,7 +184,8 @@ function BuySellStocks({price, symbol, isPos}){
           ) : (
             <div className="bns-bp-wrapper">
               <p>
-                {asset ? asset.shares : 0} Shares Available -
+                {asset ? asset.shares : 0} Shares Available{" "}
+                {asset && <span> -</span>}
                 <span className={`${isPos}-sell-all`} onClick={sellAllShares}>
                   {asset ? " Sell All" : ""}
                 </span>
