@@ -8,15 +8,19 @@ import './NavBar.css'
 import { RiMoonFill } from "react-icons/ri";
 import {FiSun} from "react-icons/fi";
 import { toggleTheme } from '../../store/theme';
+import lightModeLogo from '../LogoSvgs/light-mode-logo';
 
 const NavBar = () => {
   const location = useLocation();
+  const dispatch = useDispatch();
+
   const isLoginPage = location.pathname === '/login';
   const isSignUpPage = location.pathname === '/sign-up';
-  const dispatch = useDispatch();
+
   const theme = useSelector(state => state.theme);
+  const session = useSelector(state => state.session);
+
   const [currentTheme, setCurrentTheme] = useState(theme);
-  let session = useSelector(state => state.session);
 
   function handleToggle() {
     dispatch(toggleTheme());
@@ -48,16 +52,16 @@ const NavBar = () => {
               </>
             )
             :
-            <>
+            <div className='nav-content-container'>
               <NavLink to='/' exact={true} activeClassName='active'>
-                <img src={'/images/Logo.png'} className="nav-logged-logo" />
+                {lightModeLogo}
               </NavLink>
               <SearchBar />
               <div className="toggle-theme-button" onClick={handleToggle}>
                 {theme === 'light' ? <RiMoonFill /> : <FiSun />}
               </div>
               <LogoutButton />
-            </>
+            </div>
         }
       </nav>
     );
