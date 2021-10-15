@@ -6,7 +6,7 @@
     font-weight: 400;
     font-size: 2em;
     text-align: left;
-    color: white;
+    color: var(--clr-font);
     margin-bottom: 5px;
 }
 
