@@ -172,31 +172,34 @@ const fetchMultipleStocksCandles = async (symbols, resolution, fromDate, current
 
 const user_assets_graph_points = (graphData, userAssets) => {
     const { assetsCandleNums, times, resolution } = graphData
-
+    let len;
     // finds the shortest length array in the assetsCandleNums object to use as our stopping point later.
-    let len = Object.values(assetsCandleNums).reduce((val, next) => {
-        if (next.length < val.length) val = next;
-        return val
-    }).length
-
-    const stockData = []
-
-    // counts from 0 to the stopping point above, for each 'i' we loop through the assets from the data gathered from the query
-    // we find the amount of shares the user has for that specific asset, and multiply their shares by the value in the array
-    // add it to a total for all shares they own at that point in time, and push it into the stockData array as well as the timestamp for that specific 'i' in times
-    for (let i = 0; i < len; i++) {
-        let total = 0.00
-        for (let asset in assetsCandleNums) {
-            let shares = userAssets[asset].shares
-            let worth = shares * assetsCandleNums[asset][i]
-            total += worth
+    console.log(Object.values(assetsCandleNums).length)
+    if (Object.values(assetsCandleNums).length) {
+        len = Object.values(assetsCandleNums).reduce((val, next) => {
+            if (next.length < val.length) val = next;
+            return val
+        }).length
+        const stockData = []
+    
+        // counts from 0 to the stopping point above, for each 'i' we loop through the assets from the data gathered from the query
+        // we find the amount of shares the user has for that specific asset, and multiply their shares by the value in the array
+        // add it to a total for all shares they own at that point in time, and push it into the stockData array as well as the timestamp for that specific 'i' in times
+        for (let i = 0; i < len; i++) {
+            let total = 0.00
+            for (let asset in assetsCandleNums) {
+                let shares = userAssets[asset].shares
+                let worth = shares * assetsCandleNums[asset][i]
+                total += worth
+            }
+            let priceAndTime = { time: getGraphDate(times[i], resolution), price: Number(total.toFixed(2)) }
+            stockData.push(priceAndTime)
+            stockData[i]['%'] = percentageDifference(stockData)
         }
-        let priceAndTime = { time: getGraphDate(times[i], resolution), price: Number(total.toFixed(2)) }
-        stockData.push(priceAndTime)
-        stockData[i]['%'] = percentageDifference(stockData)
+    
+        return stockData
     }
-
-    return stockData
+    return false
 }
 
 
