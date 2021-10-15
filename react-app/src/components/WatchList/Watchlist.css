@@ -85,7 +85,7 @@
     align-items: center;
     justify-content: space-between;
     padding-bottom: 10px;
-    padding: 5px 20px 5px
+    padding: 8px 20px 8px
 }
 
 .list-stock-wrapper:hover {
@@ -112,8 +112,8 @@
 }
 
 .list-stock-wrapper>p{
-    font-weight: 500;
-    font-size: .8em;
+    font-weight: 700;
+    font-size: .9em;
     width: 25%;
 }
 
@@ -127,7 +127,7 @@
 }
 
 .watchlist-title {
-    font-weight: 500;
+    font-weight: 700;
     font-size: 1.1em;
 }
 
