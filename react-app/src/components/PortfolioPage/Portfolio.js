@@ -4,6 +4,7 @@ import { setUserAssets } from '../../store/userAssets';
 import { setGeneralStories } from '../../store/currentStories';
 import { addUserList } from '../../store/userLists';
 import { AiOutlinePlus } from 'react-icons/ai'
+import ReactLoading from 'react-loading'
 import StockList from '../WatchList/StockList';
 import WatchList from '../WatchList/WatchList';
 import MainGraph from '../MainGraph/MainGraph';
@@ -20,6 +21,7 @@ function Portfolio(){
     const stories = useSelector(state => state.stories);
     const graphData = useSelector(state => state.userAssets.graphData)
     let isPos = graphData?.[graphData.length - 1]['%'][0] === '+' ? 'pos' : 'neg'
+    // console.log(graphData)
 
     const [resolution, setResolution] = useState('D')
     const [showNewList, setShowNewList] = useState(false)
@@ -46,11 +48,24 @@ function Portfolio(){
         })()
     }, [dispatch, resolution]);
 
+
+    // useEffect(() => {
+    //     let graphDataInterval;
+    //     if(!graphData){
+    //         graphDataInterval = setInterval(async() => {
+    //             await dispatch(setUserAssets(user.id, resolution))
+    //         }, 10000)
+    //     }else{
+    //         return () => clearInterval(graphDataInterval)
+    //     }
+    // }, [dispatch, graphData]);
+
+
     return (
     <div className={`main-body`}>
         <div className='main-wrapper'>
             <div className={`main-content`}>
-                {graphData && <MainGraph graphData={graphData} isPos={isPos}/>}
+                {graphData ? <MainGraph graphData={graphData} isPos={isPos}/> : <ReactLoading type={"bars"} color={'var(--clr-secondary)'} height={"20%"} width={"20%"} />}
                 <ResolutionButtons resolution={resolution} setResolution={setResolution} isPos={isPos}/>
                 <BuyingPower user={user} isPos={isPos}/>
                 <StockStories stories={stories} />

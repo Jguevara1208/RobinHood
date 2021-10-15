@@ -11,7 +11,7 @@ const percentageDifference = (originalPrice, currentPrice) => {
 
 export function marketValue(price, shares) {
   const value = price * shares;
-  return `$${value.toFixed(2)}`;
+  return `$${formatThousands(value.toFixed(2))}`;
 }
 
 export function todaysReturn(open, current) {

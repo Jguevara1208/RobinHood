@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom'
 import './SearchBar.css'
+import {FiSearch} from 'react-icons/fi'
 
 function SearchBar() {
     const [filteredStocks, setFilteredStocks] = useState([])
@@ -19,8 +20,8 @@ function SearchBar() {
     }, [searchText])
 
     const filterStocksFunc = (e) => {
-        
-        
+
+
         const newFilteredStocks = allStocks.filter(stock => {
             if(stock.name.toLowerCase().startsWith(searchText.toLowerCase()) || stock.symbol.toLowerCase().startsWith(searchText.toLowerCase())){
                 return stock
@@ -31,8 +32,8 @@ function SearchBar() {
         } else {
             setFilteredStocks(newFilteredStocks);
         }
-        
-        
+
+
     }
 
     const clearSearch = (e)=>{
@@ -47,26 +48,35 @@ function SearchBar() {
     }
 
     return (
-      <div className="searchContainer">
-        <div className="searchInput">
-          <input
-            type="text"
-            onChange={(e) => setSearchText(e.target.value)}
-            placeholder="search"
-            value={searchText}
-            onFocus={()=> setShowFilter(true)}
-            onBlur={loseFocus}
-          />
-        </div>
-        {showFilter && (
-          <div className="filteredStocks" >
-            {filteredStocks.map((stock) => (
-              <Link to={`/stocks/${stock.symbol}`} onClick={clearSearch}>
-                <p>{`${stock.symbol} ${stock.name}`}</p>
-              </Link>
-            ))}
+      <div className="search-bar-outer-container">
+        <div className="search-bar-middle-container">
+          <div className="search-bar-inner-container">
+            <div className="search-bar">
+              <div className="search-icon-container">
+              </div>
+              <input
+                className="search-input"
+                type="text"
+                onChange={(e) => setSearchText(e.target.value)}
+                placeholder={`${<FiSearch className="search-icon" />} Search`}
+                value={searchText}
+                onFocus={()=> setShowFilter(true)}
+                onBlur={loseFocus}
+              />
+            </div>
+            <div>
+              {showFilter && (
+                <div className="filteredStocks" >
+                  {filteredStocks.map((stock) => (
+                    <Link to={`/stocks/${stock.symbol}`} onClick={clearSearch}>
+                      <p className="search-results">{`${stock.symbol} ${stock.name}`}</p>
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
-        )}
+        </div>
       </div>
     );
 }

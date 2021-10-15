@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useState, useEffect } from "react"
 import { addListSymbol, addUserList, setUserLists } from "../../store/userLists"
 import { Modal } from "../../context/Modal";
-import {AiOutlineClose, AiOutlinePlus} from 'react-icons/ai'
+import { AiOutlineClose, AiOutlinePlus, AiOutlineCheck } from "react-icons/ai";
 
 
 function AddToList({symbol, userId, isPos, stockName}) {
@@ -18,6 +18,7 @@ function AddToList({symbol, userId, isPos, stockName}) {
     },[dispatch])
 
     function isInList(list){
+        
         return list.symbols[symbol] ? true : false
     }
 
@@ -48,6 +49,7 @@ function AddToList({symbol, userId, isPos, stockName}) {
           className={`${isPos}-atl-button`}
           onClick={() => setOpenLists(!openLists)}
         >
+          {Object.keys(lists).find(key => lists[key].symbols[symbol]) ? <AiOutlineCheck  className={`${isPos}-atl-yon`}/> : <AiOutlinePlus className={`${isPos}-atl-yon`}/>}
           Add to Lists
         </button>
 

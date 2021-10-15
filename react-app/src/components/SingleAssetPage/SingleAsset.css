@@ -8,6 +8,7 @@
     text-align: left;
     color: var(--clr-font);
     margin-bottom: 5px;
+    margin-top: 0;
 }
 
 .about-section {
@@ -260,7 +261,10 @@
 
 .pos-atl-button, .neg-atl-button{
     background-color: var(--clr-bg);
-
+    display: flex;
+    gap: 3px;
+    justify-content: center;
+    align-items: center;
     height: 48px;
     width: 100%;
     border: 5px;
@@ -586,4 +590,20 @@
 .pos-atl-list-cancel-btn,
 .neg-atl-list-cancel-btn {
     background-color: var(--clr-bp-bg);
+}
+
+.pos-atl-yon{
+    color: var(--clr-primary);
+}
+.neg-atl-yon{
+    color: var(--clr-secondary);
+}
+
+.loading-screen{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--clr-bg);
+    height: 100vh;
+    width: 100vw;
 }

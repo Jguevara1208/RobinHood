@@ -1,0 +1,9 @@
+.logout-button {
+  color: var(--clr-font);
+  margin: 10px;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  color: var(--clr-secondary);
+}
