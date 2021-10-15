@@ -74,7 +74,7 @@ body {
   text-align: center;
   justify-content: flex-start;
   font-family: var(font-family);
-  color: var(--color-text-primary);
+  color: black;
   width: 100%;
   padding: 0 0 9px 0;
 }
@@ -84,7 +84,7 @@ body {
   width: 80%;
   max-width: 400px;
   height: 34px;
-  border: var(--clr-border);
+  border: 1px solid #e3e9ed;
   border-radius: 5px;
   padding-left: 12px;
   padding-right: 12px;
@@ -102,7 +102,7 @@ body {
 .log-in-form-username-input:focus,
 .log-in-form-password-input:focus {
   outline: none;
-  border: 1px solid var(--clr-primary);
+  border: 1px solid #2eda12;
 }
 
 .log-in-buttons-container {
@@ -123,7 +123,7 @@ body {
   justify-self: flex-end;
   border: none;
   border-radius: 5px;
-  background-color: var(--clr-primary);
+  background-color: #2eda12;
   color: white;
   font-weight: bold;
 }
@@ -135,12 +135,12 @@ body {
 
 .log-in-form-button:hover,
 .demo-user-button:hover {
-  background-color: #dc4600;
+  background-color: #2fd315;
 }
 
 .log-in-form-button:active,
 .demo-user-button:active {
-  background-color: var(--clr-primary-hover);
+  background-color: #2fd315;
 }
 
 .log-in-form-error {
