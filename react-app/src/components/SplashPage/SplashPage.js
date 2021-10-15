@@ -115,7 +115,9 @@ export default function Index() {
                         <h4>Trade in real time</h4>
                         <p>Trades placed during market hours are executed at that time, so you’ll always know the share price.</p>
                     </div>
-                    <div className="fractional-shares-side-img"></div>
+                    <div className="img-container">
+                        <div className="fractional-shares-side-img"></div>
+                    </div>
                 </div>
             </div>
 

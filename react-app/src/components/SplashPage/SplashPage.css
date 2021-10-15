@@ -73,7 +73,21 @@
 }
 
 .fractional-shares-side-img{
-  background-image: url("https://robinhood.com/us/en/_next/static/images/1x__1358464522fc1bd88f9bf62a40f42192.png");
+  animation: 0s linear 0s infinite normal none running;
+  background-image: url("https://robinhood.com/us/en/_next/static/images/2x__50ed5a2a8854d545e03d193192de26de.png");
+  background-repeat: no-repeat;
+  width: 100%;
+  max-width: 457px;
+  flex: 1 1 0%;
+  position: absolute;
+  top: 0px;
+  height: 100%;
+  background-position: center center;
+}
+
+.img-container{
+  margin: 0px 9px;
+  width: calc(16.6667% - 18px);
 }
 
 .fractional-shares-info > h4{
