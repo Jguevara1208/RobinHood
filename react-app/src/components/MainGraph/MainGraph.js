@@ -9,7 +9,7 @@ import '../PortfolioPage/Portfolio.css'
 
 
 
-function MainGraph({graphData, isWatchList=false, isPos}){
+function MainGraph({graphData, isWatchList=false, isSingleAsset=false, isPos}){
   const theme = useSelector(state => state.theme)
   const [hoverPrice, setHoverPrice] = useState(graphData[graphData.length -1].price);
   const [percentDiff, setPercentDiff] = useState(graphData[graphData.length-1]["%"]);
@@ -95,7 +95,7 @@ function MainGraph({graphData, isWatchList=false, isPos}){
                 dot={false}
                 strokeWidth={isWatchList ? 1 : 2}
               />
-            {isWatchList ? 
+            {isSingleAsset || isWatchList ? 
               <ReferenceLine
                 ifOverflow="extendDomain"
                 y={graphData[0].price}

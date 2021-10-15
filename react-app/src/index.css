@@ -26,8 +26,15 @@
   --clr-tooltip-time: #A9AFB1;
   --clr-tooltip: #A9AFB1;
 
+  --clr-bns-input: #F4F8FA;
+
   --shadow: 0px 4px 4px rgba(0, 0, 0, 0.04);
   --clr-test:#00C805;
+
+  --clr-atl-hover-pos: rgba(46, 218, 18, .4);
+  --clr-atl-hover-neg: rgba(220, 70, 0, .4);
+
+  --atl-emoji-bg: #F4F8FA;
 }
 
 .dark {
@@ -50,10 +57,17 @@
   --clr-primary: #5dd8ff;
   --clr-secondary: #FE5001;
 
+  --clr-bns-input: #30363A;
+
   --clr-tooltip-time: #919EA5 ;
   --clr-tooltip: #7A868C ;
 
   --shadow: 0px 4px 4px rgba(255, 255, 255, 0.05);
+
+  --clr-atl-hover-pos: rgba(93, 216, 255, .4);
+  --clr-atl-hover-neg: rgba(255, 107, 38, .4);
+
+  --atl-emoji-bg: #30363A ;
 }
 
 button {

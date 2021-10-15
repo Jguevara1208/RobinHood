@@ -12,41 +12,41 @@ function KeyStats({stockStats}){
     }
 
     return (
-        <div>
+        <div className="key-stat-container">
             <div className='key-stat-pair'>
-                <p clasName='key-stat-title'>Market Cap</p>
+                <p className='key-stat-title'>Market Cap</p>
                 <p className='key-stat'>{stockStats.marketCap ? formatMarketCap(stockStats.marketCap) : '-'}</p>
             </div>
             <div className='key-stat-pair'>
-                <p clasName='key-stat-title'>P/E Ratio</p>
+                <p className='key-stat-title'>Price-Earnings Ratio</p>
                 <p className='key-stat'>{stockStats.PERatio ? stockStats.PERatio : '-'}</p>
             </div>
             <div className='key-stat-pair'>
-                <p clasName='key-stat-title'>Dividend Yield</p>
+                <p className='key-stat-title'>Dividend Yield</p>
                 <p className='key-stat'>{stockStats.dividendYield ? stockStats.dividendYield : '-'}</p>
             </div>
             <div className='key-stat-pair'>
-                <p clasName='key-stat-title'>52 Week High</p>
+                <p className='key-stat-title'>52 Week High</p>
                 <p className='key-stat'>{stockStats['52weekHigh'] ? stockStats['52weekHigh'] : '-'}</p>
             </div>
             <div className='key-stat-pair'>
-                <p clasName='key-stat-title'>52 Week Low</p>
+                <p className='key-stat-title'>52 Week Low</p>
                 <p className='key-stat'>{stockStats['52weekLow'] ? stockStats['52weekLow'] : '-'}</p>
             </div>
             <div className='key-stat-pair'>
-                <p clasName='key-stat-title'>High Today</p>
+                <p className='key-stat-title'>High Today</p>
                 <p className='key-stat'>{stockStats.highToday ? stockStats.highToday : '-'}</p>
             </div>
             <div className='key-stat-pair'>
-                <p clasName='key-stat-title'>Low Today</p>
+                <p className='key-stat-title'>Low Today</p>
                 <p className='key-stat'>{stockStats.lowToday ? stockStats.lowToday : '-'}</p>
             </div>
             <div className='key-stat-pair'>
-                <p clasName='key-stat-title'>Open Price</p>
+                <p className='key-stat-title'>Open Price</p>
                 <p className='key-stat'>{stockStats.openPrice ? stockStats.openPrice : '-'}</p>
             </div>
             <div className='key-stat-pair'>
-                <p clasName='key-stat-title'>Previous Close</p>
+                <p className='key-stat-title'>Previous Close</p>
                 <p className='key-stat'>{stockStats.previousClose ? stockStats.previousClose : '-'}</p>
             </div>
         </div>
