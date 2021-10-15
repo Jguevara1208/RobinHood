@@ -1,18 +1,27 @@
 
-import React from 'react';
-import { useSelector } from "react-redux";
+import {useState} from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useLocation } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import SearchBar from '../SearchBar/SearchBar';
 import './NavBar.css'
+import { RiMoonFill } from "react-icons/ri";
+import {FiSun} from "react-icons/fi";
+import { toggleTheme } from '../../store/theme';
 
 const NavBar = () => {
   const location = useLocation();
   const isLoginPage = location.pathname === '/login';
   const isSignUpPage = location.pathname === '/sign-up';
+  const dispatch = useDispatch();
   const theme = useSelector(state => state.theme);
+  const [currentTheme, setCurrentTheme] = useState(theme);
   let session = useSelector(state => state.session);
 
+  function handleToggle() {
+    dispatch(toggleTheme());
+    setCurrentTheme(currentTheme === 'light' ? 'dark' : 'light');
+  }
 
   if (isLoginPage || isSignUpPage) {
     return null
@@ -44,12 +53,9 @@ const NavBar = () => {
                   <img src={'/images/Logo.png'} className="nav-logged-logo"/>
                 </NavLink>
                 <SearchBar/>
-                {/* change theme button */}
-                {/* <div className="theme-button-container">
-                  <button className="theme-button" onClick={() => this.changeTheme()}>
-                    {theme === 'light' ? 'Dark' : 'Light'}
-                  </button>
-                </div> */}
+                <div className="toggle-theme-button" onClick={handleToggle}>
+                  {theme === 'light' ? <RiMoonFill/> : <FiSun/>}
+                </div>
                 <LogoutButton />
               </>
           }

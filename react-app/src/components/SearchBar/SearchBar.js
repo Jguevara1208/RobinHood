@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom'
 import './SearchBar.css'
+import {FiSearch} from 'react-icons/fi'
 
 function SearchBar() {
     const [filteredStocks, setFilteredStocks] = useState([])
@@ -48,14 +49,16 @@ function SearchBar() {
 
     return (
       <div className="search-bar-outer-container">
-        <div>
-          <div className="search-bar-container">
+        <div className="search-bar-middle-container">
+          <div className="search-bar-inner-container">
             <div className="search-bar">
+              <div className="search-icon-container">
+              </div>
               <input
                 className="search-input"
                 type="text"
                 onChange={(e) => setSearchText(e.target.value)}
-                placeholder="search"
+                placeholder={`${<FiSearch className="search-icon" />} Search`}
                 value={searchText}
                 onFocus={()=> setShowFilter(true)}
                 onBlur={loseFocus}

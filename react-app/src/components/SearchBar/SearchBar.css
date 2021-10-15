@@ -4,10 +4,16 @@
   width: 1024px;
 }
 
-.search-bar-container {
+.search-bar-middle-container {
   display: flex;
   flex-direction: column;
+  width: 40%;
+}
+
+.search-bar-inner-container {
   width: 100%;
+  border: var(--clr-border);
+  border-radius: 4px;
 }
 
 .filteredStocks {
@@ -23,6 +29,7 @@
   overflow-y: auto;
   scrollbar-width: none;
   margin-left: 0.8rem;
+  visibility: hidden;
 }
 
 .search-results {
@@ -43,8 +50,10 @@
   display: flex;
   justify-content: flex-start;
   height: calc(36px - 2px);
-  padding-left: calc(12px);
   box-sizing: border-box;
+  top: 0px;
+  left: 0px;
+  right: 0px;
 }
 
 .search-input {
@@ -56,9 +65,39 @@
   letter-spacing: -0.1px;
   text-decoration: unset;
   color: var(--clr-font);
-  border: var(--clr-border);
+  border: none;
   outline: none;
   background: none;
-  width: 40%;
+  width: 100%;
   padding-right: calc(12px);
+}
+
+.search-input:focus {
+  box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.1),
+    0px -12px 24px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.search-bar-middle-container:hover {
+  box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.1),
+    0px -12px 24px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.search-icon-container {
+  flex: 0 0 auto;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  margin-right: 4px;
+  padding-left: calc(12px);
+}
+
+.search-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  fill: none;
+  height: 24;
+  width: 24;
 }
