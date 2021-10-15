@@ -19,17 +19,17 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+#modal-content2{
+    position: absolute;
+    background-color: var(--clr-bp-bg);
+    width: 436px;
+    padding: 3em;
+    z-index: 301;
+}
+
 #modal-content {
     position: absolute;
     background-color: var(--clr-bp-bg);
     width: 50vw;
     padding: 3em;
-}
-
-#model-content2{
-    position: absolute;
-    background-color: var(--clr-bp-bg);
-    width: 436px;
-    padding: 3em;
-
 }

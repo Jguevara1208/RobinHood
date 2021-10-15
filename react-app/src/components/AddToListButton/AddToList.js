@@ -30,6 +30,7 @@ function AddToList({symbol, userId, isPos, stockName}) {
             const listId = Number(input.attributes.id.value.split("-")[1])
             dispatch(addListSymbol(listId, symbol))
         }
+        setOpenLists(!openLists)
     }
 
     function handleNewList(){
@@ -55,21 +56,22 @@ function AddToList({symbol, userId, isPos, stockName}) {
             <div className="atl-modal-wrapper">
               <div className="atl-close-btn">
                 <p>Add {symbol} to Your Lists</p>
-                <AiOutlineClose className="atl-close" />
+                <AiOutlineClose onClick={() => setOpenLists(!openLists)} className="atl-close" />
               </div>
               {showNewList ? (
-                <div>
+                <div className='atl-input-wrapper'>
                   <input
                     type="text"
                     placeholder="List Name"
                     value={newListName}
+                    className={`${isPos}-edit-input`}
                     onChange={(e) => setNewListName(e.target.value)}
                   />
-                  <div>
-                    <button onClick={() => setShowNewList(false)}>
+                  <div className='list-name-update-button-container'>
+                    <button className={`${isPos}-atl-list-create-btn`} onClick={handleNewList}>Create List</button>
+                    <button className={`${isPos}-atl-list-cancel-btn`} onClick={() => setShowNewList(false)}>
                       Cancel
                     </button>
-                    <button onClick={handleNewList}>Create List</button>
                   </div>
                 </div>
               ) : (
@@ -78,7 +80,7 @@ function AddToList({symbol, userId, isPos, stockName}) {
                     <AiOutlinePlus className={`${isPos}-plus-btn`} />
                   </div>
                   <div>
-                    <p className="atl-list-names">Create New List</p>
+                    <p className="atl-list-names new-list-pointer">Create New List</p>
                   </div>
                 </div>
               )}
@@ -112,7 +114,7 @@ function AddToList({symbol, userId, isPos, stockName}) {
                   </div>
                 </div>
               ))}
-              <button className="atl-save-btn" onClick={handleSubmit}>Save Changes</button>
+              <button className={`${isPos}-atl-save-btn`} onClick={handleSubmit}>Save Changes</button>
             </div>
           </Modal>
         )}
