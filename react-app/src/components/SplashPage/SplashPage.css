@@ -1,15 +1,27 @@
-.investing-for-everyone-container{
-  display: flex;
-  align-items: center;
-  padding: 0 20%;
-  border-bottom: solid black 1px;
-  height: 75vh;
-  background-color: rgb(195, 245, 60);
-  border-bottom: solid black 1px;
-  padding: 10px;
+h1,
+h2,
+h3,
+p,
+a,
+summary,
+button,
+span {
+  color: black;
 }
 
-.investing-for-everyone-desc{
+.investing-for-everyone-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: solid black 1px;
+  height: 600px;
+  background-color: rgb(195, 245, 60);
+  border-bottom: solid black 1px;
+  padding: 0 75px;
+  gap: 12%;
+}
+
+.investing-for-everyone-desc {
   /* height: 36px; */
   font-size: 24px;
 }
@@ -17,19 +29,19 @@
 .investing-for-everyone-info {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  /* padding: 10px 30px; */
-  width: 45%;
+  /* gap: 15px; */
+  /* padding-left: 90px; */
+  width: 100%;
   margin: 0 auto;
 }
 
-.investing-for-everyone-info > h1{
+.investing-for-everyone-info > h1 {
   font-weight: 450;
-  font-size: 54px;
+  font-size: 52px;
   width: 350px;
 }
 
-.investing-for-everyone-info> .sign-up-button {
+.investing-for-everyone-info > .sign-up-button {
   width: fit-content;
   text-align: center;
   background-color: black;
@@ -42,68 +54,87 @@
   color: white;
 }
 
-.investing-for-everyone-info{
+.investing-for-everyone-info {
   flex-direction: column;
 }
 
-.main-img{
+.main-img {
   width: 50%;
 }
 
 .fractional-shares-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
   background-color: #f0ebe6;
-  border-top: solid black 1px;
+  /* border-top: solid black 1px; */
 }
 
 .fractional-shares-content {
   display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 30px;
+  height: 365px;
+  gap: 60px;
   width: 100%;
-  padding: 60px;
+  padding: 30px;
 }
 
 .fractional-shares-info {
-  width: 27%;
+  font-size: larger;
 }
 
-.fractional-shares-side-img{
-  animation: 0s linear 0s infinite normal none running;
-  background-image: url("https://robinhood.com/us/en/_next/static/images/2x__50ed5a2a8854d545e03d193192de26de.png");
-  background-repeat: no-repeat;
-  width: 100%;
-  max-width: 457px;
-  flex: 1 1 0%;
-  position: absolute;
-  top: 0px;
-  height: 100%;
-  background-position: center center;
+.fractional-shares-info {
+  width: 20%;
 }
 
-.img-container{
+.container-row {
+  display: flex;
+  background-color: #f0ebe6;
+  align-items: center;
+  border-top: black solid 1px;
+}
+
+.img-container {
   margin: 0px 9px;
-  width: calc(16.6667% - 18px);
+  width: 46%;
+  min-width: 300px;
+  padding-right: 92px;
 }
 
-.fractional-shares-info > h4{
+.img-container > img {
+  width: 100%;
+}
+
+.fractional-shares-info > h4 {
   font-weight: 450;
 }
 
-.ipo-container{
+.center-div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.center-div-2 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
   width: 100%;
+  padding: 0 16.5%;
+}
+
+.ipo-container {
+  width: 100%;
+  padding: 2%;
   max-width: 600px;
 }
 
-.ipo-header > h1{
+.ipo-header > h1 {
   font-weight: 450;
 }
 
-.ipo-info-text > h3{
+.ipo-info-text > h3 {
   font-weight: 450;
 }
 
@@ -139,26 +170,29 @@
 .ipo-access-main-container {
   display: flex;
   justify-content: center;
-  align-items: center;
-
 }
 
 .tools-buttons-container {
   display: flex;
   flex-direction: column;
+  padding: 90px;
   justify-content: center;
   align-items: flex-end;
-  gap: .1rem;
+  gap: 0.1rem;
 }
 
-.tools-buttons-container > button{
+.tools-buttons-container > button {
   font-size: 20px;
   font-weight: 300;
 }
 
-
-.tool-button-active, .tool-button {
+.tool-button-active,
+.tool-button {
   font-size: 20px;
+}
+
+.tools-info {
+  width: 25%;
 }
 
 .tool-info > h1 {
@@ -207,22 +241,23 @@
   color: #2eda12;
 }
 
-.tool-img{
-    width: 250px;
-    height: 500px;
-    transition: all .5s ease-in-out;
+.tool-img {
+  width: 250px;
+  height: 500px;
+  transition: all 0.5s ease-in-out;
 }
 
-.tool-img:target{
-    width: 0px;
-    height: 0px;
+.tool-img:target {
+  width: 0px;
+  height: 0px;
 }
 
-.par-tools{
+.par-tools {
   color: white;
 }
 
-.tools-info-container{
+.tools-info-container {
+  width: 75%;
   display: flex;
   gap: 15%;
 }
@@ -256,7 +291,7 @@
 
 .video-img {
   position: absolute;
-  width: 618px;
+  width: 620px;
   top: 26px;
 }
 
@@ -285,52 +320,52 @@
   justify-content: center;
   height: 100%;
   position: relative;
-
 }
 
-.footer-contact-info{
+.footer-contact-info {
   display: flex;
   gap: 45px;
 }
 
-.github-repo{
+.github-repo {
   display: flex;
   gap: 5px;
   justify-content: center;
   align-items: center;
 }
 
-.github-links{
+.github-links {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 5px;
 }
 
-.linkedIn-links{
+.linkedIn-links {
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
 
-.Link{
+.Link {
   display: flex;
   align-items: center;
   gap: 15px;
 }
 
-@media screen and (max-width: 900px) {
+.fractional-shares-container-compact {
+  display: none;
+}
 
-  .investing-for-everyone-container{
+@media screen and (max-width: 900px) {
+  .investing-for-everyone-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 20%;
     border-bottom: solid black 1px;
     height: fit-content;
     background-color: rgb(195, 245, 60);
     border-bottom: solid black 1px;
-    padding: 10px;
   }
   .ipo-access-main-container {
     display: flex;
@@ -350,27 +385,28 @@
     gap: 30px;
   }
 
-  .tool-img{
+  .tool-img {
     height: 25vh;
     width: auto;
   }
 
-  .tools-buttons-container{
+  .tools-buttons-container {
     flex-direction: row;
     width: 50%;
     padding: 0px;
   }
 
-  .tool-button, .tool-button-active{
+  .tool-button,
+  .tool-button-active {
     width: 50%;
   }
 
-  .tool-info{
+  .tool-info {
     padding: 15px;
-    width: 400px;
+    max-width: 480px;
   }
 
-  .tool-info > h1{
+  .tool-info > h1 {
     color: white;
     font-size: 16px;
     font-weight: 200;
@@ -386,8 +422,7 @@
     font-size: 1px;
   }
 
-
-  .info-container{
+  .info-container {
     display: flex;
     flex-direction: column;
     gap: 15%;
@@ -398,23 +433,63 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 30px;
     width: 100%;
-    padding: 0 10px;
+    padding: 0 30px;
+  }
+
+  .fractional-shares-content {
+    display: flex;
+    justify-content: center;
+    height: 365px;
+    gap: 60px;
+    width: 100%;
+    padding: 30px;
   }
 
   .fractional-shares-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
     justify-content: center;
     background-color: #f0ebe6;
-    border-top: solid black 1px;
+    /* border-top: solid black 1px; */
     padding: 5px;
   }
 
   .fractional-shares-info {
     width: 80%;
-  }  
+  }
 
+  .container-row {
+    display: none;
+    flex-direction: row;
+    background-color: #f0ebe6;
+    align-items: center;
+    border-top: black solid 1px;
+  }
+
+  .fractional-shares-content-compact {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .fractional-shares-container-compact {
+    display: block;
+    background-color: #f0ebe6;
+    border-top: solid black 1px;
+  }
+
+  .ipo-header-compact, .fractional-shares-content-compact {
+    padding: 24px;
+  }
+
+  .ipo-header-compact > h1,
+  .ipo-header-compact > h3 {
+    font-weight: 450;
+  }
+
+  .fractional-shares-info-compact > h4 {
+    font-weight: 450;
+  }
 }
