@@ -598,3 +598,12 @@
 .neg-atl-yon{
     color: var(--clr-secondary);
 }
+
+.loading-screen{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--clr-bg);
+    height: 100vh;
+    width: 100vw;
+}
