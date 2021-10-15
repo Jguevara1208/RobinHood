@@ -60,3 +60,13 @@ a {
 .navComp {
   display: flex;
 }
+
+.moon-icon {
+  color: var(--clr-font);
+  margin: 10px;
+  cursor: pointer;
+}
+
+.moon-icon:hover {
+  color: var(--clr-button-hover-pos);
+}
