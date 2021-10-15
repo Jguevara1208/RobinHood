@@ -20,25 +20,17 @@ const NavBar = () => {
           {
             !session.email ?
             (
-              <>
-              <NavLink to='/' exact={true} activeClassName='active'>
-              RobinHood
-            </NavLink>
+            <div className={"splash-nav"}> 
+              <NavLink to='/' exact={true} activeClassName='active'>RobinHood</NavLink>
               <div class="user-actions-container">
-                  <NavLink className="login-button"to='/login' exact={true} activeClassName='active'>
-                    Login
-                  </NavLink>
-                  <NavLink className="sign-up-button" to='/sign-up' exact={true} activeClassName='active'>
-                    Sign Up
-                  </NavLink>
+                <NavLink className="login-button"to='/login' exact={true} activeClassName='active'>Log in</NavLink>
+                <NavLink className="sign-up-button" to='/sign-up' exact={true} activeClassName='active'>Sign Up</NavLink>
               </div>
-              </>
+            </div>
             )
               :
               <>
-                <NavLink to='/' exact={true} activeClassName='active'>
-                  RobinHood test
-                </NavLink>
+                <NavLink to='/' exact={true} activeClassName='active'>RobinHood test</NavLink>
                 <SearchBar/>
                 <LogoutButton />
               </>
