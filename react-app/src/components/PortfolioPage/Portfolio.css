@@ -8,7 +8,7 @@
 .main-wrapper {
     display: flex;
     width: 70%;
-    margin-top: 90px;
+    margin-top: 40px;
     justify-content: space-around;
     column-gap: 30px;
     max-width: 1030px;
@@ -78,6 +78,8 @@
     padding: 5px 20px;
     margin: 10px 0px;
     border-bottom: var(--clr-border);
+    display: flex;
+    
 }
 
 
@@ -89,6 +91,8 @@
 
 .buying-power-wrapper {
     display: flex;
+    align-items: center;
+    width: 100%;
 }
 
 .buying-power-wrapper > summary {
@@ -96,6 +100,7 @@
     justify-content: space-between;
     font-size: 1.3em;
     padding-bottom: 5px;
+    padding-top: 5px;
 }
 details
 {

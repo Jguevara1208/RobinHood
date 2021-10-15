@@ -8,6 +8,7 @@
     text-align: left;
     color: var(--clr-font);
     margin-bottom: 5px;
+    margin-top: 0;
 }
 
 .about-section {

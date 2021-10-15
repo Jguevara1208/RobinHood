@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import { setCurrentStock } from "../../store/currentStock";
 import { setCompanyStories } from "../../store/currentStories";
 import { setUserAssets } from "../../store/userAssets";
+import ReactLoading from 'react-loading'
 import MainGraph from "../MainGraph/MainGraph";
 import ResolutionButtons from "../ResolutionButtons/ResolutionButtons";
 import KeyStats from "../KeyStats/KeyStats";
@@ -61,7 +62,7 @@ function SingleAsset() {
             <div className='stock-name'>
               <h2>{stockInfo.name}</h2>
             </div>
-            {graphData && <MainGraph graphData={graphData} isPos={isPos} isSingleAsset={true}/>}
+            {graphData ? <MainGraph graphData={graphData} isPos={isPos} isSingleAsset={true}/> : <ReactLoading type={"bars"} color={'var(--clr-secondary)'} height={"20%"} width={"20%"} /> }
             <ResolutionButtons resolution={resolution} setResolution={setResolution} isPos={isPos} />
             {assets[symbol] &&
               <div className='about-section'>
