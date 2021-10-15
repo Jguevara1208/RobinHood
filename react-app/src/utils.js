@@ -124,15 +124,17 @@ const fetchSingleStockCandles = async (symbol, resolution, fromDate, currentDate
 
 const single_asset_graph_points = (graphData) => {
     const { prices, times, resolution } = graphData
-
-    const stockData = []
-    for (let i = 0; i < prices.length; i++) {
-        let price = Number(prices[i].toFixed(2))
-        let time = getGraphDate(times[i], resolution)
-        stockData.push({ time, price })
-        stockData[i]['%'] = percentageDifference(stockData)
+    if (prices && times) {
+        const stockData = []
+        for (let i = 0; i < prices.length; i++) {
+            let price = Number(prices[i].toFixed(2))
+            let time = getGraphDate(times[i], resolution)
+            stockData.push({ time, price })
+            stockData[i]['%'] = percentageDifference(stockData)
+        }
+        return stockData
     }
-    return stockData
+    return false
 }
 
 

@@ -64,21 +64,24 @@ export const setCompanyStories = (symbol) => async (dispatch) => {
     const [today, yesterday] = todayAndYesterday();
     const data = await fetch(`https://finnhub.io/api/v1/company-news?symbol=${symbol}&from=${yesterday}&to=${today}&token=c5f2bi2ad3ib660qt670`);
     const APIStories = await data.json();
-    const stories = [];
-    APIStories.slice(0, 16).forEach(APIstory => {
-        let story = {
-                link: APIstory.url,
-                publishDate: APIstory.datetime,
-                publisher: APIstory.source,
-                photoUrl: APIstory.image,
-                title: APIstory.headline,
-                description: APIstory.summary
-            };
-            if (story.photoUrl) {
-                stories.push(story);
-            };
-    });
-    dispatch(setStoriesAction(stories));
+    if (!APIStories.error) {
+        const stories = [];
+        APIStories.slice(0, 16).forEach(APIstory => {
+            let story = {
+                    link: APIstory.url,
+                    publishDate: APIstory.datetime,
+                    publisher: APIstory.source,
+                    photoUrl: APIstory.image,
+                    title: APIstory.headline,
+                    description: APIstory.summary
+                };
+                if (story.photoUrl) {
+                    stories.push(story);
+                };
+        });
+        dispatch(setStoriesAction(stories));
+    }
+    return
 };
 
 
