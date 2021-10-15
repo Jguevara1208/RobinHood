@@ -13,12 +13,12 @@ span {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 25%;
   border-bottom: solid black 1px;
   height: 600px;
   background-color: rgb(195, 245, 60);
   border-bottom: solid black 1px;
   padding: 0 75px;
+  gap: 12%;
 }
 
 .investing-for-everyone-desc {
@@ -31,7 +31,7 @@ span {
   flex-direction: column;
   /* gap: 15px; */
   /* padding-left: 90px; */
-  width: 25%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -98,6 +98,7 @@ span {
 .img-container {
   margin: 0px 9px;
   width: 46%;
+  min-width: 300px;
   padding-right: 92px;
 }
 
@@ -174,6 +175,7 @@ span {
 .tools-buttons-container {
   display: flex;
   flex-direction: column;
+  padding: 90px;
   justify-content: center;
   align-items: flex-end;
   gap: 0.1rem;
@@ -360,12 +362,10 @@ span {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 20%;
     border-bottom: solid black 1px;
     height: fit-content;
     background-color: rgb(195, 245, 60);
     border-bottom: solid black 1px;
-    padding: 10px;
   }
   .ipo-access-main-container {
     display: flex;
@@ -478,6 +478,9 @@ span {
     display: block;
     background-color: #f0ebe6;
     border-top: solid black 1px;
+  }
+
+  .ipo-header-compact, .fractional-shares-content-compact {
     padding: 24px;
   }
 

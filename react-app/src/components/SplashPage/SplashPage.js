@@ -99,6 +99,7 @@ export default function Index() {
             
                     
             <div className="fractional-shares-container-compact">
+                <img src={'/images/fractional-shares-compact.png'}></img>
                 <div className="ipo-header-compact">
                     <h1>Introducing Fractional Shares</h1>
                     <p>Invest in thousands of stocks, with just 1$</p>
@@ -207,9 +208,9 @@ export default function Index() {
                     <div className="Link"><AiFillGithub /><a href="https://github.com/goldeneye5671" target="_blank">Anthony Seefried</a></div>
                 </div>
                 <div className="linkedIn-links">
-                    <div className="Link"><AiFillLinkedin /><a>Jordan Guevara</a></div>
-                    <div className="Link"><AiFillLinkedin /><a>Chase Kessler</a></div>
-                    <div className="Link"><AiFillLinkedin /><a>Vazha Chiaberashvili</a></div>
+                    <div className="Link"><AiFillLinkedin /><a href="https://www.linkedin.com/in/jordan-guevara-a9370521a/" target="_blank">Jordan Guevara</a></div>
+                    <div className="Link"><AiFillLinkedin /><a href="https://www.linkedin.com/in/chase-kessler-97a135221/" target="_blank">Chase Kessler</a></div>
+                    <div className="Link"><AiFillLinkedin /><a href="https://www.linkedin.com/in/vazha-chiaberashvili/" target="_blank">Vazha Chiaberashvili</a></div>
                     <div className="Link"><AiFillLinkedin /><a href="https://linkedin.com/in/anthony-seefried-9233751a6" target="_blank">Anthony Seefried</a></div>
                 </div>
 
