@@ -99,6 +99,7 @@ export default function Index() {
             
                     
             <div className="fractional-shares-container-compact">
+                <img src={'/images/fractional-shares-compact.png'}></img>
                 <div className="ipo-header-compact">
                     <h1>Introducing Fractional Shares</h1>
                     <p>Invest in thousands of stocks, with just 1$</p>
