@@ -1,28 +1,33 @@
 nav {
+  position: sticky;
+  display: block;
+  box-sizing: border-box;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+}
+
+.splash-nav{
+  background: var(--clr-bg);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: 5px;
-  padding: 0px 10px;
-  height: 40px;
   height: 64px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 100;
-  margin: auto;
-  width: 100%;
-  background: var(--clr-bg);
+  padding: 0 15px;
 }
 
 .sign-up-button {
   background-color: #2eda12;
-  padding: 12px 50px;
+  padding: 8px 38px;
   border-radius: 50px;
   text-emphasis: bolder;
   text-decoration: none;
   color: black;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  letter-spacing: -0.1px;
 }
 
 .sign-up-button:hover {
@@ -33,6 +38,8 @@ nav {
 .login-button {
   padding: 12px 30px;
   color: black;
+  letter-spacing: -0.1px;
+  font-weight: 700;
 }
 
 .login-button:hover {
@@ -45,7 +52,9 @@ a {
 
 .user-actions-container {
   display: flex;
-  gap: 15px;
+  gap: 5px;
+  margin: 0;
+  padding: 0;
 }
 
 .navComp {

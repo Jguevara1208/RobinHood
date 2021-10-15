@@ -6,7 +6,7 @@
     font-weight: 400;
     font-size: 2em;
     text-align: left;
-    color: white;
+    color: var(--clr-font);
     margin-bottom: 5px;
 }
 
@@ -260,7 +260,7 @@
 
 .pos-atl-button, .neg-atl-button{
     background-color: var(--clr-bg);
-    /* margin-top: 20px; */
+
     height: 48px;
     width: 100%;
     border: 5px;
@@ -289,6 +289,7 @@
 
 .atl-close{
     color: var(--clr-font);
+    cursor: pointer;
 }
 
 .atl-modal-wrapper{
@@ -302,12 +303,12 @@
     align-items: center;
     width: 100%;
     font-size: 1.5em;
-    cursor: pointer;
     font-weight: 600;
 }
 .atl-close:hover{
     color: var(--clr-secondary);
 }
+
 
 .new-list{
     display: flex;
@@ -316,6 +317,7 @@
     height: 64px;
     margin-left: 50px;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
 .pos-plus-btn-bg{
@@ -403,7 +405,7 @@
  -ms-user-select: none;
  user-select: none;
 }
-/* Hide the browser's default checkbox */
+
 .pos-atl-label input {
  position: absolute;
  opacity: 0;
@@ -411,7 +413,7 @@
  height: 0;
  width: 0;
 }
-/* Create a custom checkbox */
+
 .checkmark {
  position: absolute;
  top: 0;
@@ -420,25 +422,25 @@
  width: 25px;
  background-color: #eee;
 }
-/* On mouse-over, add a grey background color */
+
 .pos-atl-label:hover input ~ .checkmark {
  background-color: var(--clr-atl-hover-pos);
 }
-/* When the checkbox is checked, add a blue background */
+
 .pos-atl-label input:checked ~ .checkmark {
  background-color: var(--clr-primary);
 }
-/* Create the checkmark/indicator (hidden when not checked) */
+
 .checkmark:after {
  content: "";
  position: absolute;
  display: none;
 }
-/* Show the checkmark when checked */
+
 .pos-atl-label input:checked ~ .checkmark:after {
  display: block;
 }
-/* Style the checkmark/indicator */
+
 .pos-atl-label .checkmark:after {
  left: 9px;
  top: 5px;
@@ -462,7 +464,7 @@
  -ms-user-select: none;
  user-select: none;
 }
-/* Hide the browser's default checkbox */
+
 .neg-atl-label input {
  position: absolute;
  opacity: 0;
@@ -470,7 +472,7 @@
  height: 0;
  width: 0;
 }
-/* Create a custom checkbox */
+
 .checkmark {
  position: absolute;
  top: 0;
@@ -486,25 +488,25 @@
 .neg2{
     border: 1px solid var(--clr-secondary);
 }
-/* On mouse-over, add a grey background color */
+
 .neg-atl-label:hover input ~ .checkmark {
  background-color: var(--clr-atl-hover-neg);
 }
-/* When the checkbox is checked, add a blue background */
+
 .neg-atl-label input:checked ~ .checkmark {
  background-color: var(--clr-secondary);
 }
-/* Create the checkmark/indicator (hidden when not checked) */
+
 .checkmark:after {
  content: "";
  position: absolute;
  display: none;
 }
-/* Show the checkmark when checked */
+
 .neg-atl-label input:checked ~ .checkmark:after {
  display: block;
 }
-/* Style the checkmark/indicator */
+
 .neg-atl-label .checkmark:after {
  left: 9px;
  top: 5px;
@@ -517,7 +519,71 @@
  transform: rotate(45deg);
 }
 
-.atl-save-btn{
+.pos-atl-save-btn, .neg-atl-save-btn{
     width: 100%;
-    
+    height: 48px;
+    border-radius: 5px;  
+    margin-top: 30px;
+    font-size: 1em; 
+    font-weight: 500;
+}
+
+.pos-atl-save-btn {
+    background-color: var(--clr-primary);
+}
+
+.neg-atl-save-btn {
+    background-color: var(--clr-seconday);
+}
+
+.pos-atl-save-btn:hover {
+    background-color: var( --clr-button-hover-pos);
+}
+
+.neg-atl-save-btn:hover {
+    background-color: var(--clr-button-hover-neg);
+}
+
+.atl-input-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.list-name-update-button-container{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.pos-atl-list-create-btn, 
+.neg-atl-list-create-btn {
+    border-radius: 5px;
+    padding: 7px 12px;
+    font-weight: 500;
+}
+
+.pos-atl-list-create-btn:hover{
+    background-color: var(--clr-button-hover-pos);
+}
+
+.neg-atl-list-create-btn:hover{
+    background-color: var(--clr-button-hover-neg);
+}
+
+.pos-atl-list-create-btn{
+    background-color: var(--clr-primary);
+}
+
+.neg-atl-list-create-btn{
+    background-color: var(--clr-secondary);
+}
+
+.pos-atl-list-cancel-btn,
+.neg-atl-list-cancel-btn {
+    background-color: var(--clr-bp-bg);
 }

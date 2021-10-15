@@ -38,20 +38,17 @@ const NavBar = () => {
                 </div>
               </NavLink>
               <div class="user-actions-container">
-                  <NavLink className="login-button"to='/login' exact={true} activeClassName='active'>
-                    Login
-                  </NavLink>
-                  <NavLink className="sign-up-button" to='/sign-up' exact={true} activeClassName='active'>
-                    Sign Up
-                  </NavLink>
+                <NavLink className="login-button"to='/login' exact={true} activeClassName='active'>Log in</NavLink>
+                <NavLink className="sign-up-button" to='/sign-up' exact={true} activeClassName='active'>Sign Up</NavLink>
               </div>
-              </>
+            </div>
             )
               :
               <>
                 <NavLink to='/' exact={true} activeClassName='active'>
                   <img src={'/images/Logo.png'} className="nav-logged-logo"/>
                 </NavLink>
+
                 <SearchBar/>
                 <div className="toggle-theme-button" onClick={handleToggle}>
                   {theme === 'light' ? <RiMoonFill/> : <FiSun/>}
