@@ -5,9 +5,6 @@ nav {
   top: 0;
   z-index: 100;
   width: 100%;
-}
-
-.splash-nav{
   background: var(--clr-bg);
   display: flex;
   flex-direction: row;
