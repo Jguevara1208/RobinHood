@@ -1,72 +1,54 @@
 nav {
-  position: sticky;
-  display: block;
-  box-sizing: border-box;
-  top: 0;
-  z-index: 100;
-  width: 100%;
-}
-
-.splash-nav{
-  background: var(--clr-bg);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin: 5px;
+  padding: 0px 10px;
+  height: 40px;
   height: 64px;
-  padding: 0 15px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  margin: auto;
+  width: 100%;
+  background: var(--clr-bg);
 }
-
 .sign-up-button {
-  background-color: #2eda12;
-  padding: 8px 38px;
+  background-color: #2EDA12;
+  padding: 12px 50px;
   border-radius: 50px;
   text-emphasis: bolder;
   text-decoration: none;
   color: black;
-  display: flex;
-  align-items: center;
-  font-weight: 700;
-  letter-spacing: -0.1px;
 }
-
 .sign-up-button:hover {
   background-color: #2dda129b;
   color: black;
 }
-
 .login-button {
   padding: 12px 30px;
   color: black;
-  letter-spacing: -0.1px;
-  font-weight: 700;
 }
-
 .login-button:hover {
-  color: #2eda12;
+  color: #2EDA12;
 }
-
 a {
   text-decoration: none;
 }
-
 .user-actions-container {
   display: flex;
-  gap: 5px;
-  margin: 0;
-  padding: 0;
+  gap: 15px;
 }
-
 .navComp {
   display: flex;
 }
-
 .moon-icon {
   color: var(--clr-font);
   margin: 10px;
   cursor: pointer;
 }
-
 .moon-icon:hover {
   color: var(--clr-button-hover-pos);
 }
