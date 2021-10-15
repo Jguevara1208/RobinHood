@@ -20,8 +20,6 @@ function SearchBar() {
     }, [searchText])
 
     const filterStocksFunc = (e) => {
-
-
         const newFilteredStocks = allStocks.filter(stock => {
             if(stock.name.toLowerCase().startsWith(searchText.toLowerCase()) || stock.symbol.toLowerCase().startsWith(searchText.toLowerCase())){
                 return stock
@@ -32,9 +30,25 @@ function SearchBar() {
         } else {
             setFilteredStocks(newFilteredStocks);
         }
-
-
     }
+
+    const letterColoring = (stock) => {
+          const res = {symbolRest: '', symbolMatch: '', nameRest: '', nameMatch: ''}
+          if (stock.name.toLowerCase().startsWith(searchText.toLowerCase())) {
+            res['nameRest'] = stock.name.slice(searchText.length)
+            res['nameMatch'] = stock.name.slice(0, searchText.length)
+          } else {
+            res['nameRest'] = stock.name
+          }
+          if (stock.symbol.toLowerCase().startsWith(searchText.toLowerCase())) {
+            res['symbolRest'] = stock.symbol.slice(searchText.length)
+            res['symbolMatch'] = stock.symbol.slice(0, searchText.length)
+          } else {
+            res['symbolRest'] = stock.symbol
+          }
+
+          return res
+    };
 
     const clearSearch = (e)=>{
         setFilteredStocks([])
@@ -65,8 +79,13 @@ function SearchBar() {
           <div className={showFilter ? `filteredStocks filter-shadow` : 'filteredStocks'} >
             <p className='filter-label'>Stocks</p>
             {filteredStocks.map((stock) => (
-              <Link to={`/stocks/${stock.symbol}`} onClick={clearSearch}>
-                <p className="search-results">{`${stock.symbol} ${stock.name}`}</p>
+              <Link className="search-results" to={`/stocks/${stock.symbol}`} onClick={clearSearch}>
+                <div className='sr-container1'>
+                  <p><span  className='span-colored'>{letterColoring(stock)['symbolMatch']}</span><span>{letterColoring(stock)['symbolRest']}</span></p>
+                </div>
+                <div className='sr-container2'>
+                  <p ><span className='span-colored'>{letterColoring(stock)['nameMatch']}</span><span>{letterColoring(stock)['nameRest']}</span></p>
+                </div>
               </Link>
             ))}
           </div>
