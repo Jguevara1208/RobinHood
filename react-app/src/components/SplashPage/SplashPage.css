@@ -1,12 +1,13 @@
 .investing-for-everyone-container{
   display: flex;
   align-items: center;
-  padding: 0 20%;
+  justify-content: center;
+  padding: 0 25%;
   border-bottom: solid black 1px;
-  height: 75vh;
+  height: 600px;
   background-color: rgb(195, 245, 60);
   border-bottom: solid black 1px;
-  padding: 10px;
+  padding: 0 75px;
 }
 
 .investing-for-everyone-desc{
@@ -17,15 +18,15 @@
 .investing-for-everyone-info {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  /* padding: 10px 30px; */
-  width: 45%;
+  /* gap: 15px; */
+  /* padding-left: 90px; */
+  width: 25%;
   margin: 0 auto;
 }
 
 .investing-for-everyone-info > h1{
   font-weight: 450;
-  font-size: 54px;
+  font-size: 52px;
   width: 350px;
 }
 
@@ -53,45 +54,62 @@
 .fractional-shares-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
   background-color: #f0ebe6;
-  border-top: solid black 1px;
+  /* border-top: solid black 1px; */
 }
 
 .fractional-shares-content {
   display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 30px;
+  height: 365px;
+  gap: 60px;
   width: 100%;
-  padding: 60px;
+  padding: 30px;
+}
+
+.fractional-shares-info{
+  font-size: larger;
 }
 
 .fractional-shares-info {
-  width: 27%;
+  width: 20%;
 }
 
-.fractional-shares-side-img{
-  animation: 0s linear 0s infinite normal none running;
-  background-image: url("https://robinhood.com/us/en/_next/static/images/2x__50ed5a2a8854d545e03d193192de26de.png");
-  background-repeat: no-repeat;
-  width: 100%;
-  max-width: 457px;
-  flex: 1 1 0%;
-  position: absolute;
-  top: 0px;
-  height: 100%;
-  background-position: center center;
+.container-row{
+  display: flex;
+  background-color: #f0ebe6;
+  align-items: center;
+  border-top: black solid 1px;
 }
 
 .img-container{
   margin: 0px 9px;
-  width: calc(16.6667% - 18px);
+  width: 46%;
+  padding-right: 92px;
+}
+
+.img-container > img {
+  width: 100%;
 }
 
 .fractional-shares-info > h4{
   font-weight: 450;
+}
+
+.center-div{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.center-div-2{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 0 16.5%;
 }
 
 .ipo-container{
@@ -161,6 +179,10 @@
   font-size: 20px;
 }
 
+.tools-info {
+  width: 25%;
+}
+
 .tool-info > h1 {
   font-size: 54px;
   font-weight: 450;
@@ -223,6 +245,7 @@
 }
 
 .tools-info-container{
+  width: 75%;
   display: flex;
   gap: 15%;
 }
@@ -256,7 +279,7 @@
 
 .video-img {
   position: absolute;
-  width: 618px;
+  width: 620px;
   top: 26px;
 }
 
@@ -367,7 +390,7 @@
 
   .tool-info{
     padding: 15px;
-    width: 400px;
+    max-width: 480px;
   }
 
   .tool-info > h1{
@@ -398,9 +421,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 30px;
     width: 100%;
-    padding: 0 10px;
+    padding: 0 30px;
   }
 
   .fractional-shares-container {
@@ -416,5 +438,13 @@
   .fractional-shares-info {
     width: 80%;
   }  
+
+  .container-row{
+    display: flex;
+    flex-direction: column;
+    background-color: #f0ebe6;
+    align-items: center;
+    border-top: black solid 1px;
+  }
 
 }
