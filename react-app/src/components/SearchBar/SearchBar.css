@@ -62,7 +62,7 @@
 } 
 
 .search-results:hover {
-  background-color: #43474a;
+  background-color: var(--clr-search-hover);
 }
 
 .search-bar {
