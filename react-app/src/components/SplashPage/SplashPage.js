@@ -35,12 +35,12 @@ export default function Index() {
 
 
     return (
-        <div>
+        <div className='top-level'>
             <div className="investing-for-everyone-container">
                 <div className="investing-for-everyone-info">
                     <h1>Investing for Everyone</h1>
                     <p className="investing-for-everyone-desc">
-                        Commission-free investing, plush the tools
+                        Commission-free investing, plus the tools
                         you need to put your money in motion. Sign up
                         and get your first stock for free! Certain limits
                         apply
@@ -102,7 +102,7 @@ export default function Index() {
                 <img src={'/images/fractional-shares-compact.png'}></img>
                 <div className="ipo-header-compact">
                     <h1>Introducing Fractional Shares</h1>
-                    <p>Invest in thousands of stocks, with just 1$</p>
+                    <p>Invest in thousands of stocks, with just $1</p>
                 </div>
                 <div className="fractional-shares-content-compact">
                     <div className="fractional-shares-info-compact">
@@ -126,7 +126,7 @@ export default function Index() {
                         <div className="center-div-2">
                             <div className="ipo-header">
                                 <h1>Introducing Fractional Shares</h1>
-                                <p>Invest in thousands of stocks, with just 1$</p>
+                                <p>Invest in thousands of stocks, with just $1</p>
                             </div>
                         </div>
                     </div>
