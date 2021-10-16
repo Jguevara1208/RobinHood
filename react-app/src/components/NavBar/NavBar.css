@@ -59,3 +59,27 @@ a {
   align-items: center;
   justify-content: space-around;
 }
+
+.dark-toggle {
+  color: black;
+  cursor: pointer;
+}
+
+.dark-toggle:hover {
+  color: var(--clr-secondary);
+}
+
+.light-toggle {
+  color: white;
+  cursor: pointer;
+}
+
+.light-toggle:hover {
+  color: var(--clr-secondary)
+}
+
+.navbar-buttons {
+  display: flex;
+  align-items: center;
+  font-size: 1.5em;
+}
