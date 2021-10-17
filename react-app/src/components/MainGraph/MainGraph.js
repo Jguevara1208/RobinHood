@@ -68,6 +68,7 @@ function MainGraph({graphData, isWatchList=false, isSingleAsset=false, isPos}){
         >
           <LineChart
             data={graphData}
+            onTouchStart={handleHover}
             onMouseMove={handleHover}
             onMouseLeave={resetHover}
           >
