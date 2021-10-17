@@ -249,13 +249,9 @@ export async function singleAssetGraphData(selectedResolution, symbol){
 /**------------------------------------------------------------------------------------------------------------------- **/
 
 export function CustomToolTip({active, payload, label}) {
-  if (active) {
     return (
     <div className="tooltip">
       <h4>{label}</h4>
     </div>
     )
-  }else{
-    return null;
-  }
 }

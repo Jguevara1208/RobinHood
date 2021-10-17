@@ -70,7 +70,8 @@ function SearchBar() {
             onChange={(e) => setSearchText(e.target.value)}
             placeholder='Search'
             value={searchText}
-            onFocus={()=> setShowFilter(true)}
+            onKeyPress={()=> setShowFilter(true)}
+            onFocus={searchText.length ? () => setShowFilter(true) : null}
             onBlur={loseFocus}
           />
           <label htmlFor="search" className='search-label'><FiSearch className="search-icon" /></label>
