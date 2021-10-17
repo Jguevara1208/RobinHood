@@ -13,7 +13,7 @@ function MainGraph({graphData, isWatchList=false, isSingleAsset=false, isPos}){
   const theme = useSelector(state => state.theme)
   const [hoverPrice, setHoverPrice] = useState(graphData[graphData.length -1].price);
   const [percentDiff, setPercentDiff] = useState(graphData[graphData.length-1]["%"]);
-
+  console.log(graphData)
   function lineColor(){
     if(theme === "light"){
       if(isPos === "pos"){
@@ -71,7 +71,7 @@ function MainGraph({graphData, isWatchList=false, isSingleAsset=false, isPos}){
             onMouseMove={handleHover}
             onMouseLeave={resetHover}
           >
-            <XAxis dataKey="time" hide />
+            <XAxis dataKey="time" domain={[graphData[0].time , graphData[3].time]} hide />
             <YAxis
               domain={[
                 graphData[0].price - 5,
@@ -82,7 +82,7 @@ function MainGraph({graphData, isWatchList=false, isSingleAsset=false, isPos}){
             {isWatchList === false && (
               <Tooltip
               content={<CustomToolTip />}
-              cursor={{ stroke: "var(--clr-tooltip)", strokeWidth: .8, fill: 'red' }}
+              cursor={{ stroke: "var(--clr-tooltip)", strokeWidth: .8}}
               isAnimationActive={false}
               offset={-20}
               position={{ y: -40 }}
@@ -91,6 +91,7 @@ function MainGraph({graphData, isWatchList=false, isSingleAsset=false, isPos}){
               )}
               <Line
                 dataKey="price"
+                // type={'stepafter'}
                 stroke={lineColor()}
                 dot={false}
                 strokeWidth={isWatchList ? 1 : 2}
@@ -98,10 +99,11 @@ function MainGraph({graphData, isWatchList=false, isSingleAsset=false, isPos}){
             {isSingleAsset || isWatchList ? 
               <ReferenceLine
                 ifOverflow="extendDomain"
+                isFront={false}
                 y={graphData[0].price}
                 strokeWidth={2}
-                strokeHeight={1.5}
-                strokeDasharray="1 6"
+                strokeHeight={2}
+                strokeDasharray="1 5"
                 stroke="#7F7F7F"
               />
               :

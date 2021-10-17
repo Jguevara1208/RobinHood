@@ -13,6 +13,9 @@ function List({list, listName=false , isStocks=false, isPos}){
     const [showList, setShowList] = useState(true)
     const [showModal, setShowModal] = useState(false)
 
+    console.log(list)
+    const refListLength = Object.keys(list.symbols).length
+    console.log(refListLength)
 
     let symbols = Object.keys(list.symbols);
 
@@ -30,7 +33,7 @@ function List({list, listName=false , isStocks=false, isPos}){
           <h1>{listName ? listName : list.listName}</h1>
           <div className="list-settings">
               {!isStocks && <BiDotsHorizontal onClick={() => setShowModal(!showModal)} className={`${isPos}-menu`}/>}
-              {showList ? <IoIosArrowUp onClick={() => setShowList(!showList)} id="up" className={`${isPos}-arrow`} /> : <IoIosArrowDown onClick={() => setShowList(!showList)} id="down" className={`${isPos}-arrow`}/>}
+              {showList ? <IoIosArrowUp onClick={() => refListLength ? setShowList(!showList) : null} id="up" className={`${isPos}-arrow`} /> : <IoIosArrowDown onClick={() => refListLength ? setShowList(!showList) : null} id="down" className={`${isPos}-arrow`}/>}
           </div>
         </div>
         {showModal && (
