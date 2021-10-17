@@ -34,7 +34,7 @@ function MainGraph({graphData, isWatchList=false, isSingleAsset=false, isPos}){
     setPercentDiff(graphData[graphData.length - 1]["%"]);
   }, [graphData])
 
-  function handleMouseHover(e){
+  function handleHover(e){
     if (!isWatchList) {
       if(e.activePayload){
           setHoverPrice(e.activePayload[0].payload.price);
@@ -44,7 +44,7 @@ function MainGraph({graphData, isWatchList=false, isSingleAsset=false, isPos}){
     };
   };
   
-  function resetHoverPrice(){
+  function resetHover(){
         setHoverPrice(graphData[graphData.length - 1].price);
         setPercentDiff(graphData[graphData.length - 1]["%"]);
   }
@@ -68,8 +68,8 @@ function MainGraph({graphData, isWatchList=false, isSingleAsset=false, isPos}){
         >
           <LineChart
             data={graphData}
-            onMouseMove={handleMouseHover}
-            onMouseLeave={resetHoverPrice}
+            onMouseMove={handleHover}
+            onMouseLeave={resetHover}
           >
             <XAxis dataKey="time" hide />
             <YAxis
@@ -84,7 +84,7 @@ function MainGraph({graphData, isWatchList=false, isSingleAsset=false, isPos}){
               content={<CustomToolTip />}
               cursor={{ stroke: "var(--clr-tooltip)", strokeWidth: .8, fill: 'red' }}
               isAnimationActive={false}
-              offset={-17.5}
+              offset={-20}
               position={{ y: -40 }}
               allowEscapeViewBox={{ x: true, y: true }}
               />
