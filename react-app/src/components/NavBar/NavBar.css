@@ -83,3 +83,13 @@ a {
   align-items: center;
   font-size: 1.5em;
 }
+
+.not-robinhood {
+  display: flex;
+  align-items: center;
+}
+
+.not-robinhood > p {
+  font-size: 1.5em;
+  margin: 0px 2px 3.5px 0px;
+}

@@ -46,7 +46,6 @@ function SearchBar() {
           } else {
             res['symbolRest'] = stock.symbol
           }
-
           return res
     };
 
