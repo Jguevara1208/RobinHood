@@ -15,7 +15,7 @@ export function marketValue(price, shares) {
 }
 
 export function todaysReturn(open, current) {
-  const value = (current - open).toFixed(2);
+  const value = Number((current - open).toFixed(2));
   let formattedValue = {
     "%": percentageDifference(open, current),
     return: null,
@@ -29,20 +29,22 @@ export function todaysReturn(open, current) {
 }
 
 export function totalReturn(avg, shares, price) {
-  const spent = (avg * shares).toFixed(2);
-  const mktValue = Number(marketValue(price, shares).slice(1));
+  const spent = Number((avg * shares).toFixed(2));
+  const mktValue = Number(marketValue(price, shares).slice(1).split(',').join(''));
   const totalReturn = mktValue - spent;
+  
   let formattedReturn = {
     "%": percentageDifference(spent, mktValue),
     return: null,
   };
-
+  
   totalReturn >= 0
-    ? (formattedReturn["return"] = `+$${formatThousands(totalReturn.toFixed(2))}`)
-    : (formattedReturn["return"] = `-$${formatThousands(totalReturn
-        .toFixed(2)
-        .toString()
-        .slice(1))}`);
+  ? (formattedReturn["return"] = `+$${formatThousands(totalReturn.toFixed(2))}`)
+  : (formattedReturn["return"] = `-$${formatThousands(totalReturn
+    .toFixed(2)
+    .toString()
+    .slice(1))}`);
+    
   return formattedReturn;
 }
 

@@ -47,20 +47,7 @@ function Portfolio(){
             await dispatch(setUserAssets(user.id, resolution))
         })()
     }, [dispatch, resolution]);
-
-
-    // useEffect(() => {
-    //     let graphDataInterval;
-    //     if(!graphData){
-    //         graphDataInterval = setInterval(async() => {
-    //             await dispatch(setUserAssets(user.id, resolution))
-    //         }, 10000)
-    //     }else{
-    //         return () => clearInterval(graphDataInterval)
-    //     }
-    // }, [dispatch, graphData]);
-
-
+    
     return (
     <div className={`main-body`}>
         <div className='main-wrapper'>
