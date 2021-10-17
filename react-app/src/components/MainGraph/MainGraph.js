@@ -13,7 +13,7 @@ function MainGraph({graphData, isWatchList=false, isSingleAsset=false, isPos}){
   const theme = useSelector(state => state.theme)
   const [hoverPrice, setHoverPrice] = useState(graphData[graphData.length -1].price);
   const [percentDiff, setPercentDiff] = useState(graphData[graphData.length-1]["%"]);
-  console.log(graphData)
+  // console.log(graphData)
   function lineColor(){
     if(theme === "light"){
       if(isPos === "pos"){

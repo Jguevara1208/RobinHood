@@ -13,9 +13,9 @@ function List({list, listName=false , isStocks=false, isPos}){
     const [showList, setShowList] = useState(true)
     const [showModal, setShowModal] = useState(false)
 
-    console.log(list)
+    // console.log(list)
     const refListLength = Object.keys(list.symbols).length
-    console.log(refListLength)
+    // console.log(refListLength)
 
     let symbols = Object.keys(list.symbols);
 
