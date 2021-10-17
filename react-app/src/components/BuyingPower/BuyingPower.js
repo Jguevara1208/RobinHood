@@ -45,6 +45,13 @@ function BuyingPower({ user, isPos }) {
       setSummaryOpen(!summaryOpen)
     }
 
+    function preventLetters(e) {
+      const charCode = typeof e.which == "undefined" ? e.keyCode : e.which;
+      const charStr = String.fromCharCode(charCode);
+
+      if (!charStr.match(/^[0-9]+$/)) e.preventDefault();
+    }
+
     
   return (
     <div className={`${summaryOpen ? "sumOpen" : ""} buying-power-container`}>
@@ -74,6 +81,7 @@ function BuyingPower({ user, isPos }) {
                 type="number"
                 placeholder="$0.00"
                 onChange={(e) => setDepositAmount(e.target.value)}
+                onKeyPress={(e) =>  preventLetters(e)}
                 value={depositAmount}
               />
             </div>
