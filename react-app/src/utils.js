@@ -171,6 +171,7 @@ const fetchMultipleStocksCandles = async (symbols, resolution, fromDate, current
     return res
 }
 
+
 const user_assets_graph_points = (graphData, userAssets) => {
     const { assetsCandleNums, times, resolution } = graphData
     let len;
