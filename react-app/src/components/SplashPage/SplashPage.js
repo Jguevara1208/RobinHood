@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom'
 import { AiOutlineArrowUp, AiOutlineArrowDown, AiFillGithub, AiFillLinkedin } from 'react-icons/ai';
 
 export default function Index() {
-    
+
     const [visibleTool, setVisibleTool] = React.useState(0)
-    
-    
+
+
     function increaseVisibleToolValue () {
         if (visibleTool < 2 ){
             setVisibleTool(visibleTool + 1)
@@ -23,7 +23,7 @@ export default function Index() {
             setVisibleTool(2)
         }
     }
-    
+
     React.useEffect(() => {
         const sliderInterval = setInterval(
             () => { setVisibleTool((visibleTool + 1)% 3 ) },
@@ -69,7 +69,7 @@ export default function Index() {
                         <h1>Introducing IPO Access</h1>
                         <p>Get in at the IPO price. Now you can become one of the first public investors in upcoming IPOs.</p>
                     </div>
-                    
+
                         <div className="ipo-info-container-main">
                             <div className="ipo-info-container">
                                 <img className="ipo-info-img" src="https://robinhood.com/us/en/_next/static/images/comeall__c29b103566f44e51d624989e65ecf3be.svg"></img>
@@ -96,8 +96,8 @@ export default function Index() {
                 </div>
 
         </div>
-            
-                    
+
+
             <div className="fractional-shares-container-compact">
                 <img src={'/images/fractional-shares-compact.png'}></img>
                 <div className="ipo-header-compact">
@@ -157,13 +157,13 @@ export default function Index() {
                     <button className={visibleTool === 1 ? `tool-button-active` : `tool-button`} onClick={e => setVisibleTool(1)}>Manage</button>
                     <button className={visibleTool === 2 ? `tool-button-active` : `tool-button`} onClick={e => setVisibleTool(2)}>Customize</button>
                     <button className="tool-button" onClick={increaseVisibleToolValue}><AiOutlineArrowDown /></button>
-                    
+
                 </div>
                 <div className="tools-info-container">
                     {
                         visibleTool === 0 && (
                             <div className="info-container">
-                            <img className="tool-img" src={'/images/learn.png'}></img>
+                            <img className="tool-img" src={'https://raw.githubusercontent.com/Vazhac/Python_Group_Project_Photos/main/learn.png'}></img>
                                 <div className="tool-info">
                                     <h1 >Learn As You Go</h1>
                                     <p >Our goal is to make investing in financial markets more affordable, more intuitive, and more fun, no matter how much experience you have (or don’t have).</p>
@@ -175,7 +175,7 @@ export default function Index() {
                     {
                         visibleTool === 1 && (
                             <div className="info-container">
-                                <img className="tool-img" src={'/images/manage.png'}></img>
+                                <img className="tool-img" src={'https://raw.githubusercontent.com/Vazhac/Python_Group_Project_Photos/main/manage.png'}></img>
                                 <div className="tool-info">
                                     <h1>Manage Your Portfolio</h1>
                                     <p >Keep your portfolio in your pocket. Everything you need to manage your assets is available in a single app.</p>
@@ -187,7 +187,7 @@ export default function Index() {
                     {
                         visibleTool === 2 && (
                             <div className="info-container">
-                                <img className="tool-img" src="/images/customize.png"></img>
+                                <img className="tool-img" src="https://raw.githubusercontent.com/Vazhac/Python_Group_Project_Photos/main/customize.png"></img>
                                 <div className="tool-info">
                                     <h1 >Keep Tabs on Your Money</h1>
                                     <p>Set up customized news and notifications to stay on top of your assets as casually or as relentlessly as you like. Controlling the flow of info is up to you.</p>
