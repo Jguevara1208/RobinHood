@@ -28,8 +28,10 @@ function BuyingPower({ user, isPos }) {
     const dispatch = useDispatch()
 
     function depositFunds(){
-      if(depositAmount === "$0.00" && depositAmount === 0){
+      if(depositAmount === "$0.00" || depositAmount === 0){
         setError("Please deposit an amount greater than zero")
+      }else if(depositAmount > 10000000){
+        setError("Thats too much power!")
       }else{
         const buyingPower = +user.buyingPower + +depositAmount
         setError(null)
@@ -55,7 +57,7 @@ function BuyingPower({ user, isPos }) {
     
   return (
     <div className={`${summaryOpen ? "sumOpen" : ""} buying-power-container`}>
-      <details className="buying-power-wrapper" >
+      <details className={`buying-power-wrapper ${error ? "bp-err" : ""}`} >
         <summary
           className={`${summaryOpen ? "sumBorder" : ""}`}
           onClick={handleSumOpen}
@@ -74,8 +76,10 @@ function BuyingPower({ user, isPos }) {
               <p className="bold-p">${formatThousands(user.buyingPower)}</p>
             </div>
             <div className="bp-input">
-              <p>Amount</p>
-              {error && <p>{error}</p>}
+              <div className="amount-cont">
+                <p>Amount</p>
+                {error && <p className="amount-err">{error}</p>}
+              </div>
               <input
                 className={`${isPos}-bp-input1`}
                 type="number"
