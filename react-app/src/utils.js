@@ -109,12 +109,15 @@ const API_KEYS = [
     'c66p2vaad3icr57jl0g0',
     'c66p352ad3icr57jl0kg',
     'c66p462ad3icr57jl130',
-    'c5f2bi2ad3ib660qt670'
+    'c5fm5piad3i9cg8u5dk0'
 ]
 
-const randomAPIKey = () => {
-    const randomNumber = Math.floor(Math.random() * (5 - 0 + 1)) + 0;
-    return API_KEYS[randomNumber]
+let keyCount = 0
+
+const getKey = () => {
+    const key = API_KEYS[keyCount]
+    keyCount === 5 ? keyCount = 0 : keyCount += 1
+    return key
 }
 
 /**------------------------------------------------------------------------------------------------------------------- **/
@@ -123,7 +126,7 @@ const randomAPIKey = () => {
 
 const fetchSingleStockCandles = async (symbol, resolution, fromDate, currentDate) => {
     let response = await fetch(
-        `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=${resolution}&from=${+fromDate}&to=${+currentDate}&token=${randomAPIKey()}`
+        `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=${resolution}&from=${+fromDate}&to=${+currentDate}&token=${getKey()}`
     )
     let data = await response.json();
     if (data.error) return false;
