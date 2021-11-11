@@ -103,10 +103,19 @@ const percentageDifference = (stockData) => {
     return 0
 }
 
+const API_KEYS = [
+    'c5f2bi2ad3ib660qt670',
+    'c66p2mqad3icr57jl0ag',
+    'c66p2vaad3icr57jl0g0',
+    'c66p352ad3icr57jl0kg',
+    'c66p462ad3icr57jl130',
+    'c5f2bi2ad3ib660qt670'
+]
 
-
-
-
+const randomAPIKey = () => {
+    const randomNumber = Math.floor(Math.random() * (5 - 0 + 1)) + 0;
+    return API_KEYS[randomNumber]
+}
 
 /**------------------------------------------------------------------------------------------------------------------- **/
 /**---------------------------------------------Single Asset Graph Data----------------------------------------------- **/
@@ -114,7 +123,7 @@ const percentageDifference = (stockData) => {
 
 const fetchSingleStockCandles = async (symbol, resolution, fromDate, currentDate) => {
     let response = await fetch(
-        `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=${resolution}&from=${+fromDate}&to=${+currentDate}&token=c5f2bi2ad3ib660qt670`
+        `https://finnhub.io/api/v1/stock/candle?symbol=${symbol}&resolution=${resolution}&from=${+fromDate}&to=${+currentDate}&token=${randomAPIKey()}`
     )
     let data = await response.json();
     if (data.error) return false;
