@@ -50,6 +50,7 @@ NotRobinhood is a web application built for investors to monitor, buy/sell stock
 
 ### Built With 
 [Back to top](#table-of-contents)
+* [Finnhub - Stock API](https://finnhub.io/)
 * [AWS - Amazon Web Services](https://aws.amazon.com/)
 * [PostgreSQL](https://www.postgresql.org/docs/)
 * [SQLAlchemy](https://www.sqlalchemy.org/)
