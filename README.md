@@ -143,14 +143,14 @@ From any page where there are user posts or comments, you can click on a user's 
 
 <b>Overview</b>:
 
-### <b>Feature</b>: Current Menu
-<b>How I would do it</b>: 
+### <b>Feature</b>: Trending Lists
+<b>How I would do it</b>: Trending Lists are on the dashboard/portfolio page to display the most popular lists on the site. This component will house links to other lists that contain the most popular stocks. Each list's name will act as a button that will redirect users to another page containing those stocks.
 
-### <b>Feature</b>: Sharing Recipes
-<b>How I would do it</b>: 
+### <b>Feature</b>: Key statistics
+<b>How I would do it</b>: We would use the Finnhub API to pull the relavent information and present a new component on the individual stock page to show its information. This information includes Market Cap, Price-Earnings ratio, Divident yield, average volume, High-Today, Low-Today, open price, volume, 52 week high, and 52 week low fields in an organized grid format.
 
-### <b>Feature</b>: Ordering Guide
-<b>How I would do it</b>: 
+### <b>Feature</b>: Related lists
+<b>How I would do it</b>: Related lists would act as a tag of sorts to make it easier to find stocks in the same industry, location, or other groups. These lists can be displayed in their own component on the stock page under the key statistics to allow users to find other similar stocks. Each related list will act as button that will redirect the user to another page containing those stocks.
 
 <!-- CONTACT -->
 ## Contact
