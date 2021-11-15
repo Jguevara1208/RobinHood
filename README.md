@@ -1,7 +1,7 @@
 <br />
 <p align="center">
   <a href="https://notrobinhood.herokuapp.com/">
-    <img src="https://cdn.discordapp.com/attachments/906292935765667874/906293015436492840/RH-link.png" alt="Logo" width="90" height="90">
+    <img src="https://cdn.discordapp.com/attachments/908759674076168263/909921109414125608/NOTRH.png" alt="Logo" width="90" height="110">
   </a>
 
   <h3 align="center">NotRobinhood</h3>
