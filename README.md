@@ -58,86 +58,79 @@ NotRobinhood is a web application built for investors to monitor, buy/sell stock
 * [React](https://reactjs.org/)
 * [Redux](https://redux.js.org/)
 
-<!-- USAGE EXAMPLES
 ## Usage
-[Back to top](#table-of-contents)
-
-Users can signup and login to use Finstagram, and can login as a demo user to experience the website quickly.
-
-[![Product Name Screen Shot][signup]](https://finstagram-project.herokuapp.com/signup)
-[![Product Name Screen Shot][product-screenshot]](https://finstagram-project.herokuapp.com/login)
-<br>
-<br>
-Once logged in, the user is directed to the Feed page, where logged-in users can view a feed of posts from users they follow, as well as their own posts.
-
-[![Product Name Screen Shot][feed]](https://finstagram-project.herokuapp.com/signup)
-
-Logged in users can add a new post, which appears at the top of the screen. Users can post images, gifs, or videos, as accepted file types. For posts a user owns, they can edit and delete the post. Users can also like and unlike a post.
-
-### Adding a post:
-[![Product Name Screen Shot][addPost]](https://finstagram-project.herokuapp.com/feed)
-
-### Editing a post:
-[![Product Name Screen Shot][editPost]](https://finstagram-project.herokuapp.com/feed)
-
-### Deleting a post:
-[![Product Name Screen Shot][deletePost]](https://finstagram-project.herokuapp.com/feed)
-
-### Liking and unliking a post:
-[![Product Name Screen Shot][likeUnlike]](https://finstagram-project.herokuapp.com/feed)
-
-Users can add, edit, and delete a comment.
-
-### Adding a comment:
-[![Product Name Screen Shot][addComment]](https://finstagram-project.herokuapp.com/feed)
-
-### Editing a comment:
-[![Product Name Screen Shot][editComment]](https://finstagram-project.herokuapp.com/feed)
-
-### Deleting a comment:
-[![Product Name Screen Shot][deleteComment]](https://finstagram-project.herokuapp.com/feed)
-
-Users can hover over the username or user image of a post's author to view that user's information. It also shows the following status of the logged in user in relation to the post author user.
-
-### View user hover card:
-[![Product Name Screen Shot][viewHover]](https://finstagram-project.herokuapp.com/feed)
-
-Users can also click on the likes count on any post to view which users liked that post. From here, users can see whether they're following anyone in this list, and follow/unfollow as they wish.
-
-### View post's liked users:
-[![Product Name Screen Shot][viewLikes]](https://finstagram-project.herokuapp.com/feed)
+Users have the ability switch between a light and dark mode. The accent colors are reactive to the current stock price. If the stock is in the negatives, the accents will be red. If the stock is doing well, the colors will be green for lightmode, and blue for dark mode.
 
 <br>
-<br>
-Over on the Explore page, users can view posts from users they don't follow, and interact with these posts like on the Feed page.
-<br>
-<br>
 
-### View posts from unfollowed users:
-[![Product Name Screen Shot][exploreModal]](https://finstagram-project.herokuapp.com/explore)
+![l-d](./gifs/mode.gif)
 
-
-Once you follow a user, their posts will appear on the feed page
-
-### Newly followed users posts:
-
-[![Product Name Screen Shot][newlyFollowedPosts]](https://finstagram-project.herokuapp.com/explore)
-<br>
 <br>
 
-From any page where there are user posts or comments, you can click on a user's username to go to their profile page, which displays that user's number of posts, followers, and users followed.
+Users can buy and sell stocks on the stocks assets page.
 
-### User profile pages:
+<br>
 
-(add profile navigation gif) -->
+![b-s](./gifs/buy-sell.gif)
+
+<br>
+
+Users can switch between resolutions to see how the stock is doing throughout different time frames.
+
+<br>
+
+![res](./gifs/resolution.gif)
+
+<br>
+
+Users can create and delete Watchlists. They may also add/remove companies to/from the watchlists.
+
+<br>
+
+![wl](./gifs/l-d-mode.gif)
 
 ## Interesting Issues:
-### Dynamic Form for Recipe 
+### Dynamic Algorithm to turn API response into graphable points.
 [Back to top](#table-of-contents) 
 
-<b>Issue</b>:
+<b>Issue</b>: We are using multiple APIs to get up to date information on stocks. The information we are getting back needs to be turned into an object that we can use to feed data to the Recharts library to allow for the graph to be presented on each page. We also needed to be able to do it for just one stock, or a user's entire portfolio
 
-<b>Solution</b>:
+<b>Solution</b>: We created a dynamic alogrithm that is able to to take any resolution (timeframe), figure out whether it's a weekend or not (unable to get information from the API for weekends because the stock market is closed), take one or 100 stock symbols, translate UNIX timestamps (what was being given from the API) into user friendly times, and match all of the stock candles data to those times. We were able to package all of this into one function which we used from our redux stores to gather all of the information we needed, all while keeping our redux stores clean and readable.
+
+<br>
+
+```js
+/**---------------------------------------------------------------------------------------------------------**/
+/**---------------------------------------------Multiple Assets Package-------------------------------------**/
+/**---------------------------------------------------------------------------------------------------------**/
+
+export async function multiAssetGraphData(selectedResolution, symbols, userAssets){
+    const { resolution, fromDate, currentDate } = getQueryParameters(selectedResolution)
+    let data = await fetchMultipleStocksCandles(symbols, resolution, fromDate, currentDate)
+    if (data) {
+        let stockData = user_assets_graph_points(data, userAssets)
+        return stockData
+    }
+    return false
+}
+
+
+/**---------------------------------------------------------------------------------------------------------**/
+/**---------------------------------------------Single Asset Package----------------------------------------**/
+/**---------------------------------------------------------------------------------------------------------**/
+
+export async function singleAssetGraphData(selectedResolution, symbol){
+    const { resolution, fromDate, currentDate } = getQueryParameters(selectedResolution)
+    let data = await fetchSingleStockCandles(symbol, resolution, fromDate, currentDate)
+    if (data) {
+        let stockData = single_asset_graph_points(data)
+        return stockData
+    }
+    return false
+}
+```
+**The entire algorithm can be found [here](https://github.com/Jguevara1208/RobinHood/blob/main/react-app/src/utils.js)**
+<br>
 
 ## Features to Implement Next
 [Back to top](#table-of-contents)
